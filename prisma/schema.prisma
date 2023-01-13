@@ -3,12 +3,84 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model User {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  username String @unique
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+
+  Feed Feed[]
+}
+
+enum Visiblity {
+  Public
+  Unlisted
+  Private
+}
+
+model Feed {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  name String
+
+  description String?
+
+  visibility Visiblity
+
+  creator User @relation(fields: [userId], references: [id])
+
+  userId String @db.Uuid
+
+  items FeedItem[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
+}
+
+enum FeedItemType {
+  YouTubeChannel
+}
+
+model FeedItem {
   id Int @id @default(autoincrement())
 
   name String
+
+  description String?
+
+  meta FeedItemMeta @relation(fields: [feedItemMetaId], references: [id])
+
+  Feed Feed @relation(fields: [feedId], references: [id])
+
+  feedId String @db.Uuid
+  
+  feedItemMetaId String   @db.Uuid
+
+  createdAt DateTime @default(now())
+
+  updatedAt      DateTime @updatedAt
+}
+
+model FeedItemMeta {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+
+  name String
+
+  originId String
+
+  type FeedItemType
+
+  FeedItem FeedItem[]
+
+  createdAt DateTime @default(now())
+
+  updatedAt DateTime @updatedAt
 }
