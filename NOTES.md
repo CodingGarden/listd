@@ -7,3 +7,13 @@ Right now we only support YouTube channels. Eventually, we will support other ty
   * Reddit - Subreddit
   * Reddit User - Reddit User
   * Blog - Author
+
+
+# UI Design
+
+* Wireframing
+  * UX
+    * User Experience
+* Mockup
+  * Higher Fidelity
+* Prototype
