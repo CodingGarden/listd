@@ -44,5 +44,24 @@
 	"dependencies": {
 		"@prisma/client": "^4.8.1"
 	},
-	"license": "MIT"
+	"license": "MIT",
+	"engines": {
+		"npm": ">= 7.0.0",
+		"yarn": "Please use npm instead of yarn.",
+		"pnpm": "Please use npm instead of pnpm."
+	},
+	"bugs": {
+		"url": "https://github.com/CodingGarden/listd/issues"
+	},
+	"keywords": [
+		"listd",
+		"svelte",
+		"typescript",
+		"tailwindcss"
+	],
+	"author": "Coding Garden ('https://coding.garden/')",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:CodingGarden/listd.git"
+	}
 }
