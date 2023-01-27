@@ -11,11 +11,11 @@ When contributing to `listd`, whether on GitHub or in other community spaces:
 
 ### Prerequisites
 
-In order to not waste your time implementing a change that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/CodingGarden/listd/issues/new) describing the problem you would like to solve.
+In an effort to respect your time, if you wanted to implement a change that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/CodingGarden/listd/issues/new) describing the problem you would like to solve.
 
 ### Setup your environment
 
-Fork the [Listd repository](https://github.com/CodingGarden/) to your own GitHub account and then clone it to your local device.
+Fork the [Listd repository](https://github.com/CodingGarden/listd) to your own GitHub account and then clone it to your local device.
 
 
 ```bash
@@ -30,7 +30,11 @@ npm install
 
 ### Set up the database
 
-This project uses [PostgreSQL](https://www.postgresql.org/) as its database. You can install it on your local machine by [Docker](https://www.docker.com/) or use a cloud service like [ElephantSQL](https://www.elephantsql.com/).
+This project uses [PostgreSQL](https://www.postgresql.org/) as its database.
+
+The project has a `docker-compose.yml` file ready to use if you have [Docker](https://www.docker.com/) installed.
+
+You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
 create a `.env` file in the root directory of the project and add the following variables:
 
@@ -42,16 +46,20 @@ DB_PORT=your_database_port
 DB_USER=your_database_user
 DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
+DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ```
-* DB_HOST: The host of your database. If you use ElephantSQL, you can find it in the connection string. If you use Docker, it's `localhost`.
+If you are using Docker, you can use the following values:
 
-* DB_PORT: The port of your database. If you use ElephantSQL, you can find it in the connection string. If you use Docker, it's `5432`.
+```bash
+DB_HOST=localhost
+DB_USER=listdapp
+DB_PASSWORD=supersecret
+DB_NAME=listd
+DB_PORT=5432
+DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
+```
 
-* DB_USER: The user of your database. If you use ElephantSQL, you can find it in the connection string. If you use Docker, it's `postgres`.
-
-* DB_PASSWORD: The password of your database. If you use ElephantSQL, you can find it in the connection string. If you use Docker, it's `postgres`.
-
-* DB_NAME: The name of your database. If you use ElephantSQL, you can find it in the connection string. If you use Docker, it's `postgres`.
+* DATABASE_URL: The full database connection URL. This is required and is used by prisma.
 
 #### Set up PostgreSQL by Docker Compose
 
@@ -61,19 +69,14 @@ If you have [Docker](https://www.docker.com/) installed, you can use the followi
 docker-compose up -d
 ```
 
-### Migration
+#### Prisma Setup
 
-This project uses [Prisma](prisma.io/) to manage the database. You can use the following command to create a migration file:
-
-```bash
-npx prisma migrate dev --name init
-```
-
-Then, you can use the following command to generate the Prisma client:
+Use the following command to generate the Prisma client:
 
 ```bash
 npx prisma generate
 ```
+
 ### Run the project
 
 To run the project in development mode, run the following command:
@@ -104,6 +107,10 @@ Then, [create a pull request](https://github.com/CodingGarden/listd/pulls)
 ## Code Style
 
 This project uses [Prettier](https://prettier.io/) to format the code. You can run `npm run format` to format the code before committing.
+
+<!-- TODO: setup eslint -->
+<!-- TODO: setup github actions to run linter -->
+<!-- TODO: setup pre-commit hooks to run linter -->
 
 ## License
 

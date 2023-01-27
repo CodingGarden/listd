@@ -47,13 +47,13 @@
 	"license": "MIT",
 	"engines": {
 		"npm": ">= 7.0.0",
-		"yarn" : "Please use npm instead of yarn.",
-		"pnpm" : "Please use npm instead of pnpm."
-	  },
-	  "bugs": {
+		"yarn": "Please use npm instead of yarn.",
+		"pnpm": "Please use npm instead of pnpm."
+	},
+	"bugs": {
 		"url": "https://github.com/CodingGarden/listd/issues"
-	  },
-	  "keywords": [
+	},
+	"keywords": [
 		"listd",
 		"svelte",
 		"typescript",
