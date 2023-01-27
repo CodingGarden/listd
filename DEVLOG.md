@@ -1,12 +1,15 @@
 # 2023-01-27
 
-* [ ] Review PRs
+* [x] Review PRs
   * [x] Tailwind bug fix
-  * [ ] Contributing Guide
-* [ ] Setup i18n
-  * [ ] Research options
-  * [ ] Install / setup
-  * [ ] Use dictionaries on landing page
+  * [x] Contributing Guide
+* [x] Setup i18n
+  * [x] Research options
+  * [x] Install / setup
+  * [x] Use dictionaries on landing page
+
+# 2023-02-03
+* [ ] Eslint / Airbnb / Prettier Setup...
 * [ ] Setup Auth
   * [ ] install / setup @auth/core
 * [ ] Deploy???

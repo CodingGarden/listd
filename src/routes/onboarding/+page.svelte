@@ -1,11 +1,11 @@
 <script lang="ts">
-import { enhance } from '$app/forms';  
-import { FileButton } from '@skeletonlabs/skeleton';
-
+import { LL } from '$lib/i18n/i18n-svelte';
+import { enhance } from '$app/forms';
+import { Avatar, FileButton } from '@skeletonlabs/skeleton';
 let files: FileList;
 </script>
 
-<p>Everyone needs a friend. Friends are the most valuable things in the world.</p>
+<p>{ $LL.onboarding.messages.main() }</p>
 <form
   class="pt-4"
   method="POST"
@@ -14,14 +14,14 @@ let files: FileList;
   }}
 >
   <label for="name">
-    <span>Username</span>
+    <span>{ $LL.onboarding.labels.username() }</span>
     <input type="text" id="username" value="w3cj" minlength="4" required>
   </label>
-  <p class="my-4">You can customize your avatar.</p>
+  <p class="my-4">{ $LL.onboarding.messages.avatar() }</p>
   <div class="flex justify-center">
-    <FileButton bind:files button="btn-filled-primary">Upload File</FileButton>
+    <FileButton bind:files button="btn-filled-primary">{ $LL.onboarding.labels.uploadFile() }</FileButton>
   </div>
-  <p class="pt-4">Son of a gun. Don't be bashful drop me a line. Be brave. It's all a game of angles. And I will hypnotize that just a little bit.</p>
+  <p class="pt-4">{ $LL.onboarding.messages.final() }</p>
   <div class="flex justify-end my-4">
     <button class="btn btn-filled-success btn-base">Lets Go!</button>
   </div>
