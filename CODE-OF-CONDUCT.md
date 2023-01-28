@@ -1,5 +1,6 @@
 # Contributor Code of Conduct
 
+
 ## Our Pledge
 
 In the interest of fostering an open and welcoming environment, we as contributors and maintainers pledge to making participation in our project and our community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
@@ -40,11 +41,11 @@ This Code of Conduct applies both within project spaces and in public spaces whe
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting us through:
 
-- [DM on Twitter](https://twitter.com/coding_garden)
-<!-- TODO: remove personal contact and replace with ticket system -->
-- DM on Discord - w3cj#7953
-<!-- TODO: add listd email address -->
-
+ * [DM on Twitter](https://twitter.com/coding_garden)
+ <!-- TODO: remove personal contact and replace with ticket system -->
+ * DM on Discord - w3cj#7953
+ <!-- TODO: add listd email address -->
+ 
 All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident.
 
 Project maintainers who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.
