@@ -32,7 +32,7 @@
 		"postcss-load-config": "^4.0.1",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
-		"prisma": "^4.8.1",
+		"prisma": "^4.9.0",
 		"svelte": "^3.54.0",
 		"svelte-check": "^2.9.2",
 		"svelte-preprocess": "^4.10.7",
@@ -46,7 +46,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@prisma/client": "^4.8.1"
+		"@prisma/client": "^4.9.0"
 	},
 	"license": "MIT",
 	"engines": {

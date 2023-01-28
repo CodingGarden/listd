@@ -1,0 +1,11 @@
+{
+	"labels": {
+		"username": "Kullanıcı Adı",
+		"uploadFile": "Dosya Seç"
+	},
+	"messages": {
+		"main": "Listd'e Hoş Geldin! Hadi profilini oluşturalım.",
+		"avatar": "Profil resminizi yükleyin.",
+		"final": "İşte bu kadar! Hadi başlayalım!"
+	}
+}
