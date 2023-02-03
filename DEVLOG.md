@@ -3,12 +3,13 @@
 ## 2023-02-03
 
 - [x] Review PRs
-- [ ] Eslint / Airbnb / Prettier Setup...
+- [x] Eslint / Airbnb / Prettier Setup...
 
 # Upcoming
 
 ## 2023-02-10
 
+- [ ] Setup Github Actions
 - [ ] Setup Auth
   - [ ] install / setup @auth/core
 - [ ] Deploy???
