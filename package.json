@@ -11,8 +11,10 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
-		"lint": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
-		"format": "prettier --plugin-search-dir . --write .",
+		"lint": "npm run format:check && eslint --ext .js,.cjs,.ts,.svelte .",
+		"format:check": "prettier --plugin-search-dir . --check .",
+		"lint:fix": "npm run format:check && eslint --ext .js,.cjs,.ts,.svelte . --fix",
+		"format:fix": "prettier --plugin-search-dir . --write .",
 		"typesafe-i18n": "typesafe-i18n"
 	},
 	"devDependencies": {
