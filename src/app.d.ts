@@ -4,7 +4,7 @@
 declare namespace App {
 	// interface Error {}
 	interface Locals {
-		lang: string[];
+		locale: import('$lib/i18n/i18n-types.js').Locales;
 	}
 	// interface PageData {}
 	// interface Platform {}

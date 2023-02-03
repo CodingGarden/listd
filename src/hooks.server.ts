@@ -1,10 +1,12 @@
+import { detectLocale } from '$lib/i18n/i18n-util.js';
 import type { Handle } from '@sveltejs/kit';
 import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
- 
+
 export const handle = (async ({ event, resolve }) => {
   // TODO: get lang from cookie / user setting
-  event.locals.lang = initAcceptLanguageHeaderDetector(event.request)();  
- 
-  // TODO: set lang attribute in HTML
-  return resolve(event);
+  const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(event.request);
+  const locale = detectLocale(acceptLanguageHeaderDetector);
+  event.locals.locale = locale
+
+  return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) })
 }) satisfies Handle;
