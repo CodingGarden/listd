@@ -1,4 +1,5 @@
- 105 lines (68 sloc) 4.27 KB
+105 lines (68 sloc) 4.27 KB
+
 # Contribution Guidelines
 
 When contributing to `listd`, whether on GitHub or in other community spaces:
@@ -16,7 +17,6 @@ In an effort to respect your time, if you wanted to implement a change that has 
 ### Setup your environment
 
 Fork the [Listd repository](https://github.com/CodingGarden/listd) to your own GitHub account and then clone it to your local device.
-
 
 ```bash
 git clone git@github.com:YOUR_USER_NAME/listd.git
@@ -48,6 +48,7 @@ DB_PASSWORD=your_database_password
 DB_NAME=your_database_name
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ```
+
 If you are using Docker, you can use the following values:
 
 ```bash
@@ -59,7 +60,7 @@ DB_PORT=5432
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ```
 
-* DATABASE_URL: The full database connection URL. This is required and is used by prisma.
+- DATABASE_URL: The full database connection URL. This is required and is used by prisma.
 
 #### Set up PostgreSQL by Docker Compose
 
@@ -102,7 +103,7 @@ git push
 ```
 
 Then, [create a pull request](https://github.com/CodingGarden/listd/pulls)
- from your fork to the `main` branch of the `listd` repository.
+from your fork to the `main` branch of the `listd` repository.
 
 ## Code Style
 
@@ -115,5 +116,3 @@ This project uses [Prettier](https://prettier.io/) to format the code. You can r
 ## License
 
 By contributing, you agree that your contributions will be licensed under its MIT License.
-
-

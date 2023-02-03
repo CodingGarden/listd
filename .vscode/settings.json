@@ -1,0 +1,3 @@
+{
+	"eslint.validate": ["html", "javascript", "typescript", "svelte"]
+}
