@@ -5,8 +5,8 @@ import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 export const handle = (async ({ event, resolve }) => {
   // TODO: get lang from cookie / user setting
   const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(event.request);
-  event.locals.locale = detectLocale(acceptLanguageHeaderDetector);
+  const locale = detectLocale(acceptLanguageHeaderDetector);
+  event.locals.locale = locale
 
-  // TODO: set lang attribute in HTML
-  return resolve(event);
+  return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) })
 }) satisfies Handle;
