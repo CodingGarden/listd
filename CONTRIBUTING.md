@@ -74,7 +74,7 @@ docker-compose up -d
 Use the following command to generate the Prisma client:
 
 ```bash
-npx prisma generate
+npx prisma migrate dev
 ```
 
 ### Run the project

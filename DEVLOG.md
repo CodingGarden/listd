@@ -1,15 +1,13 @@
-# 2023-01-27
+# Today
 
-* [x] Review PRs
-  * [x] Tailwind bug fix
-  * [x] Contributing Guide
-* [x] Setup i18n
-  * [x] Research options
-  * [x] Install / setup
-  * [x] Use dictionaries on landing page
-
-# 2023-02-03
+## 2023-02-03
+* [ ] Review PRs
 * [ ] Eslint / Airbnb / Prettier Setup...
+
+# Upcoming
+
+## 2023-02-10
+
 * [ ] Setup Auth
   * [ ] install / setup @auth/core
 * [ ] Deploy???
@@ -26,3 +24,15 @@
       * Heroku
       * AWS RDS
   * [ ] App?? - Vercel
+
+# Past
+
+## 2023-01-27
+
+* [x] Review PRs
+  * [x] Tailwind bug fix
+  * [x] Contributing Guide
+* [x] Setup i18n
+  * [x] Research options
+  * [x] Install / setup
+  * [x] Use dictionaries on landing page
