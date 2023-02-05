@@ -3,6 +3,11 @@
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import type { LayoutData } from './$types.js';
+
+	export let data: LayoutData;
+	setLocale(data.locale);
 </script>
 
 <AppShell>
@@ -19,7 +24,7 @@
 	<!-- <svelte:fragment slot="pageHeader">Page Header</svelte:fragment> -->
 	<!-- Router Slot -->
 	<!-- TODO: use variable for container width -->
-	<div class="pt-2 max-w-sm w-80 mx-auto">
+	<div class="mx-auto w-80 max-w-sm pt-2">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->

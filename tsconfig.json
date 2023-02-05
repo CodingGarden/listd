@@ -1,6 +1,13 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		"paths": {
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
+			"$app/*": ["./.svelte-kit/runtime/app/*"],
+			"$app": ["./.svelte-kit/runtime/app"]
+		},
+		"outDir": "./build",
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
@@ -9,9 +16,20 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true
-	}
-	// Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
-	//
-	// If you want to overwrite includes/excludes, make sure to copy over the relevant includes/excludes
-	// from the referenced tsconfig.json - TypeScript does not merge them in
+	},
+	"include": [
+		"./.svelte-kit/ambient.d.ts",
+		"./.svelte-kit/types/**/$types.d.ts",
+		"./src/**/*.js",
+		"./src/**/*.ts",
+		"./src/**/*.svelte",
+		"./tests/**/*.js",
+		"./tests/**/*.ts",
+		"./tests/**/*.svelte",
+		"*.cjs",
+		".*.cjs",
+		"*.js",
+		"*.ts",
+		"**/*.tsx"
+	]
 }
