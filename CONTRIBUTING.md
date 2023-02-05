@@ -107,7 +107,7 @@ from your fork to the `main` branch of the `listd` repository.
 
 ## Code Style
 
-This project uses [Prettier](https://prettier.io/) to format the code. You can run `npm run format` to format the code before committing.
+This project uses [Prettier](https://prettier.io/) to format the code. You can run `npm run format:fix` to format the code before committing.
 
 <!-- TODO: setup eslint -->
 <!-- TODO: setup github actions to run linter -->
