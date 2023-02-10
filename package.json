@@ -55,6 +55,7 @@
 	"dependencies": {
 		"@auth/core": "^0.4.0",
 		"@auth/sveltekit": "^0.2.1",
+		"@next-auth/prisma-adapter": "^1.0.5",
 		"@prisma/client": "^4.9.0",
 		"@tabler/icons-svelte": "^2.2.0"
 	},
