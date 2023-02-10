@@ -12,10 +12,7 @@
 	{#if $page.data.session}
 		<p>{$page.data.session.user?.name ?? 'User'} logged in</p>
 	{:else}
-		<button
-			on:click={() => signIn('google')}
-			class="btn btn-base btn-filled-primary cursor-pointer"
-		>
+		<button on:click={() => signIn('google')} class="btn variant-filled-primary cursor-pointer">
 			{$LL.signUp()}
 			<IconBrandYoutube class="ml-1" size={36} stroke={1} />
 		</button>
