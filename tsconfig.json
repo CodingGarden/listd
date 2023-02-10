@@ -4,8 +4,8 @@
 		"paths": {
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
-			"$app/*": ["./.svelte-kit/runtime/app/*"],
-			"$app": ["./.svelte-kit/runtime/app"]
+			"$app": ["./node_modules/@sveltejs/kit/types"],
+			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
 		},
 		"outDir": "./build",
 		"allowJs": true,
