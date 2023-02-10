@@ -53,6 +53,8 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/core": "^0.4.0",
+		"@auth/sveltekit": "^0.2.1",
 		"@prisma/client": "^4.9.0",
 		"@tabler/icons-svelte": "^2.2.0"
 	},

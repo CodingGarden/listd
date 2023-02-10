@@ -58,7 +58,7 @@ model FeedItem {
 
   meta FeedItemMeta @relation(fields: [feedItemMetaId], references: [id])
 
-  Feed Feed @relation(fields: [feedId], references: [id])
+  feed Feed @relation(fields: [feedId], references: [id])
 
   feedId String @db.Uuid
   
@@ -78,7 +78,7 @@ model FeedItemMeta {
 
   type FeedItemType
 
-  FeedItem FeedItem[]
+  feedItem FeedItem[]
 
   createdAt DateTime @default(now())
 
