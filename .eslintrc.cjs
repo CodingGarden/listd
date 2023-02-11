@@ -18,6 +18,9 @@ module.exports = {
 			parserOptions: {
 				parser: '@typescript-eslint/parser',
 			},
+			rules: {
+				'import/no-unresolved': 0,
+			},
 		},
 	],
 	parserOptions: {

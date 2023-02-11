@@ -1,8 +1,6 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
 	import { FileButton } from '@skeletonlabs/skeleton';
-	// TODO: fix $app import error with eslint
-	// eslint-disable-next-line import/no-unresolved
+	import { LL } from '$lib/i18n/i18n-svelte';
 	import { enhance } from '$app/forms';
 
 	let files: FileList;
