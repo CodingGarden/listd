@@ -73,9 +73,9 @@
 		<li><a href="/">Blog</a></li>
 		<hr class="opacity-20" />
 		<li>
-			<button on:click|self|stopPropagation={toggleTheme} class="option w-full">
-				<span class="pr-4">Mode:</span>
-				<LightSwitch />
+			<button on:click|self={toggleTheme} class="option w-full">
+				Mode:
+				<span class="pl-4"><LightSwitch /></span>
 			</button>
 		</li>
 		{#if $page.data.session?.user}
