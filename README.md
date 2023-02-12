@@ -3,6 +3,9 @@
 An app that will allow users to create, share and watch lists of YouTube channels.
 
 ## Setup
+
+First move `.env.example` to `.env`
+
 ###  Getting Google OAuth API Credentials
 
 1. Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
