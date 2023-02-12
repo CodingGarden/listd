@@ -6,7 +6,7 @@
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
 	import type { LayoutData } from './$types.js';
 
-	// zeslint-disable-next-line import/no-named-as-default-member
+	// eslint-disable-next-line import/no-named-as-default-member
 	import NavTrail from './NavTrail.svelte';
 
 	export let data: LayoutData;
