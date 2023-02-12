@@ -7,7 +7,7 @@
 			"$app": ["./node_modules/@sveltejs/kit/types"],
 			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
 		},
-		"outDir": "./build",
+		"outDir": ".svelte-kit/output",
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
