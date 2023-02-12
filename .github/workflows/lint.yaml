@@ -15,5 +15,6 @@ jobs:
     - run: npm ci
     - run: cp .env.example .env
     - run: npx svelte-kit sync
+    - run: npm run typecheck
     - run: npm run lint
     # - run: npm test
