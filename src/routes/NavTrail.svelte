@@ -2,10 +2,7 @@
 	import { Avatar, LightSwitch, menu, storeLightSwitch } from '@skeletonlabs/skeleton';
 	import { signOut } from '@auth/sveltekit/client';
 
-	// Remove after PR#32
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
-	// eslint-disable-next-line import/no-unresolved
 	import { goto } from '$app/navigation';
 
 	const userSignout = () => signOut();
