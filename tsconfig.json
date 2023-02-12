@@ -1,6 +1,12 @@
 {
 	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
+		"paths": {
+			"$lib": ["./src/lib"],
+			"$lib/*": ["./src/lib/*"],
+			"$app/*": ["./.svelte-kit/runtime/app/*"],
+			"$app": ["./.svelte-kit/runtime/app"]
+		},
 		"outDir": ".svelte-kit/output",
 		"allowJs": true,
 		"checkJs": true,
@@ -12,6 +18,8 @@
 		"strict": true
 	},
 	"include": [
+		"./.svelte-kit/ambient.d.ts",
+		"./.svelte-kit/types/**/$types.d.ts",
 		".svelte-kit/ambient.d.ts",
 		".svelte-kit/types/**/$types.d.ts",
 		"./src/**/*.js",
