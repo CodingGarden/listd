@@ -12,6 +12,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"lint": "eslint --ext .js,.cjs,.ts,.svelte .",
+		"typecheck": "tsc --noEmit",
 		"format": "prettier --plugin-search-dir . --check .",
 		"lint:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format:fix": "prettier --plugin-search-dir . --write ."
