@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { FileButton } from '@skeletonlabs/skeleton';
 	import { LL } from '$lib/i18n/i18n-svelte';
+	import { FileButton } from '@skeletonlabs/skeleton';
 	import { enhance } from '$app/forms';
 
 	let files: FileList;
