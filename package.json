@@ -33,6 +33,7 @@
 		"eslint-config-prettier": "^8.6.0",
 		"eslint-import-resolver-typescript": "^3.5.3",
 		"eslint-plugin-import": "^2.27.5",
+		"eslint-plugin-import-no-duplicates-prefix-resolved-path": "^2.0.0",
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-svelte": "^2.18.0",
 		"husky": "^8.0.3",
