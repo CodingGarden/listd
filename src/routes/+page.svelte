@@ -2,8 +2,6 @@
 	import { signIn } from '@auth/sveltekit/client';
 	import { IconBrandYoutube } from '@tabler/icons-svelte';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	// TODO: fix $app import error with eslint
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
 

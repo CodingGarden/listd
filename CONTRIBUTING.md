@@ -105,8 +105,17 @@ git push
 Then, [create a pull request](https://github.com/CodingGarden/listd/pulls)
 from your fork to the `main` branch of the `listd` repository.
 
-## Code Style
+## Code Style Guidelines
 
+In order to maintain consistent and readable code, this project adheres to certain code style guidelines. Please follow these guidelines when contributing to the project.
+
+### Linter
+
+This project uses `ESLint` as our linter tool. To configure your VSCode workspace to show lint warnings, you can find a suggested configuration file, named `default.settings.json`, in the `.vscode` directory. Copy and rename this file to `settings.json` to enable the linter warnings in VSCode. Please do not alter the original `default.settings.json`.
+
+To further improve your development experience while working on `listd`, this project also includes a list of suggested VSCode extensions in the file `.vscode/extensions.json`.
+
+### Formatter
 This project uses [Prettier](https://prettier.io/) to format the code. You can run `npm run format:fix` to format the code before committing.
 
 <!-- TODO: setup eslint -->
