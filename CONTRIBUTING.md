@@ -36,7 +36,10 @@ The project has a `docker-compose.yml` file ready to use if you have [Docker](ht
 
 You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
-create a `.env` file in the root directory of the project and add the following variables:
+move `.env.example` to `.env`
+```bash
+ mv .env.example .env
+```
 
 #### `.env` variables for PostgreSQL
 
@@ -76,6 +79,24 @@ Use the following command to generate the Prisma client:
 
 ```bash
 npx prisma migrate dev
+```
+
+###  Getting Google OAuth API Credentials
+
+1. Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
+2. Go to the OAuth consent screen tab, fill first step leaving the rest blank and click Save. This will create a project for you
+3. Now Publish your OAuth consent screen App.
+4. Go to the [Credentials tab](https://console.cloud.google.com/apis/credentials) and click Create Credentials -> OAuth Client ID
+   * Choose Web Application
+   * Add `http://localhost:5173` to the Authorized JavaScript origins
+   * Add `http://localhost:5173/auth/callback/google` to the Authorized redirect URIs.
+   * Click Create.
+5. Copy the Client ID and Client Secret and paste them into the `.env` file.
+
+```bash
+AUTH_SECRET=your_secret
+GOOGLE_CLIENT_ID=your_client_id
+GOOGLE_CLIENT_SECRET=your_client_secret
 ```
 
 ### Run the project
