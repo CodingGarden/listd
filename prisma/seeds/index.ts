@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { PrismaClient } from '@prisma/client';
 import { seed as localeSeed } from './locales';
 
@@ -8,6 +9,7 @@ async function main() {
 	try {
 		await localeSeed(prismaClient);
 	} catch (error) {
+		// TODO: use logging library
 		console.error(error);
 		exitStatus = 1;
 	} finally {
