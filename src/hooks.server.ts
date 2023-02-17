@@ -5,7 +5,7 @@ import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
+import prisma from './db.server';
 
 import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
 
@@ -16,9 +16,6 @@ if (!GOOGLE_CLIENT_ID) {
 if (!GOOGLE_CLIENT_SECRET) {
 	throw new Error('Missing GOOGLE_CLIENT_SECRET in .env');
 }
-
-// TODO: move this to a shared file.
-const prisma = new PrismaClient();
 
 const handleDetectLocale = (async ({ event, resolve }) => {
 	// TODO: get lang from cookie / user setting
