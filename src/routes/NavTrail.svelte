@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Avatar, LightSwitch, menu, storeLightSwitch } from '@skeletonlabs/skeleton';
+	import { LightSwitch, menu, storeLightSwitch } from '@skeletonlabs/skeleton';
 	import { signOut } from '@auth/sveltekit/client';
 
 	import { page } from '$app/stores';
@@ -29,7 +29,12 @@
 
 {#if $page.data.session?.user}
 	<div class="flex items-center gap-2">
-		<Avatar class="h-7 w-7" src={$page.data.session?.user?.image} />
+		<img
+			class="h-7 w-7 rounded-full"
+			referrerpolicy="no-referrer"
+			src={$page.data.session?.user?.image}
+			alt={$page.data.session?.user?.name}
+		/>
 		<p class="hidden font-bold md:block">{$page.data.session?.user?.name}</p>
 	</div>
 {/if}
