@@ -8,16 +8,44 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
   name          String?
-  email         String?   @unique
+  email         String?       @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   lists         List[]
+  settings      UserSettings?
+}
+
+enum ColorScheme {
+  System
+  Dark
+  Light
+}
+
+model UserSettings {
+  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  onboarded   Boolean     @default(false)
+  colorScheme ColorScheme @default(System)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String      @unique @db.Uuid
+  locale      Locale      @relation(fields: [localeId], references: [id], onDelete: Cascade)
+  localeId    String      @db.VarChar(15)
+}
+
+model Locale {
+  id           String         @unique @db.VarChar(15)
+  languageCode String
+  countryCode  String?
+  script       String?
+  formalName   String
+  nativeName   String
+  commonName   String?
+  UserSettings UserSettings[]
 }
 
 model Account {
