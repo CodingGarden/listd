@@ -26,6 +26,7 @@
 		"./tests/**/*.js",
 		"./tests/**/*.ts",
 		"./tests/**/*.svelte",
+		"./prisma/**/*.ts",
 		"*.cjs",
 		".*.cjs",
 		"*.js",
