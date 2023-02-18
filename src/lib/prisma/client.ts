@@ -19,7 +19,7 @@ export interface CustomAdapter extends OGAdapter {
 	} | null>;
 }
 
-export default function CustomPrismaAdapter(client: PrismaClient) {
+export default function CustomPrismaAdapter(client: PrismaClient): CustomAdapter {
 	return {
 		...PrismaAdapter(client),
 		async getUser(id: string) {
