@@ -9,6 +9,7 @@
 	import NavTrail from './NavTrail.svelte';
 
 	export let data: LayoutData;
+
 	setLocale(data.locale);
 </script>
 
@@ -17,7 +18,7 @@
 		<AppBar>
 			<svelte:fragment slot="lead"><a href="/">listd.tv</a></svelte:fragment>
 			<svelte:fragment slot="trail">
-				<NavTrail />
+				<NavTrail {data} />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

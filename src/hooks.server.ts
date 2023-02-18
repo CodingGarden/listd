@@ -6,22 +6,13 @@ import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import PrismaAdapter from '$lib/PrismaAdapter';
 import prismaClient from './db.server';
-
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
-
-if (!GOOGLE_CLIENT_ID) {
-	throw new Error('Missing GOOGLE_CLIENT_ID in .env');
-}
-
-if (!GOOGLE_CLIENT_SECRET) {
-	throw new Error('Missing GOOGLE_CLIENT_SECRET in .env');
-}
+import env from './env.server';
 
 const handleDetectLocale = (async ({ event, resolve }) => {
-	// TODO: get lang from cookie / user setting
 	const acceptLanguageHeaderDetector = initAcceptLanguageHeaderDetector(event.request);
 	const locale = detectLocale(acceptLanguageHeaderDetector);
-	event.locals.locale = locale;
+
+	event.locals.detectedLocale = locale;
 
 	return resolve(event, { transformPageChunk: ({ html }) => html.replace('%lang%', locale) });
 }) satisfies Handle;
@@ -36,8 +27,8 @@ const handleAuth = (async (...args) => {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			Google({
-				clientId: GOOGLE_CLIENT_ID,
-				clientSecret: GOOGLE_CLIENT_SECRET,
+				clientId: env.GOOGLE_CLIENT_ID,
+				clientSecret: env.GOOGLE_CLIENT_SECRET,
 			}),
 		],
 		callbacks: {
@@ -57,7 +48,7 @@ const handleAuth = (async (...args) => {
 			async createUser(message) {
 				const locale = await prismaClient.locale.findFirst({
 					where: {
-						id: event.locals.locale,
+						id: event.locals.detectedLocale,
 					},
 				});
 				await prismaClient.userSettings.create({
