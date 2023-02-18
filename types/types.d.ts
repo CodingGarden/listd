@@ -19,3 +19,10 @@ declare module '@auth/sveltekit/node_modules/@auth/core/types' {
 		settings: UserSettings;
 	}
 }
+
+declare module '@sveltejs/kit' {
+	interface Redirect extends Error {
+		status: 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308;
+		location: string;
+	}
+}

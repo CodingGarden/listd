@@ -6,7 +6,6 @@ import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import PrismaAdapter from '$lib/PrismaAdapter';
 import prismaClient from './db.server';
-
 import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
 
 if (!GOOGLE_CLIENT_ID) {
@@ -74,7 +73,6 @@ const handleAuth = (async (...args) => {
 const protectedHandle = (async ({ event, resolve }) => {
 	await event.locals.getSession();
 	if (!event.locals.session && event.route.id?.includes('protected')) {
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/');
 	}
 	return resolve(event);
