@@ -55,7 +55,7 @@
 			required
 		/>
 	</label>
-	<label for="name" class="label">
+	<label for="locale" class="label">
 		<span>{$LL.onboarding.labels.locale()}</span>
 		<select
 			class="select w-full max-w-xs"
@@ -70,7 +70,7 @@
 			{/each}
 		</select>
 	</label>
-	<label for="name" class="label">
+	<label for="colorScheme" class="label">
 		<span>{$LL.onboarding.labels.colorScheme()}</span>
 		<select
 			class="select w-full max-w-xs"
