@@ -26,7 +26,7 @@ export const actions = {
 			throw redirect(302, '/');
 		}
 
-		const formData = Object.fromEntries([...(await event.request.formData())]);
+		const formData = Object.fromEntries(await event.request.formData());
 		const onboarding = onboardingScheme.safeParse(formData);
 
 		if (!onboarding.success) {
