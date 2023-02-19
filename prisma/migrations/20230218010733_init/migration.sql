@@ -49,13 +49,13 @@ CREATE TABLE "Account" (
     "type" TEXT NOT NULL,
     "provider" TEXT NOT NULL,
     "providerAccountId" TEXT NOT NULL,
-    "refresh_token" TEXT,
-    "access_token" TEXT,
-    "expires_in" INTEGER,
-    "token_type" TEXT,
+    "refreshToken" TEXT,
+    "accessToken" TEXT,
+    "expiresIn" INTEGER,
+    "tokenType" TEXT,
     "scope" TEXT,
-    "id_token" TEXT,
-    "session_state" TEXT,
+    "idToken" TEXT,
+    "sessionState" TEXT,
 
     CONSTRAINT "Account_pkey" PRIMARY KEY ("id")
 );
