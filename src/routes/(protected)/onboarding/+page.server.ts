@@ -5,7 +5,6 @@ import prismaClient from '../../../db.server';
 export const actions = {
 	default: async (event) => {
 		if (!event.locals.session?.user) {
-			// eslint-disable-next-line @typescript-eslint/no-throw-literal
 			throw redirect(302, '/');
 		}
 		// TODO: consume formdata, update user profile / settings
@@ -17,7 +16,6 @@ export const actions = {
 				onboarded: true,
 			},
 		});
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/');
 	},
 } satisfies Actions;
