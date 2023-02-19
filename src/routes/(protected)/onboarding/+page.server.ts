@@ -22,7 +22,6 @@ const onboardingScheme = z.object({
 export const actions = {
 	default: async (event) => {
 		if (!event.locals.session?.user) {
-			// eslint-disable-next-line @typescript-eslint/no-throw-literal
 			throw redirect(302, '/');
 		}
 
@@ -43,8 +42,6 @@ export const actions = {
 				colorScheme: onboarding.data.colorScheme,
 			},
 		});
-
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/');
 	},
 } satisfies Actions;
