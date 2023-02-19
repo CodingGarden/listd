@@ -6,12 +6,14 @@
 	import type { Locales } from '$lib/i18n/i18n-types';
 	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
 	import { storeLightSwitch, storePrefersDarkScheme } from '@skeletonlabs/skeleton';
+	import type { ActionData } from './$types';
+	import { enhance } from '$app/forms'
 
 	const locales = $page.data.locales.filter((l: Locale) => isLocale(l.id));
 
 	export let currentColorScheme = $page.data.session?.user?.settings.colorScheme;
 	export let currentLocale = $page.data.session?.user?.settings.localeId;
-	export let fieldErrors = $page.form?.fieldErrors;
+	export let form: ActionData;
 
 	const changeTheme = () => {
 		const htmlElement = document.documentElement;
@@ -40,16 +42,16 @@
 		}
 	};
 
-	const inputClasses = (classes: string, onError: string, hasError: boolean) =>
-		`${classes} ${hasError ? onError : ''}`;
+	const inputClasses = (classes: string, onError: string, hasError: any) =>
+		`${classes} ${hasError !== undefined ? onError : ''}`;
 </script>
 
 <p>{$LL.onboarding.messages.main()}</p>
-<form class="grid gap-2 pt-4" method="POST">
+<form class="grid gap-2 pt-4" method="POST" use:enhance>
 	<label for="name" class="label">
 		<span>{$LL.onboarding.labels.username()}</span>
 		<input
-			class={inputClasses('disabled input', 'input-error', fieldErrors?.name)}
+			class="disabled input"
 			type="text"
 			id="name"
 			name="name"
@@ -58,18 +60,16 @@
 			minlength="4"
 			required
 		/>
-		{#if fieldErrors?.name}
-			<p class="text-red-500">{fieldErrors?.name}</p>
-		{/if}
 	</label>
 	<label for="locale" class="label">
 		<span>{$LL.onboarding.labels.locale()}</span>
 		<select
-			class={inputClasses('select w-full max-w-xs', 'input-error', fieldErrors?.locale)}
+			class={inputClasses('select w-full max-w-xs', 'input-error', form?.fieldErrors?.locale)}
 			id="locale"
 			name="locale"
 			bind:value={currentLocale}
 			on:change={() => changeLocale()}
+			required
 		>
 			{#each locales as locale}
 				<option value={locale.id}>
@@ -77,18 +77,19 @@
 				</option>
 			{/each}
 		</select>
-		{#if fieldErrors?.locale}
-			<p class="text-red-500">{fieldErrors?.locale}</p>
+		{#if form?.fieldErrors?.locale}
+			<p class="text-red-500">{form?.fieldErrors?.locale}</p>
 		{/if}
 	</label>
 	<label for="colorScheme" class="label">
 		<span>{$LL.onboarding.labels.colorScheme()}</span>
 		<select
-			class={inputClasses('select w-full max-w-xs', 'input-error', fieldErrors?.colorScheme)}
+			class={inputClasses('select w-full max-w-xs', 'input-error', form?.fieldErrors?.colorScheme)}
 			id="colorScheme"
 			name="colorScheme"
 			bind:value={currentColorScheme}
 			on:change={() => changeTheme()}
+			required
 		>
 			{#each $page.data.colorSchemes as colorScheme}
 				<option value={colorScheme}>
@@ -96,8 +97,8 @@
 				</option>
 			{/each}
 		</select>
-		{#if fieldErrors?.colorScheme}
-			<p class="text-red-500">{fieldErrors?.colorScheme}</p>
+		{#if form?.fieldErrors?.colorScheme}
+			<p class="text-red-500">{form?.fieldErrors?.colorScheme}</p>
 		{/if}
 	</label>
 	<p class="pt-4">{$LL.onboarding.messages.final()}</p>
