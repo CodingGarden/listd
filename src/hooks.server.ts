@@ -4,7 +4,7 @@ import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
-import PrismaAdapter from '$lib/PrismaAdapter';
+import PrismaAdapter from '$lib/prisma/client';
 import prismaClient from './db.server';
 import env from './env.server';
 
@@ -20,8 +20,6 @@ const handleDetectLocale = (async ({ event, resolve }) => {
 const handleAuth = (async (...args) => {
 	const [{ event }] = args;
 	return SvelteKitAuth({
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
 		adapter: PrismaAdapter(prismaClient),
 		providers: [
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -65,7 +63,6 @@ const handleAuth = (async (...args) => {
 const protectedHandle = (async ({ event, resolve }) => {
 	await event.locals.getSession();
 	if (!event.locals.session && event.route.id?.includes('protected')) {
-		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/');
 	}
 	return resolve(event);
