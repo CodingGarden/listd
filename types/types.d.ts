@@ -22,6 +22,13 @@ declare module '@auth/sveltekit/node_modules/@auth/core/types' {
 	}
 }
 
+declare module '@sveltejs/kit' {
+	interface Redirect extends Error {
+		status: 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308;
+		location: string;
+	}
+}
+
 declare module '@auth/sveltekit' {
 	interface SvelteKitAuthConfig extends OGSvelteKitAuthConfig {
 		adapter: CustomAdapter;
