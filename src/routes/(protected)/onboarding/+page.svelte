@@ -6,8 +6,8 @@
 	import type { Locales } from '$lib/i18n/i18n-types';
 	import { loadLocaleAsync } from '$lib/i18n/i18n-util.async';
 	import { storeLightSwitch, storePrefersDarkScheme } from '@skeletonlabs/skeleton';
+	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
-	import { enhance } from '$app/forms'
 
 	const locales = $page.data.locales.filter((l: Locale) => isLocale(l.id));
 
@@ -42,8 +42,8 @@
 		}
 	};
 
-	const inputClasses = (classes: string, onError: string, hasError: any) =>
-		`${classes} ${hasError !== undefined ? onError : ''}`;
+	const inputClasses = (classes: string, onError: string, hasError: boolean) =>
+		`${classes} ${hasError ? onError : ''}`;
 </script>
 
 <p>{$LL.onboarding.messages.main()}</p>
@@ -64,7 +64,11 @@
 	<label for="locale" class="label">
 		<span>{$LL.onboarding.labels.locale()}</span>
 		<select
-			class={inputClasses('select w-full max-w-xs', 'input-error', form?.fieldErrors?.locale)}
+			class={inputClasses(
+				'select w-full max-w-xs',
+				'input-error',
+				form?.fieldErrors?.locale !== undefined
+			)}
 			id="locale"
 			name="locale"
 			bind:value={currentLocale}
@@ -84,7 +88,11 @@
 	<label for="colorScheme" class="label">
 		<span>{$LL.onboarding.labels.colorScheme()}</span>
 		<select
-			class={inputClasses('select w-full max-w-xs', 'input-error', form?.fieldErrors?.colorScheme)}
+			class={inputClasses(
+				'select w-full max-w-xs',
+				'input-error',
+				form?.fieldErrors?.colorScheme !== undefined
+			)}
 			id="colorScheme"
 			name="colorScheme"
 			bind:value={currentColorScheme}
