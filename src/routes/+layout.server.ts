@@ -10,7 +10,11 @@ export const load = (async ({ locals, route }) => {
 		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/onboarding');
 	}
-	if (locals.session?.user && locals.session.user.settings.onboarded && route.id !== '/') {
+	if (
+		locals.session?.user &&
+		locals.session.user.settings.onboarded &&
+		route.id === '/(protected)/onboarding'
+	) {
 		// eslint-disable-next-line @typescript-eslint/no-throw-literal
 		throw redirect(302, '/');
 	}
