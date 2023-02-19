@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect, fail } from '@sveltejs/kit';
 import { ColorScheme, type ColorScheme as ColorSchemeType } from '@prisma/client';
 import { z } from 'zod';
 import { locales } from '$lib/i18n/i18n-util';
@@ -30,7 +30,7 @@ export const actions = {
 		const onboarding = onboardingScheme.safeParse(formData);
 
 		if (!onboarding.success) {
-			return;
+			return fail(400, onboarding.error.flatten());
 		}
 
 		await prismaClient.userSettings.update({
