@@ -37,6 +37,7 @@ The project has a `docker-compose.yml` file ready to use if you have [Docker](ht
 You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
 move `.env.example` to `.env`
+
 ```bash
  mv .env.example .env
 ```
@@ -81,16 +82,16 @@ Use the following command to generate the Prisma client:
 npx prisma migrate dev
 ```
 
-###  Getting Google OAuth API Credentials
+### Getting Google OAuth API Credentials
 
 1. Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
 2. Go to the OAuth consent screen tab, fill first step leaving the rest blank and click Save. This will create a project for you
 3. Now Publish your OAuth consent screen App.
 4. Go to the [Credentials tab](https://console.cloud.google.com/apis/credentials) and click Create Credentials -> OAuth Client ID
-   * Choose Web Application
-   * Add `http://localhost:5173` to the Authorized JavaScript origins
-   * Add `http://localhost:5173/auth/callback/google` to the Authorized redirect URIs.
-   * Click Create.
+   - Choose Web Application
+   - Add `http://localhost:5173` to the Authorized JavaScript origins
+   - Add `http://localhost:5173/auth/callback/google` to the Authorized redirect URIs.
+   - Click Create.
 5. Copy the Client ID and Client Secret and paste them into the `.env` file.
 
 ```bash
@@ -137,6 +138,7 @@ This project uses `ESLint` as our linter tool. To configure your VSCode workspac
 To further improve your development experience while working on `listd`, this project also includes a list of suggested VSCode extensions in the file `.vscode/extensions.json`.
 
 ### Formatter
+
 This project uses [Prettier](https://prettier.io/) to format the code. You can run `npm run format:fix` to format the code before committing.
 
 <!-- TODO: setup eslint -->

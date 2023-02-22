@@ -6,7 +6,7 @@ import onboarding from './onboarding.json';
 const tr: Translation = {
 	...(en as Translation),
 	...listd,
-	onboarding
+	onboarding,
 };
 
 export default tr;
