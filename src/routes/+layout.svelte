@@ -2,9 +2,11 @@
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
-	import { AppBar, AppShell, LightSwitch } from '@skeletonlabs/skeleton';
+	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
 	import type { LayoutData } from './$types.js';
+
+	import NavTrail from './NavTrail.svelte';
 
 	export let data: LayoutData;
 	setLocale(data.locale);
@@ -15,7 +17,7 @@
 		<AppBar>
 			<svelte:fragment slot="lead"><a href="/">listd.tv</a></svelte:fragment>
 			<svelte:fragment slot="trail">
-				<LightSwitch />
+				<NavTrail />
 			</svelte:fragment>
 		</AppBar>
 	</svelte:fragment>

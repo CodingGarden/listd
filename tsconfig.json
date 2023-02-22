@@ -4,10 +4,10 @@
 		"paths": {
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
-			"$app/*": ["./.svelte-kit/runtime/app/*"],
-			"$app": ["./.svelte-kit/runtime/app"]
+			"$app": ["./node_modules/@sveltejs/kit/types"],
+			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
 		},
-		"outDir": "./build",
+		"outDir": ".svelte-kit/output",
 		"allowJs": true,
 		"checkJs": true,
 		"esModuleInterop": true,
@@ -26,6 +26,8 @@
 		"./tests/**/*.js",
 		"./tests/**/*.ts",
 		"./tests/**/*.svelte",
+		"./prisma/**/*.ts",
+		"./types/**/*.ts",
 		"*.cjs",
 		".*.cjs",
 		"*.js",

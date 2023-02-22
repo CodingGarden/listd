@@ -32,3 +32,18 @@ body:
       label: Logs
       description: 'Please include browser console and server logs around the time this bug occurred. Optional if provided reproduction. Please try not to insert an image but copy paste the log text.'
       render: shell
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Have you checked if this issue has already been raised?
+      options:
+        - label: I did not find any similar issues
+          required: true
+  - type: checkboxes
+    id: CoC
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/CodingGarden/listd/blob/main/CODE-OF-CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true

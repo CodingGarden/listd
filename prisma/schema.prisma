@@ -8,15 +8,78 @@ datasource db {
 }
 
 model User {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  name          String?
+  email         String?       @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  lists         List[]
+  settings      UserSettings?
+}
 
-  username String @unique
+enum ColorScheme {
+  System
+  Dark
+  Light
+}
 
-  createdAt DateTime @default(now())
+model UserSettings {
+  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  onboarded   Boolean     @default(false)
+  colorScheme ColorScheme @default(System)
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String      @unique @db.Uuid
+  locale      Locale      @relation(fields: [localeId], references: [id], onDelete: Cascade)
+  localeId    String      @db.VarChar(15)
+}
 
-  updatedAt DateTime @updatedAt
+model Locale {
+  id           String         @unique @db.VarChar(15)
+  languageCode String
+  countryCode  String?
+  script       String?
+  formalName   String
+  nativeName   String
+  commonName   String?
+  UserSettings UserSettings[]
+}
 
-  Feed Feed[]
+model Account {
+  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId            String  @db.Uuid
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text @map("refreshToken")
+  access_token      String? @db.Text @map("accessToken")
+  expires_in        Int?    @map("expiresIn")
+  token_type        String? @map("tokenType")
+  scope             String?
+  id_token          String? @db.Text @map("idToken")
+  session_state     String? @map("sessionState")
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  sessionToken String   @unique
+  userId       String   @db.Uuid
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 enum Visiblity {
@@ -25,62 +88,40 @@ enum Visiblity {
   Private
 }
 
-model Feed {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-
-  name String
-
+model List {
+  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name        String
   description String?
-
-  visibility Visiblity
-
-  creator User @relation(fields: [userId], references: [id])
-
-  userId String @db.Uuid
-
-  items FeedItem[]
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
+  visibility  Visiblity
+  creator     User       @relation(fields: [userId], references: [id])
+  userId      String     @db.Uuid
+  items       ListItem[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
 
-enum FeedItemType {
+enum ListItemType {
   YouTubeChannel
 }
 
-model FeedItem {
-  id Int @id @default(autoincrement())
-
-  name String
-
-  description String?
-
-  meta FeedItemMeta @relation(fields: [feedItemMetaId], references: [id])
-
-  Feed Feed @relation(fields: [feedId], references: [id])
-
-  feedId String @db.Uuid
-  
-  feedItemMetaId String   @db.Uuid
-
-  createdAt DateTime @default(now())
-
-  updatedAt      DateTime @updatedAt
+model ListItem {
+  id             Int          @id @default(autoincrement())
+  name           String
+  description    String?
+  meta           ListItemMeta @relation(fields: [listItemMetaId], references: [id])
+  list           List         @relation(fields: [listId], references: [id])
+  listId         String       @db.Uuid
+  listItemMetaId String       @db.Uuid
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
-model FeedItemMeta {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-
-  name String
-
-  originId String
-
-  type FeedItemType
-
-  FeedItem FeedItem[]
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
+model ListItemMeta {
+  id        String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String
+  originId  String
+  type      ListItemType
+  listItem  ListItem[]
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }
