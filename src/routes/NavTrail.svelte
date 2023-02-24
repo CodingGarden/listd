@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { LightSwitch, menu, storeLightSwitch } from '@skeletonlabs/skeleton';
 	import { signOut } from '@auth/sveltekit/client';
+	import { IconDotsVertical } from '@tabler/icons-svelte';
 
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
@@ -40,22 +41,7 @@
 {/if}
 
 <button class="btn-icon variant-glass-primary w-7 p-0" use:menu={{ menu: 'user-menu' }}>
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="36"
-		height="36"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="1"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		class="tabler-icon tabler-icon-dots-vertical "
-	>
-		<path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-		<path d="M12 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-		<path d="M12 5m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
-	</svg>
+	<IconDotsVertical />
 </button>
 
 <nav
