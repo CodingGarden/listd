@@ -1,5 +1,3 @@
-105 lines (68 sloc) 4.27 KB
-
 # Contribution Guidelines
 
 When contributing to `listd`, whether on GitHub or in other community spaces:
