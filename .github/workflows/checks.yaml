@@ -17,4 +17,4 @@ jobs:
     - run: npx svelte-kit sync
     - run: npm run typecheck
     - run: npm run lint
-    - run: npm test
+    - run: npx playwright install && npm test
