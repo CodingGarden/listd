@@ -1,4 +1,4 @@
-name: Run Lint
+name: Run Checks
 on: 
   pull_request:
     branches:
@@ -17,4 +17,4 @@ jobs:
     - run: npx svelte-kit sync
     - run: npm run typecheck
     - run: npm run lint
-    # - run: npm test
+    - run: npm test
