@@ -81,6 +81,8 @@ Use the following command to generate the Prisma client:
 npx prisma migrate dev
 ```
 
+View the database diagram [here](./prisma/ERD.md).
+
 ###  Getting Google OAuth API Credentials
 
 1. Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)

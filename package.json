@@ -46,6 +46,7 @@
 		"prettier-plugin-svelte": "^2.9.0",
 		"prettier-plugin-tailwindcss": "^0.2.3",
 		"prisma": "^4.10.1",
+		"prisma-erd-generator-markdown": "^1.0.0",
 		"svelte": "^3.55.1",
 		"svelte-check": "^3.0.4",
 		"svelte-preprocess": "^5.0.1",
