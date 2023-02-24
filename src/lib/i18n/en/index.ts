@@ -9,6 +9,8 @@ const en: BaseTranslation = {
 		labels: {
 			username: 'Username',
 			uploadFile: 'Upload File',
+			locale: 'Language',
+			colorScheme: 'Theme',
 		},
 		messages: {
 			main: "Welcome to listd! Let's setup your profile.",

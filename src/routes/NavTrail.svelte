@@ -1,13 +1,22 @@
 <script lang="ts">
-	import { LightSwitch, menu, storeLightSwitch } from '@skeletonlabs/skeleton';
+	import {
+		LightSwitch,
+		menu,
+		storeLightSwitch,
+		storePrefersDarkScheme,
+	} from '@skeletonlabs/skeleton';
 	import { signOut } from '@auth/sveltekit/client';
 
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import type { LayoutData } from './$types';
 
 	const userSignout = () => signOut();
 	const goSettings = () => goto('/settings');
 	const goUserProfile = () => goto('/me');
+
+	export let data: LayoutData;
 
 	// This functions taken from skeleton.dev LightSwitch component
 	// Allows us to click the nav list element to toggle the theme.
@@ -25,6 +34,14 @@
 		storeLightSwitch.set(($storeLightSwitch = !$storeLightSwitch));
 		setElemHtmlClass();
 	};
+
+	const colorScheme =
+		data.colorScheme === 'System' ? $storePrefersDarkScheme : data.colorScheme === 'Dark';
+
+	onMount(() => {
+		storeLightSwitch.set(($storeLightSwitch = colorScheme));
+		setElemHtmlClass();
+	});
 </script>
 
 {#if $page.data.session?.user}

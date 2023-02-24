@@ -41,6 +41,14 @@ type RootTranslation = {
 			 * U​p​l​o​a​d​ ​F​i​l​e
 			 */
 			uploadFile: string
+			/**
+			 * L​a​n​g​u​a​g​e
+			 */
+			locale: string
+			/**
+			 * T​h​e​m​e
+			 */
+			colorScheme: string
 		}
 		messages: {
 			/**
@@ -82,6 +90,14 @@ export type TranslationFunctions = {
 			 * Upload File
 			 */
 			uploadFile: () => LocalizedString
+			/**
+			 * Language
+			 */
+			locale: () => LocalizedString
+			/**
+			 * Theme
+			 */
+			colorScheme: () => LocalizedString
 		}
 		messages: {
 			/**
