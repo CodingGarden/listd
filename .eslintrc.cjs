@@ -37,7 +37,7 @@ module.exports = {
 	},
 	settings: {
 		'import/parsers': {
-			'@typescript-eslint/parser': ['.cjs', '.js', '.ts', '.svelte'],
+			'@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
 		},
 		'import/resolver': {
 			typescript: {

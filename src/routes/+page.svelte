@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
+	// TODO: fix load times...
 	import { IconBrandYoutube } from '@tabler/icons-svelte';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { page } from '$app/stores';
