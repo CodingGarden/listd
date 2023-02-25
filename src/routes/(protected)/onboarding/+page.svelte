@@ -1,8 +1,10 @@
 <script lang="ts">
-	import { LL } from '$lib/i18n/i18n-svelte';
+	import Seo from '$/routes/SEO.svelte';
 	import { page } from '$app/stores';
+	import { LL } from '$lib/i18n/i18n-svelte';
 </script>
 
+<Seo title="Onboarding | listd" description="Onboarding page for listd" />
 <p>{$LL.onboarding.messages.main()}</p>
 <form class="pt-4" method="POST">
 	<label for="name" class="label">
