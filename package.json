@@ -5,6 +5,7 @@
 	"scripts": {
 		"prepare": "husky install",
 		"dev": "concurrently \"vite dev\" typesafe-i18n",
+		"docker:dev": "concurrently \"vite dev --host 0.0.0.0\" typesafe-i18n",
 		"build": "vite build",
 		"preview": "vite preview",
 		"test": "playwright test",

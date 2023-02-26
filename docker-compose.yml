@@ -11,4 +11,17 @@ services:
     ports:
       - ${DB_PORT}:5432
     volumes:
-      - ./docker-data/db:/var/lib/postgresql/data
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    restart: always
+    ports:
+      - 5173:5173
+
+    environment:
+      AUTH_SECRET: ${AUTH_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+volumes:
+  pgdata:

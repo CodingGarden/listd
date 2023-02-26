@@ -1,0 +1,17 @@
+.github
+.vscode
+.node_modules
+.husky
+.eslintignore
+.eslintrc.cjs
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc.cjs
+.typesafe-i18n.json
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+DEVLOG.md
+LICENSE
+NOTES.md
+README.md
