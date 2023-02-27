@@ -24,6 +24,7 @@
 		"@playwright/test": "^1.31.1",
 		"@skeletonlabs/skeleton": "^0.132.5",
 		"@sveltejs/adapter-auto": "^2.0.0",
+		"@sveltejs/adapter-node": "^1.2.0",
 		"@sveltejs/kit": "^1.8.3",
 		"@tailwindcss/forms": "^0.5.3",
 		"@typescript-eslint/eslint-plugin": "^5.53.0",
