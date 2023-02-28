@@ -4,10 +4,15 @@
 	// import { IconBrandYoutube } from '@tabler/icons-svelte';
 	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import Seo from './SEO.svelte';
+
+	import { seo } from '$lib/stores/SeoStore';
+
+	seo.set({
+		title: 'listd',
+		description: 'listd',
+	});
 </script>
 
-<Seo title="listd" description="Welcome to listd!" />
 <div class="hero-container flex flex-col items-center justify-center p-4">
 	<p class="my-4 text-center">{$LL.tagline()}</p>
 	{#if $page.data.session}
