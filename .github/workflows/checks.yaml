@@ -1,0 +1,21 @@
+name: Run Checks
+on: 
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+    - run: npm ci
+    - run: cp .env.example .env
+    - run: npx svelte-kit sync
+    - run: npm run typecheck
+    - run: npm run lint
+    - run: npx playwright install
+    - run: npm test

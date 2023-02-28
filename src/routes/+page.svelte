@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
-	import { IconBrandYoutube } from '@tabler/icons-svelte';
+	// TODO: fix load times...
+	// import { IconBrandYoutube } from '@tabler/icons-svelte';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { page } from '$app/stores';
 </script>
@@ -12,7 +13,7 @@
 	{:else}
 		<button on:click={() => signIn('google')} class="btn variant-filled-primary cursor-pointer">
 			{$LL.signUp()}
-			<IconBrandYoutube class="ml-1" size={36} stroke={1} />
+			<!-- <IconBrandYoutube class="ml-1" size={36} stroke={1} /> -->
 		</button>
 	{/if}
 </div>

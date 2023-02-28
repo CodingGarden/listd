@@ -4,9 +4,8 @@
 	import '../app.postcss';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import NavTrail from '$/routes/NavTrail.svelte';
 	import type { LayoutData } from './$types.js';
-
-	import NavTrail from './NavTrail.svelte';
 
 	export let data: LayoutData;
 	setLocale(data.locale);

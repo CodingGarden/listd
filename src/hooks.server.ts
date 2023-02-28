@@ -28,6 +28,7 @@ const handleDetectLocale = (async ({ event, resolve }) => {
 const handleAuth = (async (...args) => {
 	const [{ event }] = args;
 	return SvelteKitAuth({
+		trustHost: true,
 		adapter: PrismaAdapter(prismaClient),
 		providers: [
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment

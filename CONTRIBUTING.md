@@ -1,11 +1,9 @@
-105 lines (68 sloc) 4.27 KB
-
 # Contribution Guidelines
 
 When contributing to `listd`, whether on GitHub or in other community spaces:
 
 - Be respectful, civil, and open-minded.
-- Before opening a new pull request, try searching through the [issue tracker](https://github.com/CodingGarden/listd/issuess) for known issues or fixes.
+- Before opening a new pull request, try searching through the [issue tracker](https://github.com/CodingGarden/listd/issues) for known issues or fixes.
 - If you want to make code changes based on your personal opinion(s), make sure you open an issue first describing the changes you want to make, and open a pull request only when your suggestions get approved by maintainers.
 
 ## How to Contribute
@@ -81,6 +79,8 @@ Use the following command to generate the Prisma client:
 ```bash
 npx prisma migrate dev
 ```
+
+View the database diagram [here](./prisma/ERD.md).
 
 ### Getting Google OAuth API Credentials
 
