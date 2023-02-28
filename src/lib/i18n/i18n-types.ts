@@ -12,6 +12,7 @@ export type Locales =
 	| 'es'
 	| 'it'
 	| 'ru'
+	| 'tr'
 	| 'uk'
 
 export type Translation = RootTranslation
