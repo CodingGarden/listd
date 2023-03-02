@@ -9,9 +9,4 @@
 .prettierignore
 .prettierrc.cjs
 .typesafe-i18n.json
-CODE_OF_CONDUCT.md
-CONTRIBUTING.md
-DEVLOG.md
-LICENSE
-NOTES.md
-README.md
+*.md
