@@ -22,7 +22,7 @@ export async function seed(prismaClient: PrismaClient) {
 			return {
 				id: locale.id.replaceAll('_', '-'),
 				formalName: locale.formalName,
-				commonName: locale.commonName ?? null,
+				commonName: locale.commonName || null,
 				nativeName: locale.nativeName,
 				languageCode,
 				countryCode,
