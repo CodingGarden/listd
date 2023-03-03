@@ -65,8 +65,7 @@
 		"@auth/core": "^0.5.0",
 		"@auth/sveltekit": "^0.2.2",
 		"@next-auth/prisma-adapter": "^1.0.5",
-		"@prisma/client": "^4.10.1",
-		"@tabler/icons-svelte": "^2.5.0"
+		"@prisma/client": "^4.10.1"
 	},
 	"license": "MIT",
 	"engines": {

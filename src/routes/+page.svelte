@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
-	// TODO: fix load times...
-	// import { IconBrandYoutube } from '@tabler/icons-svelte';
+	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { page } from '$app/stores';
-	import { ProgressRadial } from '@skeletonlabs/skeleton';
 
 	let loading = false;
 </script>
@@ -27,7 +25,6 @@
 			{:else}
 				{$LL.loginYouTube()}
 			{/if}
-			<!-- <IconBrandYoutube class="ml-1" size={36} stroke={1} /> -->
 		</button>
 	{/if}
 </div>
