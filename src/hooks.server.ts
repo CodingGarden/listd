@@ -5,16 +5,8 @@ import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import PrismaAdapter from '$lib/prisma/client';
+import { config } from '$/lib/config.server';
 import prismaClient from './db.server';
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
-
-if (!GOOGLE_CLIENT_ID) {
-	throw new Error('Missing GOOGLE_CLIENT_ID in .env');
-}
-
-if (!GOOGLE_CLIENT_SECRET) {
-	throw new Error('Missing GOOGLE_CLIENT_SECRET in .env');
-}
 
 const handleDetectLocale = (async ({ event, resolve }) => {
 	// TODO: get lang from cookie / user setting
@@ -34,8 +26,8 @@ const handleAuth = (async (...args) => {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			Google({
-				clientId: GOOGLE_CLIENT_ID,
-				clientSecret: GOOGLE_CLIENT_SECRET,
+				clientId: config.GOOGLE_CLIENT_ID,
+				clientSecret: config.GOOGLE_CLIENT_SECRET,
 			}),
 		],
 		callbacks: {
