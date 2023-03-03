@@ -1,10 +1,16 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
-	import { LL } from '$lib/i18n/i18n-svelte';
 	import { page } from '$app/stores';
+	import { LL } from '$lib/i18n/i18n-svelte';
+	import { seo } from '$lib/stores/SeoStore';
 
 	let loading = false;
+
+	seo.set({
+		title: 'listd',
+		description: 'listd',
+	});
 </script>
 
 <div class="hero-container flex flex-col items-center justify-center p-4">

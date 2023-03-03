@@ -1,16 +1,19 @@
 <script lang="ts">
-	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
-	import '@skeletonlabs/skeleton/styles/all.css';
-	import '../app.postcss';
-	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
-	import { setLocale } from '$lib/i18n/i18n-svelte.js';
 	import NavTrail from '$/routes/NavTrail.svelte';
+	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import { seo } from '$lib/stores/SeoStore';
+	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import '@skeletonlabs/skeleton/styles/all.css';
+	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+	import '../app.postcss';
 	import type { LayoutData } from './$types.js';
+	import Seo from './SEO.svelte';
 
 	export let data: LayoutData;
 	setLocale(data.locale);
 </script>
 
+<Seo title={$seo.title} description={$seo.description} />
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>
