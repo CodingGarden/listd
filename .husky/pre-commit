@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx svelte-kit sync && npm run typecheck && npm run lint && npm test
+npx svelte-kit sync
+npx lint-staged
+npm test
