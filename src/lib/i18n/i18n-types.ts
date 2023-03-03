@@ -24,9 +24,17 @@ type RootTranslation = {
 	 */
 	tagline: string
 	/**
-	 * S​i​g​n​ ​u​p​ ​w​i​t​h​ ​Y​o​u​T​u​b​e
+	 * L​o​g​i​n​ ​w​i​t​h​ ​Y​o​u​T​u​b​e
 	 */
-	signUp: string
+	loginYouTube: string
+	/**
+	 * L​o​g​o​u​t
+	 */
+	logOut: string
+	/**
+	 * P​l​e​a​s​e​ ​w​a​i​t​.​.​.
+	 */
+	pleaseWait: string
 	/**
 	 * H​e​l​l​o​ ​W​o​r​l​d
 	 */
@@ -65,9 +73,17 @@ export type TranslationFunctions = {
 	 */
 	tagline: () => LocalizedString
 	/**
-	 * Sign up with YouTube
+	 * Login with YouTube
 	 */
-	signUp: () => LocalizedString
+	loginYouTube: () => LocalizedString
+	/**
+	 * Logout
+	 */
+	logOut: () => LocalizedString
+	/**
+	 * Please wait...
+	 */
+	pleaseWait: () => LocalizedString
 	/**
 	 * Hello World
 	 */
