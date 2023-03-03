@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
-	// TODO: fix load times...
-	// import { IconBrandYoutube } from '@tabler/icons-svelte';
+	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
-
 	import { seo } from '$lib/stores/SeoStore';
+
+	let loading = false;
 
 	seo.set({
 		title: 'listd',
@@ -18,9 +18,19 @@
 	{#if $page.data.session}
 		<p>{$page.data.session.user?.name ?? 'User'} logged in</p>
 	{:else}
-		<button on:click={() => signIn('google')} class="btn variant-filled-primary cursor-pointer">
-			{$LL.signUp()}
-			<!-- <IconBrandYoutube class="ml-1" size={36} stroke={1} /> -->
+		<button
+			on:click|once={function loginClick() {
+				this.disabled = true;
+				loading = true;
+				signIn('google');
+			}}
+			class="btn variant-filled-primary cursor-pointer"
+		>
+			{#if loading}
+				{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+			{:else}
+				{$LL.loginYouTube()}
+			{/if}
 		</button>
 	{/if}
 </div>
