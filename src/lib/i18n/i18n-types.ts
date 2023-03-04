@@ -11,6 +11,7 @@ export type Locales =
 	| 'en'
 	| 'es'
 	| 'it'
+	| 'pt-br'
 	| 'ru'
 	| 'uk'
 

@@ -1,0 +1,12 @@
+
+{
+	"labels": {
+		"username": "Nome de usuário",
+		"uploadFile": "Enviar arquivo"
+	},
+	"messages": {
+		"main": "Bem-vindo ao Listd! Bora configurar seu perfil.",
+		"avatar": "Enviar imagem de perfil.",
+		"final": "Finalizamos! Bora começar!"
+	}
+}
