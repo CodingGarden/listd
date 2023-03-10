@@ -1,11 +1,9 @@
 <script lang="ts">
 	import { signIn } from '@auth/sveltekit/client';
-	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { seo } from '$lib/stores/SeoStore';
-
-	let loading = false;
+	import AuthButton from '$/lib/components/AuthButton.svelte';
 
 	seo.set({
 		title: 'listd',
@@ -18,19 +16,6 @@
 	{#if $page.data.session}
 		<p>{$page.data.session.user?.name ?? 'User'} logged in</p>
 	{:else}
-		<button
-			on:click|once={function loginClick() {
-				this.disabled = true;
-				loading = true;
-				signIn('google');
-			}}
-			class="btn variant-filled-primary cursor-pointer"
-		>
-			{#if loading}
-				{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
-			{:else}
-				{$LL.loginYouTube()}
-			{/if}
-		</button>
+		<AuthButton clickHandler={() => signIn('google')} content={$LL.loginYouTube()} />
 	{/if}
 </div>
