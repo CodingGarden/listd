@@ -14,7 +14,7 @@
 	};
 </script>
 
-<button on:click={handle} class="btn variant-filled-primary">
+<button on:click|once={handle} class="btn variant-filled-primary">
 	{#if loading}
 		{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 	{:else}
