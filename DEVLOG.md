@@ -1,9 +1,13 @@
 # Today
 
-## 2023-02-03
-
-- [x] Review PRs
-- [x] Eslint / Airbnb / Prettier Setup...
+- [x] Upgrade Auth.js
+- [ ] Upgrade Skeleton UI
+- [ ] Wireframe create list page
+- [ ] Create list page
+  * Set title
+  * Set Description
+  * Add Channels
+    * YouTube API Search
 
 # Upcoming
 
@@ -28,6 +32,11 @@
   - [ ] App?? - Vercel
 
 # Past
+
+## 2023-02-03
+
+- [x] Review PRs
+- [x] Eslint / Airbnb / Prettier Setup...
 
 ## 2023-01-27
 
