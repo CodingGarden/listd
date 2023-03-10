@@ -1,21 +1,9 @@
-# Today
-
-- [x] Upgrade Auth.js
-- [ ] Upgrade Skeleton UI
-- [ ] Wireframe create list page
-- [ ] Create list page
-  * Set title
-  * Set Description
-  * Add Channels
-    * YouTube API Search
+# Todayn
 
 # Upcoming
 
-## 2023-02-10
+## TBD
 
-- [ ] Setup Github Actions
-- [ ] Setup Auth
-  - [ ] install / setup @auth/core
 - [ ] Deploy???
   - [ ] Database???
     - Free Tier
@@ -32,6 +20,15 @@
   - [ ] App?? - Vercel
 
 # Past
+
+## 2023-03-10
+
+- [x] Upgrade Auth.js
+- [x] Upgrade Skeleton UI
+- [x] Wireframe create list page
+- [x] Create list page
+  * [x] Set title
+  * [x] Set Descriptio
 
 ## 2023-02-03
 

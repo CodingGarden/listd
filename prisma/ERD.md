@@ -5,7 +5,7 @@ erDiagram
 		value Dark
 		value Light
 	}
-	Visiblity {
+	Visibility {
 		value Public
 		value Unlisted
 		value Private
@@ -65,9 +65,9 @@ erDiagram
 	}
 	List {
 		String id PK  "dbgenerated(gen_random_uuid())"
-		String name
+		String title
 		String description  "nullable"
-		Visiblity visibility
+		Visibility visibility
 		String userId FK
 		DateTime createdAt  "now()"
 		DateTime updatedAt
@@ -96,7 +96,7 @@ erDiagram
 	Account }o--|| User : user
 	Session }o--|| User : user
 	List }o--|| User : creator
-	List }o--|| Visiblity : "enum:visibility"
+	List }o--|| Visibility : "enum:visibility"
 	ListItem }o--|| ListItemMeta : meta
 	ListItem }o--|| List : list
 	ListItemMeta }o--|| ListItemType : "enum:type"

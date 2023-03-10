@@ -87,7 +87,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-enum Visiblity {
+enum Visibility {
   Public
   Unlisted
   Private
@@ -95,9 +95,9 @@ enum Visiblity {
 
 model List {
   id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name        String
+  title        String
   description String?
-  visibility  Visiblity
+  visibility  Visibility
   creator     User       @relation(fields: [userId], references: [id])
   userId      String     @db.Uuid
   items       ListItem[]

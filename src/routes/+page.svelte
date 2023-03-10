@@ -4,6 +4,9 @@
 	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { seo } from '$lib/stores/SeoStore';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 
 	let loading = false;
 
@@ -14,22 +17,39 @@
 </script>
 
 <div class="hero-container flex flex-col items-center justify-center p-4">
-	<p class="my-4 text-center">{$LL.tagline()}</p>
 	{#if $page.data.session}
-		<p>{$page.data.session.user?.name ?? 'User'} logged in</p>
+		<p class="my-4 text-center">
+			{#if !data.lists.length}
+				{$LL.pages.root.loggedIn.messages.createList()}
+			{/if}
+		</p>
+		<a href="/create" class="btn variant-filled-secondary" data-sveltekit-preload-data="hover"
+			>{$LL.buttons.create()}</a>
+		<ul class="list-nav mt-4">
+			{#each data.lists as list}
+				<li>
+					<a href={`/list/${list.id}`}>
+						<span class="flex-auto">
+							<dt>{list.title}</dt>
+							<dd>{list.description}</dd>
+						</span>
+					</a>
+				</li>
+			{/each}
+		</ul>
 	{:else}
+		<p class="my-4 text-center">{$LL.pages.root.messages.tagline()}</p>
 		<button
 			on:click|once={function loginClick() {
 				this.disabled = true;
 				loading = true;
 				signIn('google');
 			}}
-			class="btn variant-filled-primary cursor-pointer"
-		>
+			class="btn variant-filled-primary cursor-pointer">
 			{#if loading}
-				{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+				{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 			{:else}
-				{$LL.loginYouTube()}
+				{$LL.buttons.loginYouTube()}
 			{/if}
 		</button>
 	{/if}
