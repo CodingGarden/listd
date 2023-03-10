@@ -6,8 +6,7 @@
 
 	let loading = false;
 
-	const signOutClick = (event: { currentTarget: EventTarget & HTMLButtonElement }) => {
-		event.currentTarget.disabled = true;
+	const signOutClick = () => {
 		loading = true;
 		signOut();
 	};
@@ -23,7 +22,7 @@
 			alt={$page.data.session?.user?.name} />
 		<p class="hidden font-bold md:block">{$page.data.session?.user?.name}</p>
 	</div>
-	<button on:click|once={signOutClick} class="btn variant-filled-primary">
+	<button on:click|once={signOutClick} class="btn variant-filled-primary" disabled={loading}>
 		{#if loading}
 			{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 		{:else}
