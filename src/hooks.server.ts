@@ -6,7 +6,7 @@ import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import PrismaAdapter from '$lib/prisma/client';
 import { config } from '$/lib/config.server';
-import prismaClient from './db.server';
+import prismaClient from './lib/db.server';
 
 const handleDetectLocale = (async ({ event, resolve }) => {
 	// TODO: get lang from cookie / user setting

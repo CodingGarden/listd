@@ -20,15 +20,14 @@
 			class="h-7 w-7 rounded-full"
 			referrerpolicy="no-referrer"
 			src={$page.data.session?.user?.image}
-			alt={$page.data.session?.user?.name}
-		/>
+			alt={$page.data.session?.user?.name} />
 		<p class="hidden font-bold md:block">{$page.data.session?.user?.name}</p>
 	</div>
 	<button on:click|once={signOutClick} class="btn variant-filled-primary">
 		{#if loading}
-			{$LL.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+			{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 		{:else}
-			{$LL.logOut()}
+			{$LL.buttons.logOut()}
 		{/if}
 	</button>
 {/if}

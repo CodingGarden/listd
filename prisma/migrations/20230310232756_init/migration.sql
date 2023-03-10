@@ -2,7 +2,7 @@
 CREATE TYPE "ColorScheme" AS ENUM ('System', 'Dark', 'Light');
 
 -- CreateEnum
-CREATE TYPE "Visiblity" AS ENUM ('Public', 'Unlisted', 'Private');
+CREATE TYPE "Visibility" AS ENUM ('Public', 'Unlisted', 'Private');
 
 -- CreateEnum
 CREATE TYPE "ListItemType" AS ENUM ('YouTubeChannel');
@@ -80,9 +80,9 @@ CREATE TABLE "VerificationToken" (
 -- CreateTable
 CREATE TABLE "List" (
     "id" UUID NOT NULL DEFAULT gen_random_uuid(),
-    "name" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
     "description" TEXT,
-    "visibility" "Visiblity" NOT NULL,
+    "visibility" "Visibility" NOT NULL,
     "userId" UUID NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,

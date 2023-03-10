@@ -21,6 +21,10 @@ declare module '@sveltejs/kit' {
 		status: 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308;
 		location: string;
 	}
+	interface HttpError extends Error {
+		status: number;
+		body: App.Error;
+	}
 }
 
 declare module '@auth/sveltekit' {
