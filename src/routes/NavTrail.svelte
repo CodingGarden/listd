@@ -13,8 +13,7 @@
 	};
 </script>
 
-<!-- TODO: remove after next skeleton update -->
-<LightSwitch height="h-6" rounded="rounded-full" />
+<LightSwitch rounded="rounded-full" />
 {#if $page.data.session?.user}
 	<div class="flex items-center gap-2">
 		<img
