@@ -1,5 +1,18 @@
 ```mermaid
 erDiagram
+	ColorScheme {
+		value System
+		value Dark
+		value Light
+	}
+	Visiblity {
+		value Public
+		value Unlisted
+		value Private
+	}
+	ListItemType {
+		value YouTubeChannel
+	}
 	User {
 		String id PK  "dbgenerated(gen_random_uuid())"
 		DateTime createdAt  "now()"
@@ -75,19 +88,6 @@ erDiagram
 		ListItemType type
 		DateTime createdAt  "now()"
 		DateTime updatedAt
-	}
-	ColorScheme {
-		value System
-		value Dark
-		value Light
-	}
-	Visiblity {
-		value Public
-		value Unlisted
-		value Private
-	}
-	ListItemType {
-		value YouTubeChannel
 	}
 	User }|--|{ UserSettings : settings
 	UserSettings }|--|{ User : user
