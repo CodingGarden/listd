@@ -1,0 +1,12 @@
+.github
+.vscode
+.node_modules
+.husky
+.eslintignore
+.eslintrc.cjs
+.gitignore
+.npmrc
+.prettierignore
+.prettierrc.cjs
+.typesafe-i18n.json
+*.md

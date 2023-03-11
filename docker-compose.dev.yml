@@ -14,12 +14,14 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   app:
-    build: .
+    build:
+      dockerfile: Dockerfile
+      target: builder
     depends_on:
       - db
     restart: always
     ports:
-      - 5173:5173
+      - 3000:3000
 
     environment:
       AUTH_SECRET: ${AUTH_SECRET}
