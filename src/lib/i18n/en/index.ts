@@ -55,6 +55,14 @@ const en: BaseTranslation = {
 				final: "That's all! Let's get started!",
 			},
 		},
+		create: {
+			labels: {
+				channelSearch: 'Channel Search',
+			},
+			messages: {
+				channelSearch: 'Search for a channel...',
+			},
+		},
 	},
 };
 

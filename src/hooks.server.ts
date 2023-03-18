@@ -6,7 +6,7 @@ import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
 import PrismaAdapter from '$lib/prisma/client';
 import { config } from '$/lib/config.server';
-import prismaClient from './lib/db.server';
+import prismaClient from '$/lib/db.server';
 
 const handleDetectLocale = (async ({ event, resolve }) => {
 	// TODO: get lang from cookie / user setting
@@ -63,7 +63,7 @@ const handleAuth = (async (...args) => {
 
 const protectedHandle = (async ({ event, resolve }) => {
 	await event.locals.getSession();
-	if (!event.locals.session && event.route.id?.includes('protected')) {
+	if (!event.locals.session && event.route.id?.includes('(protected)')) {
 		throw redirect(302, '/');
 	}
 	return resolve(event);

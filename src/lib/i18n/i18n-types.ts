@@ -130,6 +130,20 @@ type RootTranslation = {
 				final: string
 			}
 		}
+		create: {
+			labels: {
+				/**
+				 * C​h​a​n​n​e​l​ ​S​e​a​r​c​h
+				 */
+				channelSearch: string
+			}
+			messages: {
+				/**
+				 * S​e​a​r​c​h​ ​f​o​r​ ​a​ ​c​h​a​n​n​e​l​.​.​.
+				 */
+				channelSearch: string
+			}
+		}
 	}
 }
 
@@ -243,6 +257,20 @@ export type TranslationFunctions = {
 				 * That's all! Let's get started!
 				 */
 				final: () => LocalizedString
+			}
+		}
+		create: {
+			labels: {
+				/**
+				 * Channel Search
+				 */
+				channelSearch: () => LocalizedString
+			}
+			messages: {
+				/**
+				 * Search for a channel...
+				 */
+				channelSearch: () => LocalizedString
 			}
 		}
 	}
