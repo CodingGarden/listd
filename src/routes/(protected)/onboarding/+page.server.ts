@@ -1,5 +1,4 @@
 import { redirect } from '@sveltejs/kit';
-import type { Actions } from './$types';
 import prismaClient from '../../../lib/db.server';
 
 export const actions = {
@@ -18,4 +17,4 @@ export const actions = {
 		});
 		throw redirect(302, '/');
 	},
-} satisfies Actions;
+};

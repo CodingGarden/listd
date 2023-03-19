@@ -6,10 +6,9 @@
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
-	import type { LayoutData } from './$types.js';
 	import Seo from './SEO.svelte';
 
-	export let data: LayoutData;
+	export let data;
 	setLocale(data.locale);
 </script>
 

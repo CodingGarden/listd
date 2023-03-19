@@ -4,9 +4,8 @@
 	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { seo } from '$lib/stores/SeoStore';
-	import type { PageData } from './$types';
 
-	export let data: PageData;
+	export let data;
 
 	let loading = false;
 
