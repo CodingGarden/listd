@@ -40,10 +40,10 @@
 		<p class="my-4 text-center">{$LL.pages.root.messages.tagline()}</p>
 		<button
 			on:click|once={function loginClick() {
-				this.disabled = true;
 				loading = true;
 				signIn('google');
 			}}
+			disabled={loading}
 			class="btn variant-filled-primary cursor-pointer">
 			{#if loading}
 				{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
