@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-
-	export let data: PageData;
+	export let data;
 </script>
 
 <h2 class="font-bold">{data.list?.title}</h2>

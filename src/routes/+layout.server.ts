@@ -1,7 +1,6 @@
 import { redirect } from '@sveltejs/kit';
-import type { LayoutServerLoad } from './$types';
 
-export const load = (async ({ locals, route }) => {
+export const load = async ({ locals, route }) => {
 	if (
 		locals.session?.user &&
 		!locals.session.user.settings.onboarded &&
@@ -20,4 +19,4 @@ export const load = (async ({ locals, route }) => {
 		session: locals.session,
 		locale: locals.locale,
 	};
-}) satisfies LayoutServerLoad;
+};

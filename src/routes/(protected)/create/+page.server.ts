@@ -4,7 +4,6 @@ import { LL, setLocale } from '$lib/i18n/i18n-svelte';
 import { get } from 'svelte/store';
 import { z, ZodError } from 'zod';
 import prismaClient from '$lib/db.server';
-import type { Actions } from './$types';
 
 export async function load() {
 	return {
@@ -49,4 +48,4 @@ export const actions = {
 			return fail(400, { error: message });
 		}
 	},
-} satisfies Actions;
+};

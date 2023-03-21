@@ -3,10 +3,9 @@
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import type { ActionData, PageData } from './$types';
 
-	export let data: PageData;
-	export let form: ActionData;
+	export let data;
+	export let form;
 
 	$: if (form?.success) {
 		const url = `/list/${form.listId}`;
