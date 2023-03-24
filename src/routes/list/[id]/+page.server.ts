@@ -5,6 +5,29 @@ import { youtube, youtube_v3 } from '@googleapis/youtube';
 import { error } from '@sveltejs/kit';
 import { get } from 'svelte/store';
 
+async function getVideos(channelIds: string[]) {
+	let videos: youtube_v3.Schema$SearchResult[] = [];
+
+	const client = youtube({
+		version: 'v3',
+		auth: config.YOUTUBE_API_KEY,
+	});
+
+	await channelIds.reduce(async (promise, channelId) => {
+		await promise;
+		const { data } = await client.search.list({
+			part: ['id', 'snippet'],
+			channelId,
+			type: ['video'],
+			maxResults: 10,
+		});
+		videos = videos.concat(data.items?.filter((i) => i) || []);
+	}, Promise.resolve());
+	videos.sort((a, b) => new Date(b.snippet?.publishedAt) - new Date(a.snippet?.publishedAt));
+
+	return videos;
+}
+
 export async function load({ params, locals }) {
 	try {
 		// TODO: handle visibility
@@ -20,27 +43,14 @@ export async function load({ params, locals }) {
 				},
 			},
 		});
-		const client = youtube({
-			version: 'v3',
-			auth: config.YOUTUBE_API_KEY,
-		});
 		const channelIds = list?.items.map((item) => item.meta.originId) || [];
-		let videos: youtube_v3.Schema$SearchResult[] = [];
-		await channelIds.reduce(async (promise, channelId) => {
-			await promise;
-			const { data } = await client.search.list({
-				part: ['id', 'snippet'],
-				channelId,
-				type: ['video'],
-				maxResults: 10,
-			});
-			videos = videos.concat(data.items?.filter((i) => i) || []);
-		}, Promise.resolve());
-		videos.sort((a, b) => new Date(b.snippet?.publishedAt) - new Date(a.snippet?.publishedAt));
+
 		if (list) {
 			return {
 				list,
-				videos,
+				streamed: {
+					videos: getVideos(channelIds),
+				},
 			};
 		}
 	} catch (e) {
