@@ -2,14 +2,14 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { applyAction, enhance } from '$app/forms';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
-	import type { youtube_v3 } from '@googleapis/youtube';
+	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import type { ActionData, PageData } from './$types';
 	import ChannelCard from './ChannelCard.svelte';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 
 	export let form: ActionData;
 	export let data: PageData;
-	export let channels: youtube_v3.Schema$Channel[];
+	export let channels: YouTubeChannelMetaAPIResponse[];
 	export let channelIds: Map<string, number>;
 
 	let loading = false;
@@ -21,8 +21,8 @@
 	use:enhance={() => {
 		loading = true;
 		return ({ result }) => {
+			console.log('results loaded...', result);
 			loading = false;
-			console.log(result.data);
 			return applyAction(result);
 		};
 	}}
@@ -38,10 +38,12 @@
 </form>
 <div class="my-4">
 	{#if loading}
-		<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+		<div class="grid place-content-center">
+			<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+		</div>
 	{/if}
 	{#if form?.results}
-		<div class="max-h-96 overflow-y-auto">
+		<div class="max-h-96 overflow-y-auto" class:hidden={loading}>
 			{#each form.results as result}
 				<ChannelCard locale={data.locale} channel={result}>
 					<ChannelCardActions channel={result} bind:channels bind:channelIds />

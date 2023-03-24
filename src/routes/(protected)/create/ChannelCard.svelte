@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type { youtube_v3 } from '@googleapis/youtube';
+	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 
-	export let channel: youtube_v3.Schema$Channel;
+	export let channel: YouTubeChannelMetaAPIResponse;
 	export let locale: string;
 	export let compact = false;
 
@@ -11,33 +11,33 @@
 	});
 </script>
 
-<div class="card overflow-hidden p-4">
+<div class="card overflow-hidden p-4" class:grid={compact} class:content-center={compact}>
 	<header>
 		<div class="flex gap-2" class:flex-col={compact} class:items-center={compact}>
 			{#if compact}
 				<img
 					class="mr-1 inline-block h-12 w-12 rounded-full"
 					referrerpolicy="no-referrer"
-					src={channel.snippet?.thumbnails?.default?.url}
-					alt={channel.snippet?.title} />
-				<div class="text-center font-bold">{channel.snippet?.title}</div>
+					src={channel.avatarUrl}
+					alt={channel.name} />
+				<div class="text-center font-bold">{channel.name}</div>
 			{:else}
 				<img
 					class="mr-1 inline-block h-12 w-12 rounded-full"
 					referrerpolicy="no-referrer"
-					src={channel.snippet?.thumbnails?.default?.url}
-					alt={channel.snippet?.title} />
+					src={channel.avatarUrl}
+					alt={channel.name} />
 				<div>
-					<div class="font-bold">{channel.snippet?.title}</div>
-					<div>{channel.snippet?.customUrl}</div>
+					<div class="font-bold">{channel.name}</div>
+					<div>{channel.customUrl}</div>
 					<div>
-						{subscriberFormatter.format(Number(channel.statistics?.subscriberCount))} subscribers
+						{subscriberFormatter.format(Number(channel.subscriberCount))} subscribers
 					</div>
 				</div>
 			{/if}
 		</div>
 	</header>
-	<footer class="card-footer mt-4 flex justify-end">
+	<footer class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
 		<slot />
 	</footer>
 </div>

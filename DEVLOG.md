@@ -8,7 +8,7 @@
     * Include Channel handle
     * Number of subscribers
     * Verified badges
-* [ ] More robust YT API Response
+* [x] More robust YT API Response
 * [ ] Cache YT API Response
 * [ ] Fix YT Video order (latest by default...)
 * [ ] Lazy load embedded video and thumbnails

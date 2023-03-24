@@ -1,11 +1,10 @@
 import { ListItemType, Visibility } from '@prisma/client';
 import { fail } from '@sveltejs/kit';
-import { youtube, youtube_v3 } from '@googleapis/youtube';
 import { LL, setLocale } from '$lib/i18n/i18n-svelte';
 import { get } from 'svelte/store';
 import { z, ZodError } from 'zod';
+import * as YouTubeAPI from '$lib/server/YouTubeAPI';
 import prismaClient from '$lib/db.server';
-import { config } from '$/lib/config.server';
 
 export async function load() {
 	return {
@@ -51,22 +50,17 @@ export const actions = {
 						},
 					});
 					if (!existing) {
-						const client = youtube({
-							version: 'v3',
-							auth: config.YOUTUBE_API_KEY,
-						});
-						const { data } = await client.channels.list({
-							part: ['id', 'snippet'],
-							id: [id],
-							maxResults: 1,
-						});
-						const ytChannel = data.items?.pop();
-						if (ytChannel && ytChannel.snippet) {
+						const channel = await YouTubeAPI.getChannel(id);
+						if (channel) {
 							existing = await prismaClient.listItemMeta.create({
 								data: {
 									originId: id,
-									name: ytChannel.snippet.title || '',
+									name: channel.name,
 									type: ListItemType.YouTubeChannel,
+									imageUrl: channel.avatarUrl,
+									youtubeMeta: {
+										create: channel,
+									},
 								},
 							});
 						} else {
@@ -78,8 +72,6 @@ export const actions = {
 							listId: insertedList.id,
 							listItemMetaId: existing.id,
 							name: existing.name,
-							// TODO: add description to listItemMeta
-							// description: existing.description,
 						},
 					});
 					return existing;
@@ -103,41 +95,7 @@ export const actions = {
 	search: async (event) => {
 		const formData = await event.request.formData();
 		const q = (formData.get('search') || '').toString();
-		const client = youtube({
-			version: 'v3',
-			auth: config.YOUTUBE_API_KEY,
-		});
-		// TODO: proxy, cache and use an API Key pool...
-		const { data: searchResults } = await client.search.list({
-			part: ['id', 'snippet'],
-			q,
-			type: ['channel'],
-			maxResults: 50,
-		});
-		const { data } = await client.channels.list({
-			part: [
-				'id',
-				'snippet',
-				'brandingSettings',
-				'contentDetails',
-				'localizations',
-				'statistics',
-				'status',
-				'topicDetails',
-			],
-			id: searchResults.items?.map((item) => item.id?.channelId || ''),
-			maxResults: 50,
-		});
-		const byId = (data.items || []).reduce((all, item) => {
-			if (item.id) {
-				all.set(item.id, item);
-			}
-			return all;
-		}, new Map<string, youtube_v3.Schema$Channel>());
-		const results = (searchResults.items || [])
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion, @typescript-eslint/no-non-null-asserted-optional-chain
-			.map((item) => byId.get(item.id?.channelId!)!)
-			.filter((i) => i);
+		const results = await YouTubeAPI.searchChannels(q);
 		return { results };
 	},
 };

@@ -142,7 +142,7 @@ model YouTubeMeta {
   description     String
   subscriberCount Int
   avatarUrl       String
-  bannerUrl       String
+  bannerUrl       String?
   customUrl       String
   isVerified      Boolean        @default(false)
   createdAt       DateTime       @default(now())

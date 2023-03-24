@@ -1,22 +1,22 @@
 <script lang="ts">
+	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import Seo from '$/routes/SEO.svelte';
 	import { browser } from '$app/environment';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import type { youtube_v3 } from '@googleapis/youtube';
 	import ChannelCard from './ChannelCard.svelte';
 	import ChannelCardActions from './ChannelCardActions.svelte';
-	import ChannelSearch from './ChannelSelector.svelte';
+	import ChannelSearch from './ChannelSearch.svelte';
 
 	export let data;
 	export let form;
 
-	let channels: youtube_v3.Schema$Channel[] = [];
+	let channels: YouTubeChannelMetaAPIResponse[] = [];
 
 	$: channelIds = channels.reduce((byId, channel, index) => {
-		if (channel.id) {
-			byId.set(channel.id, index);
+		if (channel.originId) {
+			byId.set(channel.originId, index);
 		}
 		return byId;
 	}, new Map<string, number>());

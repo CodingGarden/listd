@@ -97,7 +97,7 @@ erDiagram
 		String description
 		Int subscriberCount
 		String avatarUrl
-		String bannerUrl
+		String bannerUrl  "nullable"
 		String customUrl
 		Boolean isVerified
 		DateTime createdAt  "now()"
