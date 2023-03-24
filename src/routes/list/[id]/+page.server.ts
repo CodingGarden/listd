@@ -44,7 +44,6 @@ export async function load({ params, locals }) {
 			},
 		});
 		const channelIds = list?.items.map((item) => item.meta.originId) || [];
-		console.log(channelIds);
 
 		if (list) {
 			return {
