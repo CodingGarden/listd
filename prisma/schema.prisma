@@ -9,7 +9,7 @@ datasource db {
 
 generator erd {
   provider = "prisma-erd-generator-markdown"
-  output = "./ERD.md"
+  output   = "./ERD.md"
 }
 
 model User {
@@ -59,12 +59,12 @@ model Account {
   type              String
   provider          String
   providerAccountId String
-  refresh_token     String? @db.Text @map("refreshToken")
-  access_token      String? @db.Text @map("accessToken")
+  refresh_token     String? @map("refreshToken") @db.Text
+  access_token      String? @map("accessToken") @db.Text
   expires_in        Int?    @map("expiresIn")
   token_type        String? @map("tokenType")
   scope             String?
-  id_token          String? @db.Text @map("idToken")
+  id_token          String? @map("idToken") @db.Text
   session_state     String? @map("sessionState")
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -95,7 +95,7 @@ enum Visibility {
 
 model List {
   id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  title        String
+  title       String
   description String?
   visibility  Visibility
   creator     User       @relation(fields: [userId], references: [id])
@@ -122,11 +122,30 @@ model ListItem {
 }
 
 model ListItemMeta {
-  id        String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name      String
-  originId  String
-  type      ListItemType
-  listItem  ListItem[]
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
+  id                  String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name                String
+  originId            String
+  imageUrl            String
+  type                ListItemType
+  youtubeMeta         YouTubeMeta? @relation(fields: [youTubeMetaOriginId], references: [originId])
+  listItem            ListItem[]
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  youTubeMetaOriginId String?
+
+  @@unique([originId, type])
+}
+
+model YouTubeMeta {
+  originId        String         @unique
+  name            String
+  description     String
+  subscriberCount Int
+  avatarUrl       String
+  bannerUrl       String
+  customUrl       String
+  isVerified      Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  ListItemMeta    ListItemMeta[]
 }

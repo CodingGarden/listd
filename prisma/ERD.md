@@ -85,7 +85,21 @@ erDiagram
 		String id PK  "dbgenerated(gen_random_uuid())"
 		String name
 		String originId
+		String imageUrl
 		ListItemType type
+		DateTime createdAt  "now()"
+		DateTime updatedAt
+		String youTubeMetaOriginId FK  "nullable"
+	}
+	YouTubeMeta {
+		String originId
+		String name
+		String description
+		Int subscriberCount
+		String avatarUrl
+		String bannerUrl
+		String customUrl
+		Boolean isVerified
 		DateTime createdAt  "now()"
 		DateTime updatedAt
 	}
@@ -99,6 +113,7 @@ erDiagram
 	List }o--|| Visibility : "enum:visibility"
 	ListItem }o--|| ListItemMeta : meta
 	ListItem }o--|| List : list
+	ListItemMeta }o--|| YouTubeMeta : youtubeMeta
 	ListItemMeta }o--|| ListItemType : "enum:type"
 
 ```

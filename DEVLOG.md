@@ -1,7 +1,8 @@
 # Today
 
 * [x] Update the List page styles
-* [ ] Update DB schema  
+* [x] Update DB schema  
+  * Last updated
   * More metadata
     * Include Channel Image
     * Include Channel handle
