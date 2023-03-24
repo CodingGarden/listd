@@ -1,4 +1,18 @@
-# Todayn
+# Today
+
+* [x] Update the List page styles
+* [ ] Update DB schema  
+  * More metadata
+    * Include Channel Image
+    * Include Channel handle
+    * Number of subscribers
+    * Verified badges
+* [ ] More robust YT API Response
+* [ ] Cache YT API Response
+* [ ] Fix YT Video order (latest by default...)
+* [ ] Lazy load embedded video and thumbnails
+* [ ] Update Create form styles
+* [ ] List edit page
 
 # Upcoming
 

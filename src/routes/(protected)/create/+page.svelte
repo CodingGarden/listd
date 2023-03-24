@@ -32,7 +32,11 @@
 </script>
 
 <Seo title="Create a List" description="Create a List" />
-<form class="mt-4 flex flex-col gap-4" action="/create?/create" method="post" use:enhance>
+<form
+	class="mx-auto mt-4 flex max-w-lg flex-col gap-4"
+	action="/create?/create"
+	method="post"
+	use:enhance>
 	{#if form?.error}
 		<aside class="alert variant-filled-error">
 			<div class="alert-message">
