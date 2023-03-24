@@ -5,7 +5,6 @@
 	import { goto } from '$app/navigation';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import type { youtube_v3 } from '@googleapis/youtube';
-	import type { ActionData, PageData } from './$types';
 	import ChannelCard from './ChannelCard.svelte';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 	import ChannelSearch from './ChannelSelector.svelte';

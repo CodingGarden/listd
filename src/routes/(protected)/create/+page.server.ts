@@ -6,7 +6,6 @@ import { get } from 'svelte/store';
 import { z, ZodError } from 'zod';
 import prismaClient from '$lib/db.server';
 import { config } from '$/lib/config.server';
-import type { Actions } from './$types';
 
 export async function load() {
 	return {
@@ -141,4 +140,4 @@ export const actions = {
 			.filter((i) => i);
 		return { results };
 	},
-} satisfies Actions;
+};
