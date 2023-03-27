@@ -1,4 +1,4 @@
-FROM node:18-alpine AS development
+FROM node:18-alpine AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,20 @@ RUN npm ci
 
 COPY . .
 
-EXPOSE 5173
+ENV NODE_BUILD=true
 
-CMD npm run docker:dev
+RUN npm run build
 
+EXPOSE 3000
+
+CMD node build
+
+FROM node:18-alpine as production
+
+COPY --from=builder ./build .
+
+ENV NODE_ENV=production
+
+EXPOSE 3000
+
+CMD node ./build
