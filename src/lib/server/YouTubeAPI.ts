@@ -1,8 +1,9 @@
 import { youtube, youtube_v3 } from '@googleapis/youtube';
 import { config } from '$/lib/config.server';
-import type { YouTubeMeta } from '@prisma/client';
+import type { YouTubeMeta } from '@prisma/client'
+import redisClient from './redis';
 
-const client = youtube({
+const ytClient = youtube({
 	version: 'v3',
 	auth: config.YOUTUBE_API_KEY,
 });
@@ -11,12 +12,33 @@ const channelParts = ['id', 'snippet', 'statistics', 'brandingSettings'];
 export type YouTubeChannelMetaAPIResponse = Omit<YouTubeMeta, 'createdAt' | 'updatedAt'>;
 
 export type YouTubeVideoAPIResponse = {
-	thumbnailUrl: string | null;
+	thumbnails: {
+		high: string | null;
+		low: string | null;
+	};
 	title: string;
 	videoId: string;
 	channelTitle: string;
 	publishedAt: number;
+	viewCount: number;
+	likes: number;
+	duration: string;
+	upcoming: boolean;
+	livestream: {
+		viewers: number;
+		liveChatId: string;
+		actualStartAt: number;
+		scheduledStartAt: number;
+	} | null;
 };
+
+export function parseYTDate(date: string | null | undefined) {
+	return date ? new Date(date).getTime() : Date.now();
+}
+
+export function parseYTNumber(number: string | null | undefined) {
+	return Number(number || 0);
+}
 
 export function createYouTubeMetaAPIResponse(originId: string, channel: youtube_v3.Schema$Channel) {
 	const subscriberCountNumber = Number(channel.statistics?.subscriberCount);
@@ -39,7 +61,7 @@ export function createYouTubeMetaAPIResponse(originId: string, channel: youtube_
 }
 
 export async function getChannel(id: string) {
-	const { data } = await client.channels.list({
+	const { data } = await ytClient.channels.list({
 		part: channelParts,
 		id: [id],
 		maxResults: 1,
@@ -51,35 +73,103 @@ export async function getChannel(id: string) {
 	return null;
 }
 
+async function getAllVideos(
+	channelId: string,
+	videos: YouTubeVideoAPIResponse[] = [],
+	pageToken?: string
+): Promise<YouTubeVideoAPIResponse[]> {
+	const { data } = await ytClient.search.list({
+		part: ['id', 'snippet'],
+		channelId,
+		type: ['video'],
+		order: 'date',
+		maxResults: 50,
+		pageToken,
+	});
+	const ids = (data.items || []).reduce((all, item) => {
+		if (item.id?.videoId) {
+			all.push(item.id?.videoId);
+		}
+		return all;
+	}, [] as string[]);
+	const { data: videoData } = await ytClient.videos.list({
+		part: [
+			'id',
+			'contentDetails',
+			'liveStreamingDetails',
+			'localizations',
+			'snippet',
+			'statistics',
+		],
+		id: ids,
+		maxResults: 50,
+	});
+	videoData.items?.forEach((video) => {
+		if (video && video.id) {
+			const videoResponse = {
+				thumbnails: {
+					high:
+						video.snippet?.thumbnails?.maxres?.url ||
+						video.snippet?.thumbnails?.standard?.url ||
+						video.snippet?.thumbnails?.high?.url ||
+						null,
+					low:
+						video.snippet?.thumbnails?.medium?.url ||
+						video.snippet?.thumbnails?.default?.url ||
+						null,
+				},
+				// TODO: i18n
+				title: video.snippet?.title || 'No Video Title',
+				videoId: video.id,
+				channelTitle: video.snippet?.channelTitle || 'No Channel Title',
+				publishedAt: video.snippet?.publishedAt
+					? new Date(video.snippet?.publishedAt).getTime()
+					: Date.now(),
+				viewCount: parseYTNumber(video.statistics?.viewCount),
+				likes: parseYTNumber(video.statistics?.likeCount),
+				duration: video.contentDetails?.duration || 'PT0S',
+				upcoming: video.snippet?.liveBroadcastContent === 'upcoming',
+				livestream: video.liveStreamingDetails
+					? {
+							live: video.snippet?.liveBroadcastContent === 'live',
+							viewers: parseYTNumber(video.liveStreamingDetails.concurrentViewers),
+							liveChatId: video.liveStreamingDetails.activeLiveChatId || '',
+							actualStartAt: parseYTDate(video.liveStreamingDetails.actualStartTime),
+							scheduledStartAt: parseYTDate(video.liveStreamingDetails.scheduledStartTime),
+					  }
+					: null,
+			};
+			videoResponse.thumbnails.high = videoResponse.thumbnails.high?.replace('_live', '') || null;
+			videoResponse.thumbnails.low = videoResponse.thumbnails.low?.replace('_live', '') || null;
+			videos.push(videoResponse);
+		}
+	});
+	if (data.nextPageToken) {
+		return getAllVideos(channelId, videos, data.nextPageToken);
+	}
+	return videos;
+}
+
+async function getChannelVideos(channelId: string) {
+	const cacheKey = `yt:videos:(channelId:${channelId})`;
+	const cachedVideos = await redisClient.get(cacheKey);
+	if (cachedVideos) {
+		return JSON.parse(cachedVideos) as YouTubeVideoAPIResponse[];
+	}
+	const videos = await getAllVideos(channelId);
+	await redisClient.set(cacheKey, JSON.stringify(videos), {
+		EX: 60 * 60 * 24,
+	});
+	return videos;
+}
+
 export async function getVideos(channelIds: string[]) {
-	const videos: YouTubeVideoAPIResponse[] = [];
+	let videos: YouTubeVideoAPIResponse[] = [];
 
 	await channelIds.reduce(async (promise, channelId) => {
 		await promise;
-		const { data } = await client.search.list({
-			part: ['id', 'snippet'],
-			channelId,
-			type: ['video'],
-			order: 'date',
-			maxResults: 10,
-		});
-		data.items?.forEach((video) => {
-			if (video && video.id?.videoId) {
-				videos.push({
-					thumbnailUrl:
-						video.snippet?.thumbnails?.maxres?.url ||
-						video.snippet?.thumbnails?.default?.url ||
-						null,
-					// TODO: i18n
-					title: video.snippet?.title || 'No Video Title',
-					videoId: video.id.videoId,
-					channelTitle: video.snippet?.channelTitle || 'No Channel Title',
-					publishedAt: video.snippet?.publishedAt
-						? new Date(video.snippet?.publishedAt).getTime()
-						: Date.now(),
-				});
-			}
-		});
+		const channelVideos = await getChannelVideos(channelId);
+		videos = videos.concat(channelVideos);
 	}, Promise.resolve());
 	videos.sort((a, b) => b.publishedAt - a.publishedAt);
 
@@ -88,7 +178,7 @@ export async function getVideos(channelIds: string[]) {
 
 export async function searchChannels(q: string) {
 	// TODO: proxy, cache and use an API Key pool...
-	const { data: searchResults } = await client.search.list({
+	const { data: searchResults } = await ytClient.search.list({
 		part: ['id', 'snippet'],
 		q,
 		type: ['channel'],
@@ -100,7 +190,7 @@ export async function searchChannels(q: string) {
 		}
 		return all;
 	}, [] as string[]);
-	const { data } = await client.channels.list({
+	const { data } = await ytClient.channels.list({
 		part: channelParts,
 		id: ids,
 		maxResults: 50,

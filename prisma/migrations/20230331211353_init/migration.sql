@@ -124,7 +124,7 @@ CREATE TABLE "YouTubeMeta" (
     "description" TEXT NOT NULL,
     "subscriberCount" INTEGER NOT NULL,
     "avatarUrl" TEXT NOT NULL,
-    "bannerUrl" TEXT NOT NULL,
+    "bannerUrl" TEXT,
     "customUrl" TEXT NOT NULL,
     "isVerified" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -13,6 +13,7 @@ export const ServerConfigSchema = z.object({
 	DB_NAME: z.string().trim().min(1),
 	DB_PORT: z.coerce.number().default(5432),
 	DATABASE_URL: z.string().trim().min(1).url(),
+	REDIS_URL: z.string().trim().min(1).url(),
 	YOUTUBE_API_KEY: z.string().trim().min(1),
 });
 

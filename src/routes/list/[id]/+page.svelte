@@ -24,7 +24,7 @@
 		<div
 			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
 			{#each videos as video}
-				<YouTubeVideoEmbed {video} />
+				<YouTubeVideoEmbed locale={data.locale} {video} />
 			{/each}
 		</div>
 	{/await}

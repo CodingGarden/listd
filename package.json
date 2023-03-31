@@ -52,7 +52,7 @@
 		"svelte": "^3.57.0",
 		"svelte-check": "^3.1.4",
 		"svelte-preprocess": "^5.0.3",
-		"tailwindcss": "^3.2.7",
+		"tailwindcss": "^3.3.1",
 		"tslib": "^2.5.0",
 		"tsx": "^3.12.5",
 		"typesafe-i18n": "^5.24.2",
@@ -67,6 +67,9 @@
 		"@googleapis/youtube": "^8.0.2",
 		"@next-auth/prisma-adapter": "^1.0.5",
 		"@prisma/client": "^4.11.0",
+		"@types/luxon": "^3.2.0",
+		"luxon": "^3.3.0",
+		"redis": "^4.6.5",
 		"zod": "^3.21.4"
 	},
 	"license": "MIT",
