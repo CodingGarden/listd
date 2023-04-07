@@ -17,8 +17,10 @@ export type YouTubeVideoAPIResponse = {
 		low: string | null;
 	};
 	title: string;
+	description: string;
 	videoId: string;
 	channelTitle: string;
+	channelId: string;
 	publishedAt: number;
 	viewCount: number;
 	likes: number;
@@ -120,8 +122,10 @@ async function getAllVideos(
 				},
 				// TODO: i18n
 				title: video.snippet?.title || 'No Video Title',
+				description: video.snippet?.description || '',
 				videoId: video.id,
 				channelTitle: video.snippet?.channelTitle || 'No Channel Title',
+				channelId,
 				publishedAt: video.snippet?.publishedAt
 					? new Date(video.snippet?.publishedAt).getTime()
 					: Date.now(),

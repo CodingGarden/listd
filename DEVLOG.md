@@ -10,16 +10,16 @@
     * Verified badges
 * [x] More robust YT API Response
 * [x] Lazy load embedded video and thumbnails
-* [ ] Cache YT API Response
+* [x] Cache YT API Response
   * [x] Get ALL videos of each channel
   * [x] Get ALL video info of each video
     * [x] View Count
     * [x] Length / Duration
-    * [ ] Like Count
-* [ ] Fix YT Video order (latest by default...)
-* [ ] Single Video Page
-* [ ] List Page Styles
-  * [ ] Fix video titles
+    * [x] Like Count
+* [x] Fix YT Video order (latest by default...)
+* [x] List Page Styles
+  * [x] Fix video titles
+* [x] Single Video Page
 * [ ] Update Create form styles
 * [ ] List create page styles
   * [ ] Channel cards...

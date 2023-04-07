@@ -16,6 +16,7 @@ const en: BaseTranslation = {
 		title: 'Title',
 		description: 'Description',
 		visibility: 'Visibility',
+		views: '{0} views',
 	},
 	enums: {
 		visibility: {
