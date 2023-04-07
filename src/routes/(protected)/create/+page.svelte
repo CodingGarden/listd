@@ -1,12 +1,27 @@
 <script lang="ts">
+	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import Seo from '$/routes/SEO.svelte';
 	import { browser } from '$app/environment';
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 	import { LL } from '$lib/i18n/i18n-svelte';
+	import ChannelCard from './ChannelCard.svelte';
+	import ChannelCardActions from './ChannelCardActions.svelte';
+	import ChannelSearch from './ChannelSearch.svelte';
 
 	export let data;
 	export let form;
+
+	let channels: YouTubeChannelMetaAPIResponse[] = [];
+
+	$: channelIds = channels.reduce((byId, channel, index) => {
+		if (channel.originId) {
+			byId.set(channel.originId, index);
+		}
+		return byId;
+	}, new Map<string, number>());
+
+	$: channelIdList = [...channelIds.keys()];
 
 	$: if (form?.success) {
 		const url = `/list/${form.listId}`;
@@ -17,7 +32,11 @@
 </script>
 
 <Seo title="Create a List" description="Create a List" />
-<form class="mt-4 flex flex-col gap-4" method="post" use:enhance>
+<form
+	class="mx-auto mt-4 flex max-w-lg flex-col gap-4"
+	action="/create?/create"
+	method="post"
+	use:enhance>
 	{#if form?.error}
 		<aside class="alert variant-filled-error">
 			<div class="alert-message">
@@ -25,6 +44,9 @@
 			</div>
 		</aside>
 	{/if}
+	<div class="flex justify-end">
+		<button class="btn variant-filled-secondary">{$LL.buttons.create()}</button>
+	</div>
 	<label class="label">
 		<span>{$LL.labels.title()}</span>
 		<input class="input" type="text" name="title" required />
@@ -41,6 +63,24 @@
 			{/each}
 		</select>
 	</label>
+	<span class="label">Channels</span>
+	{#if !channels.length}
+		<span class="block text-gray-400">Search for a channel below to add it to the list.</span>
+	{:else}
+		<div class="grid max-h-96 grid-cols-2 overflow-y-auto">
+			{#each channels as channel}
+				<ChannelCard compact locale={data.locale} {channel}>
+					<ChannelCardActions {channel} bind:channels bind:channelIds />
+				</ChannelCard>
+			{/each}
+		</div>
+	{/if}
+	<select name="channelIds" multiple bind:value={channelIdList} class="hidden">
+		{#each channelIdList as channelId}
+			<option value={channelId}>{channelId}</option>
+		{/each}
+	</select>
+	<ChannelSearch {form} {data} bind:channels bind:channelIds />
 	<div class="flex justify-end">
 		<button class="btn variant-filled-secondary">{$LL.buttons.create()}</button>
 	</div>

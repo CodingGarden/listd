@@ -15,7 +15,7 @@
 	});
 </script>
 
-<div class="hero-container flex flex-col items-center justify-center p-4">
+<div class="hero-container mx-auto flex max-w-sm flex-col items-center justify-center p-4">
 	{#if $page.data.session}
 		<p class="my-4 text-center">
 			{#if !data.lists.length}

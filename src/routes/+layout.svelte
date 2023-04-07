@@ -27,7 +27,7 @@
 	<!-- <svelte:fragment slot="pageHeader">Page Header</svelte:fragment> -->
 	<!-- Router Slot -->
 	<!-- TODO: use variable for container width -->
-	<div class="mx-auto w-80 max-w-sm pt-2">
+	<div class="w-full px-2 pt-2 md:px-4 lg:px-8">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->
