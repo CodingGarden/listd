@@ -21,7 +21,6 @@
 	use:enhance={() => {
 		loading = true;
 		return ({ result }) => {
-			console.log('results loaded...', result);
 			loading = false;
 			return applyAction(result);
 		};

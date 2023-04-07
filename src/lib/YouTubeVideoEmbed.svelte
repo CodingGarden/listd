@@ -40,10 +40,10 @@
 			src={video.thumbnails.low}
 			alt={video.title} />
 		<!-- TODO: use icon library -->
-		<p class="absolute bottom-1 left-1 rounded-md bg-black bg-opacity-60 py-0.5 px-1.5 text-xs">
+		<p class="absolute bottom-1 left-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5 text-xs">
 			{viewCountFormatter.format(video.likes)} 👍
 		</p>
-		<p class="absolute bottom-1 right-1 rounded-md bg-black bg-opacity-60 py-0.5 px-1.5">
+		<p class="absolute bottom-1 right-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5">
 			{formatDuration(video.duration)}
 		</p>
 	</div>
@@ -54,6 +54,6 @@
 			<p><span>{formatDate(video.publishedAt)}</span></p>
 		</div>
 		<!-- TODO: something better than ellipses... -->
-		<p class="line-clamp-2 my-2 break-words">{video.title}</p>
+		<p class="my-2 line-clamp-2 break-words">{video.title}</p>
 	</div>
 </div>

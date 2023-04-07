@@ -6,6 +6,7 @@ const client = createClient({
 });
 
 // TODO: use logging library...
+// eslint-disable-next-line no-console
 client.on('error', (err) => console.log('Redis Client Error', err));
 
 await client.connect();

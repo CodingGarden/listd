@@ -25,6 +25,7 @@ export const actions = {
 		});
 		const formData = await event.request.formData();
 		const channels = formData.getAll('channelIds');
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const formDataObject = Object.fromEntries(formData) as any;
 		formDataObject.channelIds = channels;
 		try {

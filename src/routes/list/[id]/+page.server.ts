@@ -26,7 +26,6 @@ export async function load({ params, locals }) {
 		const channelIds = list?.items.map((item) => item.meta.originId) || [];
 
 		if (list) {
-			console.log(JSON.stringify(list, null, 2));
 			return {
 				list,
 				streamed: {
