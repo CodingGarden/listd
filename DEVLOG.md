@@ -1,8 +1,8 @@
 # Today
 
-* [ ] Update dependencies
+* [x] Update dependencies
   * [x] Minor / Patch bump
-  * [ ] Major bump
+  * [x] Major bump
 * [ ] Review PRs and issues
 * [ ] Create page form styles
   * [ ] Channel card styles
