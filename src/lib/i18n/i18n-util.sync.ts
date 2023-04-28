@@ -11,6 +11,7 @@ import en from './en'
 import es from './es'
 import it from './it'
 import ru from './ru'
+import ua from './ua'
 import uk from './uk'
 
 const localeTranslations = {
@@ -20,6 +21,7 @@ const localeTranslations = {
 	es,
 	it,
 	ru,
+	ua,
 	uk,
 }
 
