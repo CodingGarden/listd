@@ -1,6 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+/** @type {import('tailwindcss').Config} */
 const config = {
 	darkMode: 'class',
 	content: [
@@ -14,6 +15,9 @@ const config = {
 
 	plugins: [
 		require('@tailwindcss/forms'),
+		// TODO: remove this ignore
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		...require('@skeletonlabs/skeleton/tailwind/skeleton.cjs')(),
 	],
 };

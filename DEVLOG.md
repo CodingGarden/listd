@@ -1,29 +1,13 @@
 # Today
 
-* [x] Update the List page styles
-* [x] Update DB schema  
-  * Last updated
-  * More metadata
-    * Include Channel Image
-    * Include Channel handle
-    * Number of subscribers
-    * Verified badges
-* [x] More robust YT API Response
-* [x] Lazy load embedded video and thumbnails
-* [x] Cache YT API Response
-  * [x] Get ALL videos of each channel
-  * [x] Get ALL video info of each video
-    * [x] View Count
-    * [x] Length / Duration
-    * [x] Like Count
-* [x] Fix YT Video order (latest by default...)
-* [x] List Page Styles
-  * [x] Fix video titles
-* [x] Single Video Page
-* [ ] Update Create form styles
-* [ ] List create page styles
-  * [ ] Channel cards...
-* [ ] List edit page
+* [ ] Update dependencies
+  * [x] Minor / Patch bump
+  * [ ] Major bump
+* [ ] Review PRs and issues
+* [ ] Create page form styles
+  * [ ] Channel card styles
+* [ ] List edit / update page
+* [ ] Update readme with tech stack
 
 # Upcoming
 
@@ -45,6 +29,30 @@
   - [ ] App?? - Vercel
 
 # Past
+
+## Several Days
+
+
+* [x] Update the List page styles
+* [x] Update DB schema  
+  * Last updated
+  * More metadata
+    * Include Channel Image
+    * Include Channel handle
+    * Number of subscribers
+    * Verified badges
+* [x] More robust YT API Response
+* [x] Lazy load embedded video and thumbnails
+* [x] Cache YT API Response
+  * [x] Get ALL videos of each channel
+  * [x] Get ALL video info of each video
+    * [x] View Count
+    * [x] Length / Duration
+    * [x] Like Count
+* [x] Fix YT Video order (latest by default...)
+* [x] List Page Styles
+  * [x] Fix video titles
+* [x] Single Video Page
 
 ## 2023-03-10
 

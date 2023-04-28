@@ -1,4 +1,4 @@
-import { youtube, youtube_v3 } from '@googleapis/youtube';
+import { youtube, type youtube_v3 } from '@googleapis/youtube';
 import { config } from '$/lib/config.server';
 import type { YouTubeMeta } from '@prisma/client';
 import redisClient from './redis';
