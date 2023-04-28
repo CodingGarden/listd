@@ -63,9 +63,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@auth/core": "^0.5.1",
-		"@auth/sveltekit": "^0.3.0",
-		"@googleapis/youtube": "^8.0.2",
+		"@auth/core": "^0.7.1",
+		"@auth/sveltekit": "^0.3.1",
+		"@googleapis/youtube": "^9.0.0",
 		"@next-auth/prisma-adapter": "^1.0.6",
 		"@prisma/client": "^4.13.0",
 		"@types/luxon": "^3.3.0",
