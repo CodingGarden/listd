@@ -12,6 +12,7 @@
 	export let channels: YouTubeChannelMetaAPIResponse[];
 	export let channelIds: Map<string, number>;
 
+	let hasSearched = false;
 	let loading = false;
 </script>
 
@@ -20,6 +21,7 @@
 	action="/create?/search"
 	use:enhance={() => {
 		loading = true;
+		hasSearched = true;
 		return ({ result }) => {
 			loading = false;
 			return applyAction(result);
@@ -36,18 +38,23 @@
 	</label>
 </form>
 <div class="my-4">
-	{#if loading}
-		<div class="grid place-content-center">
-			<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
-		</div>
-	{/if}
-	{#if form?.results}
-		<div class="max-h-96 overflow-y-auto" class:hidden={loading}>
-			{#each form.results as result}
-				<ChannelCard locale={data.locale} channel={result}>
-					<ChannelCardActions channel={result} bind:channels bind:channelIds />
-				</ChannelCard>
-			{/each}
-		</div>
-	{/if}
+	<div class="overflow-y-auto" class:h-96={hasSearched}>
+		{#if loading}
+			<div class="grid place-content-center">
+				<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+			</div>
+		{/if}
+		{#if form?.results}
+			<div class="h-full" class:hidden={loading}>
+				{#each form.results as result}
+					<ChannelCard locale={data.locale} channel={result}>
+						<ChannelCardActions channel={result} bind:channels bind:channelIds />
+					</ChannelCard>
+				{/each}
+			</div>
+		{:else}
+			<span class="my-4 block text-gray-400"
+				>Search for a channel above to add it to the list.</span>
+		{/if}
+	</div>
 </div>

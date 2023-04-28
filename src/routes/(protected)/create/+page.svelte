@@ -65,14 +65,16 @@
 	</label>
 	<span class="label">Channels</span>
 	{#if !channels.length}
-		<span class="block text-gray-400">Search for a channel below to add it to the list.</span>
+		<span class="block text-gray-400">No channels added.</span>
 	{:else}
-		<div class="grid max-h-96 grid-cols-2 overflow-y-auto">
-			{#each channels as channel}
-				<ChannelCard compact locale={data.locale} {channel}>
-					<ChannelCardActions {channel} bind:channels bind:channelIds />
-				</ChannelCard>
-			{/each}
+		<div class="max-h-96 overflow-y-auto">
+			<div class="grid grid-cols-2">
+				{#each channels as channel (channel.originId)}
+					<ChannelCard shouldFocus compact locale={data.locale} {channel}>
+						<ChannelCardActions {channel} bind:channels bind:channelIds />
+					</ChannelCard>
+				{/each}
+			</div>
 		</div>
 	{/if}
 	<select name="channelIds" multiple bind:value={channelIdList} class="hidden">
@@ -81,7 +83,7 @@
 		{/each}
 	</select>
 	<ChannelSearch {form} {data} bind:channels bind:channelIds />
-	<div class="flex justify-end">
+	<div class="my-4 flex justify-end">
 		<button class="btn variant-filled-secondary">{$LL.buttons.create()}</button>
 	</div>
 </form>

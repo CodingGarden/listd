@@ -3,11 +3,18 @@
 * [x] Update dependencies
   * [x] Minor / Patch bump
   * [x] Major bump
-* [ ] Review PRs and issues
-* [ ] Create page form styles
-  * [ ] Channel card styles
+* [x] Review PRs and issues
+* [x] Create page form styles
+  * [x] Channel card styles
 * [ ] List edit / update page
 * [ ] Update readme with tech stack
+* [ ] List create UX
+  * [ ] Only show channel avatar
+    * [ ] Click to expand
+      * [ ] Reveals channel name
+      * [ ] Reveals remove button
+    * [ ] Show name on hover
+  * [ ] 2 column layout on desktop
 
 # Upcoming
 
