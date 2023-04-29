@@ -82,6 +82,14 @@ npx prisma migrate dev
 
 View the database diagram [here](./prisma/ERD.md).
 
+#### Playwright Setup
+
+Ensure you have the Playwright executables installed to run tests:
+
+```bash
+npx playwright install
+```
+
 ### Getting Google OAuth API Credentials
 
 1. Visit the [Google Cloud Console](https://console.developers.google.com/apis/credentials)
