@@ -34,10 +34,10 @@ The project has a `docker-compose.yml` file ready to use if you have [Docker](ht
 
 You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
-move `.env.example` to `.env`
+copy `.env.example` to `.env`
 
 ```bash
- mv .env.example .env
+ cp .env.example .env
 ```
 
 #### `.env` variables for PostgreSQL
