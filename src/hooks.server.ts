@@ -50,12 +50,15 @@ const handleAuth = (async (...args) => {
 						id: event.locals.locale,
 					},
 				});
-				await prismaClient.userSettings.create({
+
+				const settings = await prismaClient.userSettings.create({
 					data: {
 						localeId: locale?.id ?? 'en-US',
 						userId: message.user.id,
 					},
 				});
+
+				message.user.settings = settings;
 			},
 		},
 	})(...args);
