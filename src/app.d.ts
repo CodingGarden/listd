@@ -7,7 +7,7 @@ declare global {
 	namespace App {
 		// interface Error {}
 		interface Locals {
-			session: Session;
+			session: Session | undefined;
 			locale: import('$lib/i18n/i18n-types.js').Locales;
 		}
 		// interface PageData {}

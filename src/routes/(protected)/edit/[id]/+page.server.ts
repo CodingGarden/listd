@@ -1,20 +1,30 @@
 import { ListItemType, Visibility } from '@prisma/client';
-import { fail } from '@sveltejs/kit';
+import { error as httpError, fail } from '@sveltejs/kit';
 import { LL, setLocale } from '$lib/i18n/i18n-svelte';
 import { get } from 'svelte/store';
 import { z, ZodError } from 'zod';
 import * as YouTubeAPI from '$lib/server/YouTubeAPI';
 import prismaClient from '$lib/db.server';
+import { getList } from '$/lib/server/queries';
 
-export async function load() {
+export async function load({ params, locals }) {
+	const { list, channelIds } = await getList(params.id, locals.session?.user?.id);
+	if (!list) {
+		setLocale(locals.locale);
+		const $LL = get(LL);
+		throw httpError(404, $LL.errors.notFound());
+	}
 	return {
+		list,
+		channelIds,
 		visibility: Visibility,
 		visibilities: Object.values(Visibility) as Visibility[],
 	};
 }
 
 export const actions = {
-	create: async (event) => {
+	// TODO: change to update
+	update: async (event) => {
 		const $LL = get(LL);
 		setLocale(event.locals.locale);
 		const ListCreateRequestSchema = z.object({
@@ -31,15 +41,26 @@ export const actions = {
 		try {
 			const { title, description, visibility, channelIds } =
 				await ListCreateRequestSchema.parseAsync(formDataObject);
-			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-			const { user } = event.locals.session!;
-			const insertedList = await prismaClient.list.create({
+			const { id: listId } = event.params;
+			const result = await prismaClient.list.updateMany({
+				where: {
+					id: listId,
+					userId: event.locals.session?.user?.id,
+				},
 				data: {
 					title,
 					description,
 					visibility,
-					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					userId: user!.id,
+				},
+			});
+
+			if (result.count === 0) {
+				return fail(404, { error: 'List not found.' });
+			}
+
+			await prismaClient.listItem.deleteMany({
+				where: {
+					listId,
 				},
 			});
 
@@ -71,7 +92,7 @@ export const actions = {
 					}
 					await prismaClient.listItem.create({
 						data: {
-							listId: insertedList.id,
+							listId,
 							listItemMetaId: existing.id,
 							name: existing.name,
 						},
@@ -82,7 +103,7 @@ export const actions = {
 
 			return {
 				success: true,
-				listId: insertedList.id,
+				listId,
 			};
 		} catch (e) {
 			const error = e as Error;
@@ -94,6 +115,7 @@ export const actions = {
 			return fail(400, { error: message });
 		}
 	},
+	// TODO: share this function with edit / create
 	search: async (event) => {
 		const formData = await event.request.formData();
 		const q = (formData.get('search') || '').toString();
