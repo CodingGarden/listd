@@ -2,23 +2,23 @@
 	import Seo from '$/routes/SEO.svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import ListForm from '../components/ListForm.svelte';
+	import ListForm from '$/routes/(protected)/components/ListForm.svelte';
 
 	export let data;
 	export let form;
 
 	$: if (form?.success) {
-		const url = `/list/${form.listId}`;
 		if (browser) {
+			const url = `/list/${form.listId}`;
 			goto(url);
 		}
 	}
 </script>
 
-<Seo title="Create a List" description="Create a List" />
+<Seo title="Edit a List" description="Edit a List" />
 <ListForm
-	list={undefined}
-	action="/create?/create"
+	action={`/edit/${data.list.id}?/update`}
+	list={data.list}
 	locale={data.locale}
 	results={form?.results}
 	error={form?.error} />

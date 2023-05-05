@@ -9,6 +9,7 @@ const en: BaseTranslation = {
 	message: 'Hello World',
 	buttons: {
 		create: 'Create',
+		update: 'Update',
 		logOut: 'Logout',
 		loginYouTube: 'Login with YouTube',
 	},

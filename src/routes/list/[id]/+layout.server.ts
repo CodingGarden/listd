@@ -1,29 +1,13 @@
 import { LL, setLocale } from '$/lib/i18n/i18n-svelte';
-import prismaClient from '$lib/db.server';
 import { error } from '@sveltejs/kit';
 import { get } from 'svelte/store';
 import * as YouTubeAPI from '$lib/server/YouTubeAPI';
+import { getList } from '$/lib/server/queries';
 
 export async function load({ params, locals }) {
 	try {
 		// TODO: handle visibility
-		const list = await prismaClient.list.findFirst({
-			where: {
-				id: params.id,
-			},
-			include: {
-				items: {
-					include: {
-						meta: {
-							include: {
-								youtubeMeta: true,
-							},
-						},
-					},
-				},
-			},
-		});
-		const channelIds = list?.items.map((item) => item.meta.originId) || [];
+		const { list, channelIds } = await getList(params.id);
 
 		if (list) {
 			return {
