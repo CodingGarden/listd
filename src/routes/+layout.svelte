@@ -1,16 +1,18 @@
 <script lang="ts">
+	import NavTrail from '$/routes/NavTrail.svelte';
+	import { setLocale } from '$lib/i18n/i18n-svelte.js';
+	import { seo } from '$lib/stores/SeoStore';
+	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
 	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
-	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
-	import { setLocale } from '$lib/i18n/i18n-svelte.js';
-	import NavTrail from '$/routes/NavTrail.svelte';
-	import type { LayoutData } from './$types.js';
+	import Seo from './SEO.svelte';
 
-	export let data: LayoutData;
+	export let data;
 	setLocale(data.locale);
 </script>
 
+<Seo title={$seo.title} description={$seo.description} />
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>
@@ -25,7 +27,7 @@
 	<!-- <svelte:fragment slot="pageHeader">Page Header</svelte:fragment> -->
 	<!-- Router Slot -->
 	<!-- TODO: use variable for container width -->
-	<div class="mx-auto w-80 max-w-sm pt-2">
+	<div class="w-full px-2 pt-2 md:px-4 lg:px-8">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->

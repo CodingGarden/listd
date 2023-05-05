@@ -127,6 +127,12 @@ git push
 Then, [create a pull request](https://github.com/CodingGarden/listd/pulls)
 from your fork to the `main` branch of the `listd` repository.
 
+## Server Environment Variables
+
+Server environment variables should only be accessed from [`'$lib/config.server.ts'`](./src/lib/config.server.ts) (do not import directly from `'$env/static/private'`).
+
+If you need access to a new environment variable, add it to the schema in [`'$lib/config.server.ts'`](./src/lib/config.server.ts).
+
 ## Code Style Guidelines
 
 In order to maintain consistent and readable code, this project adheres to certain code style guidelines. Please follow these guidelines when contributing to the project.

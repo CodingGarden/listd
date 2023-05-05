@@ -60,5 +60,7 @@ module.exports = {
 				prefixResolvedPathWithImportName: true,
 			},
 		],
+		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
+		'no-self-assign': 0,
 	},
 };
