@@ -35,6 +35,9 @@ module.exports = {
 		es2017: true,
 		node: true,
 	},
+	globals: {
+		NodeJS: true,
+	},
 	settings: {
 		'import/parsers': {
 			'@typescript-eslint/parser': ['.cjs', '.js', '.ts'],
