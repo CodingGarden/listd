@@ -19,7 +19,7 @@
 	};
 
 	let timeout: NodeJS.Timeout;
-	const handleKeyUp = (e: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }) => {
+	const updateFilter = (e: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }) => {
 		const { value } = e.target as HTMLInputElement;
 		clearTimeout(timeout);
 
@@ -61,7 +61,7 @@
 		</span>
 	{:then videos}
 		<div class="my-4">
-			<input on:keyup={handleKeyUp} class="input" />
+			<input on:keyup={updateFilter} class="input" />
 		</div>
 		<div
 			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
