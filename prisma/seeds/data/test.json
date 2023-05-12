@@ -1,0 +1,34 @@
+{
+	"user": {
+		"id": "225a4f47-3400-48d9-940a-8f783df4b269",
+		"name": "Coding Garden",
+		"email": "coding.garden.with.cj@gmail.com",
+		"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+	},
+	"userSettings": {
+		"id": "5c2eb837-bb51-4175-b054-c37d1cb40ad6",
+		"onboarded": false,
+		"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+		"localeId": "en-US"
+	},
+	"account": {
+		"id": "5c292cb2-281d-43b6-89b2-f9b61dcd2432",
+		"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+		"type": "oidc",
+		"provider": "google",
+		"providerAccountId": "117131308771673354735",
+		"refresh_token": null,
+		"access_token": null,
+		"expires_in": 0,
+		"token_type": "bearer",
+		"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+		"id_token": null,
+		"session_state": null
+	},
+	"session": {
+    "id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
+    "sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
+    "userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+		"expires": "2030-06-11T21:08:54.125Z"
+	}
+}

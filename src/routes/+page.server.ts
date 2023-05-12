@@ -12,5 +12,10 @@ export async function load({ locals }) {
 	}
 	return {
 		lists,
+		account: await prismaClient.account.findFirst({
+			where: {
+				userId: locals.session?.user?.id,
+			},
+		}),
 	};
 }
