@@ -1,15 +1,7 @@
 # Today
 
-* [x] Merge PRs
-* [x] Update dependencies
-* [ ] Testing todos:
-  * [ ] Fix tests on CI
-    * [ ] Docker / prisma test setup
-  * [ ] Configure e2e tests
-  * [ ] Configure unit tests
-  * [ ] Seed DB
-    * [ ] Generate user token during test (do not do oauth flow during test...)
-  * Anything else that comes up...
+* [ ] More integration tests
+* [ ] Configure unit tests
 
 # Upcoming
 
@@ -42,6 +34,15 @@
 
 # Past
 
+* [x] Merge PRs
+* [x] Update dependencies
+* [x] Testing todos:
+  * [x] Fix tests on CI
+    * [x] Docker / prisma test setup
+  * [x] Configure e2e tests
+  * [x] Seed DB
+    * [x] Generate user token during test (do not do oauth flow during test...)
+  * Anything else that comes up...
 * [x] Update dependencies
   * [x] Minor / Patch bump
   * [x] Major bump
