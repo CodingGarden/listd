@@ -1,11 +1,18 @@
 # Today
 
+* [x] Merge PRs
 * [x] Update dependencies
-  * [x] Minor / Patch bump
-  * [x] Major bump
-* [x] Review PRs and issues
-* [x] Create page form styles
-  * [x] Channel card styles
+* [ ] Testing todos:
+  * [ ] Fix tests on CI
+    * [ ] Docker / prisma test setup
+  * [ ] Configure e2e tests
+  * [ ] Configure unit tests
+  * [ ] Seed DB
+    * [ ] Generate user token during test (do not do oauth flow during test...)
+  * Anything else that comes up...
+
+# Upcoming
+
 * [ ] List edit / update page
 * [ ] Update readme with tech stack
 * [ ] List create UX
@@ -15,8 +22,6 @@
       * [ ] Reveals remove button
     * [ ] Show name on hover
   * [ ] 2 column layout on desktop
-
-# Upcoming
 
 ## TBD
 
@@ -37,9 +42,12 @@
 
 # Past
 
-## Several Days
-
-
+* [x] Update dependencies
+  * [x] Minor / Patch bump
+  * [x] Major bump
+* [x] Review PRs and issues
+* [x] Create page form styles
+  * [x] Channel card styles
 * [x] Update the List page styles
 * [x] Update DB schema  
   * Last updated
