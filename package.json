@@ -18,7 +18,7 @@
 		"format": "prettier --plugin-search-dir . --check .",
 		"lint:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format:fix": "prettier --plugin-search-dir . --write .",
-		"docker-up:test": "docker compose -f docker-compose.test.yml up -d --wait",
+		"docker-up:test": "docker compose -f docker-compose.test.yml up -d --wait --force-recreate",
 		"migrate:init": "prisma migrate dev --name init",
 		"docker-down:test": "docker compose -f docker-compose.test.yml down"
 	},
