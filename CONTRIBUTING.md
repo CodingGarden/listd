@@ -30,7 +30,7 @@ npm install
 
 This project uses [PostgreSQL](https://www.postgresql.org/) as its database.
 
-The project has a `docker-compose.yml` file ready to use if you have [Docker](https://www.docker.com/) installed.
+The project has a `docker-compose.dev.yml` file ready to use if you have [Docker](https://www.docker.com/) installed.
 
 You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
@@ -69,7 +69,7 @@ DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_N
 If you have [Docker](https://www.docker.com/) installed, you can use the following command to start a PostgreSQL container:
 
 ```bash
-docker-compose up -d
+docker-compose -f docker-compose.dev.yml up -d
 ```
 
 #### Prisma Setup
@@ -88,6 +88,12 @@ Ensure you have the Playwright executables installed to run tests:
 
 ```bash
 npx playwright install
+```
+
+If you are on a Mac, install coreutils:
+
+```bash
+brew install coreutils
 ```
 
 ### Getting Google OAuth API Credentials

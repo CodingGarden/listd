@@ -1,0 +1,11 @@
+version: '3.1'
+
+services:
+  db:
+    extends:
+      file: docker-compose.base.yml
+      service: db
+  redis:
+    extends:
+      file: docker-compose.base.yml
+      service: redis

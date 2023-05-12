@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  db:
+    extends:
+      file: docker-compose.base.yml
+      service: db
+    volumes:
+      - ./docker-data/db:/var/lib/postgresql/data
+  redis:
+    extends:
+      file: docker-compose.base.yml
+      service: redis
+    volumes:
+      - ./docker-data/redis:/data
