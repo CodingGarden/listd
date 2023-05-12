@@ -69,7 +69,7 @@ DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_N
 If you have [Docker](https://www.docker.com/) installed, you can use the following command to start a PostgreSQL container:
 
 ```bash
-docker-compose -f docker-compose.dev.yml up -d
+docker-compose -f docker-compose.dev.yml up -d --wait
 ```
 
 #### Prisma Setup
@@ -88,12 +88,6 @@ Ensure you have the Playwright executables installed to run tests:
 
 ```bash
 npx playwright install
-```
-
-If you are on a Mac, install coreutils:
-
-```bash
-brew install coreutils
 ```
 
 ### Getting Google OAuth API Credentials
