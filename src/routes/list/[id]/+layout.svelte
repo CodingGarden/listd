@@ -3,34 +3,37 @@
 	import YouTubeVideoEmbed from '$/lib/YouTubeVideoEmbed.svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
-	import type { YouTubeVideoAPIResponse } from '$/lib/server/YouTubeAPI.js';
+	import type { YouTubeVideoAPIResponse } from '$/lib/server/YouTubeAPI';
 
 	export let data;
 
 	let filter = '';
 
-	let allVideos: YouTubeVideoAPIResponse[] = [];
-	let filteredVideos: YouTubeVideoAPIResponse[] = [];
-	let filterTimeout: number;
+	const filterVideos = (videos: YouTubeVideoAPIResponse[], filterString = '') => {
+		if (filterString === '') return videos;
 
-	const filterChanged = () => {
-		if (filter) {
-			clearTimeout(filterTimeout);
-			filterTimeout = setTimeout(() => {
-				const filterRegexp = new RegExp(filter, 'i');
-				filteredVideos = allVideos.filter(
-					(video) => video.description.match(filterRegexp) || video.title.match(filterRegexp)
-				);
-			}, 500) as unknown as number;
-		} else {
-			filteredVideos = allVideos;
-		}
+		const filterRegexp = new RegExp(filterString, 'i');
+		return videos.filter(
+			(video) => video.description.match(filterRegexp) || video.title.match(filterRegexp)
+		);
 	};
 
-	data.streamed.videos.then((result) => {
-		allVideos = result;
-		filteredVideos = allVideos;
-	});
+	let timeout: NodeJS.Timeout;
+	const updateFilter = (e: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }) => {
+		const { value } = e.target as HTMLInputElement;
+		clearTimeout(timeout);
+
+		// immediately clear filter when input field is cleared
+		if (value === '') {
+			filter = value;
+			return;
+		}
+
+		// debounce filter
+		timeout = setTimeout(() => {
+			filter = value;
+		}, 500);
+	};
 </script>
 
 <slot />
@@ -56,13 +59,13 @@
 		<span class="grid w-full place-items-center p-4">
 			<ProgressRadial class="ml-2 h-8 w-8" stroke={100} />
 		</span>
-	{:then}
+	{:then videos}
 		<div class="my-4">
-			<input on:input={filterChanged} bind:value={filter} class="input" />
+			<input on:keyup={updateFilter} class="input" />
 		</div>
 		<div
 			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-			{#each filteredVideos as video}
+			{#each filterVideos(videos, filter) as video}
 				<YouTubeVideoEmbed
 					active={$page.params.videoid === video.videoId}
 					locale={data.locale}
