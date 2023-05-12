@@ -34,10 +34,10 @@ The project has a `docker-compose.yml` file ready to use if you have [Docker](ht
 
 You can also install Postgres on your local machine [directly](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) or use a cloud service.
 
-move `.env.example` to `.env`
+copy `.env.example` to `.env`
 
 ```bash
- mv .env.example .env
+ cp .env.example .env
 ```
 
 #### `.env` variables for PostgreSQL
@@ -81,6 +81,14 @@ npx prisma migrate dev
 ```
 
 View the database diagram [here](./prisma/ERD.md).
+
+#### Playwright Setup
+
+Ensure you have the Playwright executables installed to run tests:
+
+```bash
+npx playwright install
+```
 
 ### Getting Google OAuth API Credentials
 
