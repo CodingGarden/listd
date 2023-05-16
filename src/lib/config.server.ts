@@ -7,6 +7,8 @@ export const ServerConfigSchema = z.object({
 	AUTH_SECRET: z.string().trim().min(32),
 	GOOGLE_CLIENT_ID: z.string().trim().min(1),
 	GOOGLE_CLIENT_SECRET: z.string().trim().min(1),
+	GITHUB_CLIENT_ID: z.string().trim().min(1),
+	GITHUB_CLIENT_SECRET: z.string().trim().min(1),
 	DB_HOST: z.string().trim().min(1),
 	DB_USER: z.string().trim().min(1),
 	DB_PASSWORD: z.string().trim().min(1),

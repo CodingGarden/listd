@@ -44,11 +44,26 @@
 				signIn('google');
 			}}
 			disabled={loading}
+			data-testid="google-btn"
 			class="btn variant-filled-primary cursor-pointer">
 			{#if loading}
 				{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 			{:else}
 				{$LL.buttons.loginYouTube()}
+			{/if}
+		</button>
+		<button
+			on:click|once={function loginClick() {
+				loading = true;
+				signIn('github');
+			}}
+			disabled={loading}
+			data-testid="github-btn"
+			class="btn variant-filled-primary cursor-pointer">
+			{#if loading}
+				{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
+			{:else}
+				{$LL.buttons.loginGitHub()}
 			{/if}
 		</button>
 	{/if}

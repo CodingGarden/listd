@@ -12,6 +12,7 @@ const en: BaseTranslation = {
 		update: 'Update',
 		logOut: 'Logout',
 		loginYouTube: 'Login with YouTube',
+		loginGitHub: 'Login with GitHub',
 	},
 	labels: {
 		title: 'Title',

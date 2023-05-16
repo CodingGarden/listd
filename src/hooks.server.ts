@@ -4,6 +4,7 @@ import { initAcceptLanguageHeaderDetector } from 'typesafe-i18n/detectors';
 import { detectLocale } from '$lib/i18n/i18n-util.js';
 import { SvelteKitAuth } from '@auth/sveltekit';
 import Google from '@auth/core/providers/google';
+import GitHub from '@auth/core/providers/github';
 import PrismaAdapter from '$lib/prisma/client';
 import { config } from '$/lib/config.server';
 import prismaClient from '$/lib/db.server';
@@ -28,6 +29,12 @@ const handleAuth = (async (...args) => {
 			Google({
 				clientId: config.GOOGLE_CLIENT_ID,
 				clientSecret: config.GOOGLE_CLIENT_SECRET,
+			}),
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
+			GitHub({
+				clientId: config.GITHUB_CLIENT_ID,
+				clientSecret: config.GITHUB_CLIENT_SECRET,
 			}),
 		],
 		callbacks: {
