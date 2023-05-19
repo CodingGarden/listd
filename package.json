@@ -11,8 +11,8 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest run",
-    "test:e2e": "npm run docker-down:test && npm run docker-up:test && npm run migrate:init && cross-env NODE_ENV=test prisma db seed && npx playwright install && playwright test; npm run docker-down:test",
-    "test:e2e:debug": "npm run docker-down:test && npm run docker-up:test && npm run migrate:init && cross-env NODE_ENV=test prisma db seed && npx playwright install && playwright test --debug; npm run docker-down:test",
+		"test:e2e": "npm run docker-down:test && npm run docker-up:test && npm run migrate:init && cross-env NODE_ENV=test prisma db seed && npx playwright install && cross-env NODE_ENV=test playwright test; npm run docker-down:test",
+		"test:e2e:debug": "npm run docker-down:test && npm run docker-up:test && npm run migrate:init && cross-env NODE_ENV=test prisma db seed && npx playwright install && cross-env NODE_ENV=test playwright test --debug; npm run docker-down:test",
 		"lint": "eslint --ext .js,.cjs,.ts,.svelte .",
 		"typecheck": "npm run check",
 		"format": "prettier --plugin-search-dir . --check .",
@@ -68,6 +68,7 @@
 		"typescript": "^5.0.4",
 		"typescript-svelte-plugin": "^0.3.25",
 		"vite": "^4.3.8",
+		"vite-plugin-istanbul": "^4.0.1",
 		"vitest": "^0.31.1"
 	},
 	"type": "module",

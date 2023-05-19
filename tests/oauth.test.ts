@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './baseFixtures.ts';
 
 test('login button redirects to google', async ({ page }) => {
 	await page.goto('/');

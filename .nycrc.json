@@ -1,0 +1,14 @@
+{
+  "all": true,
+  "reporter": "html",
+  "report-dir": "./coverage",
+  "temp-dir": ".nyc_output",
+  "extension": [".ts", ".js", ".svelte"],
+  "include-all-sources": true,
+  "include": ["src/**"],
+  "exclude": [
+    "src/lib/i18n/**/*",
+    "**/*.test.js",
+    "**/*.test.ts"
+  ]
+}

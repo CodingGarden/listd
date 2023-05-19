@@ -47,6 +47,9 @@ const en: BaseTranslation = {
 			},
 		},
 		onboarding: {
+			buttons: {
+				letsGo: 'Lets Go!',
+			},
 			labels: {
 				username: 'Username',
 				uploadFile: 'Upload File',
