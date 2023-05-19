@@ -13,7 +13,7 @@ generator erd {
 }
 
 model User {
-  id                   String              @id @default(cuid()) @db.Uuid
+  id                   String              @id @default(cuid()) 
   createdAt            DateTime            @default(now())
   updatedAt            DateTime            @updatedAt
   name                 String?
@@ -25,7 +25,7 @@ model User {
   settings             UserSettings?
   reports              CoreValueReport[]
   deploymentLocation   DeploymentLocation? @relation(fields: [deploymentLocationId], references: [id])
-  deploymentLocationId String?     @unique @db.Uuid
+  deploymentLocationId String?             @unique 
 
   role        Role          @default(User)
   permissions Permission[]
@@ -33,8 +33,6 @@ model User {
   SearchIndex SearchIndex[]
   DataExport  DataExport[]
 }
-
-
 
 enum Role {
   User
@@ -62,11 +60,11 @@ enum ColorScheme {
 }
 
 model UserSettings {
-  id          String      @id @default(cuid()) @db.Uuid
+  id          String      @id @default(cuid()) 
   onboarded   Boolean     @default(false)
   colorScheme ColorScheme @default(System)
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String      @unique @db.Uuid
+  userId      String      @unique 
   locale      Locale      @relation(fields: [localeId], references: [id], onDelete: Cascade)
   localeId    String      @db.VarChar(15)
 }
@@ -84,7 +82,7 @@ model Locale {
 
 model Account {
   id                String  @id @default(cuid())
-  userId            String  @unique @db.Uuid
+  userId            String  @unique 
   type              String
   provider          String
   providerAccountId String
@@ -103,7 +101,7 @@ model Account {
 model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       String   @unique @db.Uuid
+  userId       String   @unique 
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -123,7 +121,7 @@ enum Visibility {
 }
 
 model CoreValue {
-  id          String            @id @default(cuid()) @db.Uuid
+  id          String            @id @default(cuid()) 
   name        String
   description String
   createdAt   DateTime          @default(now())
@@ -132,30 +130,29 @@ model CoreValue {
 }
 
 model CoreValueReport {
-  id          String    @id @default(cuid()) @db.Uuid
+  id          String    @id @default(cuid()) 
   user        User      @relation(fields: [userId], references: [id])
-  userId      String    @db.Uuid
+  userId      String    
   coreValue   CoreValue @relation(fields: [coreValueId], references: [id])
-  coreValueId String    @db.Uuid
+  coreValueId String    
   date        DateTime
   description String
 }
 
-
 model DeploymentLocation {
-  id    String         @id @default(cuid()) @db.Uuid
+  id    String         @id @default(cuid()) 
   state String
   lga   String
   ppa   String
-  User  User[]
+  users User[]
 
   @@unique([state, lga, ppa])
 }
 
 model AuditLog {
-  id        String   @id @default(cuid()) @db.Uuid
+  id        String   @id @default(cuid()) 
   user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique @db.Uuid
+  userId    String   @unique 
   action    String
   object    String
   oldValue  String?
@@ -168,7 +165,7 @@ model SearchIndex {
   field     String
   value     String
   user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique @db.Uuid
+  userId    String   @unique 
   timestamp DateTime @default(now())
 }
 
@@ -178,6 +175,192 @@ model DataExport {
   filename  String
   data      String
   user      User     @relation(fields: [userId], references: [id])
-  userId    String   @unique @db.Uuid
+  userId    String   @unique 
   timestamp DateTime @default(now())
 }
+
+
+
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+// generator erd {
+//   provider = "prisma-erd-generator-markdown"
+//   output   = "./ERD.md"
+// }
+
+// model User {
+//   id                   String              @id @default(cuid()) @db.Uuid
+//   createdAt            DateTime            @default(now())
+//   updatedAt            DateTime            @updatedAt
+//   name                 String?
+//   email                String?             @unique
+//   emailVerified        DateTime?
+//   image                String?
+//   accounts             Account[]
+//   sessions             Session[]
+//   settings             UserSettings?
+//   reports              CoreValueReport[]
+//   deploymentLocation   DeploymentLocation? @relation(fields: [deploymentLocationId], references: [id])
+//   deploymentLocationId String?     @unique @db.Uuid         
+
+//   role        Role          @default(User)
+//   permissions Permission[]
+//   AuditLog    AuditLog[]
+//   SearchIndex SearchIndex[]
+//   DataExport  DataExport[]
+// }
+
+
+
+// enum Role {
+//   User
+//   Administrator
+//   Moderator
+// }
+
+// enum Permission {
+//   CreateUser
+//   EditUser
+//   DeleteUser
+//   CreateAccount
+//   EditAccount
+//   DeleteAccount
+//   CreateCoreValue
+//   EditCoreValue
+//   DeleteCoreValue
+//   SubmitCoreValueReport
+// }
+
+// enum ColorScheme {
+//   System
+//   Dark
+//   Light
+// }
+
+// model UserSettings {
+//   id          String      @id @default(cuid()) @db.Uuid
+//   onboarded   Boolean     @default(false)
+//   colorScheme ColorScheme @default(System)
+//   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId      String      @unique @db.Uuid
+//   locale      Locale      @relation(fields: [localeId], references: [id], onDelete: Cascade)
+//   localeId    String      @db.VarChar(15)
+// }
+
+// model Locale {
+//   id           String         @unique @db.VarChar(15)
+//   languageCode String
+//   countryCode  String?
+//   script       String?
+//   formalName   String
+//   nativeName   String
+//   commonName   String?
+//   UserSettings UserSettings[]
+// }
+
+// model Account {
+//   id                String  @id @default(cuid())
+//   userId            String  @unique @db.Uuid  
+//   type              String
+//   provider          String
+//   providerAccountId String
+//   refresh_token     String? @map("refreshToken") @db.Text
+//   access_token      String? @map("accessToken") @db.Text
+//   expires_in        Int?    @map("expiresIn")
+//   token_type        String? @map("tokenType")
+//   scope             String?
+//   id_token          String? @map("idToken") @db.Text
+//   session_state     String? @map("sessionState")
+//   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+//   @@unique([provider, providerAccountId])
+// }
+
+// model Session {
+//   id           String   @id @default(cuid())
+//   sessionToken String   @unique
+//   userId       String   @unique @db.Uuid   
+//   expires      DateTime
+//   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+// }
+
+// model VerificationToken {
+//   identifier String
+//   token      String   @unique
+//   expires    DateTime
+
+//   @@unique([identifier, token])
+// }
+
+// enum Visibility {
+//   Public
+//   Unlisted
+//   Private
+// }
+
+// model CoreValue {
+//   id          String            @id @default(cuid()) @db.Uuid
+//   name        String
+//   description String
+//   createdAt   DateTime          @default(now())
+//   updatedAt   DateTime          @updatedAt
+//   reports     CoreValueReport[]
+// }
+
+// model CoreValueReport {
+//   id          String    @id @default(cuid()) @db.Uuid
+//   user        User      @relation(fields: [userId], references: [id])
+//   userId      String    @db.Uuid
+//   coreValue   CoreValue @relation(fields: [coreValueId], references: [id])
+//   coreValueId String    @db.Uuid
+//   date        DateTime
+//   description String
+// }
+
+
+// model DeploymentLocation {
+//   id    String         @id @default(cuid()) @db.Uuid
+//   state String
+//   lga   String
+//   ppa   String
+//   User  User[]
+
+//   @@unique([state, lga, ppa])
+// }
+
+// model AuditLog {
+//   id        String   @id @default(cuid()) @db.Uuid
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    String   @unique @db.Uuid  
+//   action    String
+//   object    String
+//   oldValue  String?
+//   newValue  String?
+//   timestamp DateTime @default(now())
+// }
+
+// model SearchIndex {
+//   id        String   @id @default(cuid())
+//   field     String
+//   value     String
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    String   @unique @db.Uuid
+//   timestamp DateTime @default(now())
+// }
+
+// model DataExport {
+//   id        String   @id @default(cuid())
+//   fileType  String
+//   filename  String
+//   data      String
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    String   @unique @db.Uuid   
+//   timestamp DateTime @default(now())
+// }

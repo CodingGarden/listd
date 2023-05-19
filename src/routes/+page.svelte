@@ -67,7 +67,7 @@
 			{#if loading}
 				{$LL.messages.pleaseWait()} <ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 			{:else}
-				{$LL.buttons.loginYouTube()}
+				{$LL.buttons.login()}
 			{/if}
 		</button>
 	{/if}
