@@ -13,17 +13,46 @@ generator erd {
 }
 
 model User {
-  id            String        @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  createdAt     DateTime      @default(now())
-  updatedAt     DateTime      @updatedAt
-  name          String?
-  email         String?       @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  lists         List[]
-  settings      UserSettings?
+  id                   String              @id @default(cuid()) @db.Uuid
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+  name                 String?
+  email                String?             @unique
+  emailVerified        DateTime?
+  image                String?
+  accounts             Account[]
+  sessions             Session[]
+  settings             UserSettings?
+  reports              CoreValueReport[]
+  deploymentLocation   DeploymentLocation? @relation(fields: [deploymentLocationId], references: [id])
+  deploymentLocationId String?     @unique @db.Uuid
+
+  role        Role          @default(User)
+  permissions Permission[]
+  AuditLog    AuditLog[]
+  SearchIndex SearchIndex[]
+  DataExport  DataExport[]
+}
+
+
+
+enum Role {
+  User
+  Administrator
+  Moderator
+}
+
+enum Permission {
+  CreateUser
+  EditUser
+  DeleteUser
+  CreateAccount
+  EditAccount
+  DeleteAccount
+  CreateCoreValue
+  EditCoreValue
+  DeleteCoreValue
+  SubmitCoreValueReport
 }
 
 enum ColorScheme {
@@ -33,7 +62,7 @@ enum ColorScheme {
 }
 
 model UserSettings {
-  id          String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id          String      @id @default(cuid()) @db.Uuid
   onboarded   Boolean     @default(false)
   colorScheme ColorScheme @default(System)
   user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -54,8 +83,8 @@ model Locale {
 }
 
 model Account {
-  id                String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  userId            String  @db.Uuid
+  id                String  @id @default(cuid())
+  userId            String  @unique @db.Uuid
   type              String
   provider          String
   providerAccountId String
@@ -72,9 +101,9 @@ model Account {
 }
 
 model Session {
-  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id           String   @id @default(cuid())
   sessionToken String   @unique
-  userId       String   @db.Uuid
+  userId       String   @unique @db.Uuid
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -93,59 +122,62 @@ enum Visibility {
   Private
 }
 
-model List {
-  id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  title       String
-  description String?
-  visibility  Visibility
-  creator     User       @relation(fields: [userId], references: [id])
-  userId      String     @db.Uuid
-  items       ListItem[]
-  createdAt   DateTime   @default(now())
-  updatedAt   DateTime   @updatedAt
+model CoreValue {
+  id          String            @id @default(cuid()) @db.Uuid
+  name        String
+  description String
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  reports     CoreValueReport[]
 }
 
-enum ListItemType {
-  YouTubeChannel
+model CoreValueReport {
+  id          String    @id @default(cuid()) @db.Uuid
+  user        User      @relation(fields: [userId], references: [id])
+  userId      String    @db.Uuid
+  coreValue   CoreValue @relation(fields: [coreValueId], references: [id])
+  coreValueId String    @db.Uuid
+  date        DateTime
+  description String
 }
 
-model ListItem {
-  id             Int          @id @default(autoincrement())
-  name           String
-  description    String?
-  meta           ListItemMeta @relation(fields: [listItemMetaId], references: [id])
-  list           List         @relation(fields: [listId], references: [id])
-  listId         String       @db.Uuid
-  listItemMetaId String       @db.Uuid
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+
+model DeploymentLocation {
+  id    String         @id @default(cuid()) @db.Uuid
+  state String
+  lga   String
+  ppa   String
+  User  User[]
+
+  @@unique([state, lga, ppa])
 }
 
-model ListItemMeta {
-  id                  String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name                String
-  originId            String
-  imageUrl            String
-  type                ListItemType
-  youtubeMeta         YouTubeMeta? @relation(fields: [youTubeMetaOriginId], references: [originId])
-  listItem            ListItem[]
-  createdAt           DateTime     @default(now())
-  updatedAt           DateTime     @updatedAt
-  youTubeMetaOriginId String?
-
-  @@unique([originId, type])
+model AuditLog {
+  id        String   @id @default(cuid()) @db.Uuid
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @db.Uuid
+  action    String
+  object    String
+  oldValue  String?
+  newValue  String?
+  timestamp DateTime @default(now())
 }
 
-model YouTubeMeta {
-  originId        String         @unique
-  name            String
-  description     String
-  subscriberCount Int
-  avatarUrl       String
-  bannerUrl       String?
-  customUrl       String
-  isVerified      Boolean        @default(false)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  ListItemMeta    ListItemMeta[]
+model SearchIndex {
+  id        String   @id @default(cuid())
+  field     String
+  value     String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @db.Uuid
+  timestamp DateTime @default(now())
+}
+
+model DataExport {
+  id        String   @id @default(cuid())
+  fileType  String
+  filename  String
+  data      String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique @db.Uuid
+  timestamp DateTime @default(now())
 }

@@ -1,19 +1,19 @@
 # Today
 
-* [ ] More integration tests
-* [ ] Configure unit tests
+- [ ] More integration tests
+- [ ] Configure unit tests
 
 # Upcoming
 
-* [ ] List edit / update page
-* [ ] Update readme with tech stack
-* [ ] List create UX
-  * [ ] Only show channel avatar
-    * [ ] Click to expand
-      * [ ] Reveals channel name
-      * [ ] Reveals remove button
-    * [ ] Show name on hover
-  * [ ] 2 column layout on desktop
+- [ ] List edit / update page
+- [ ] Update readme with tech stack
+- [ ] List create UX
+  - [ ] Only show channel avatar
+    - [ ] Click to expand
+      - [ ] Reveals channel name
+      - [ ] Reveals remove button
+    - [ ] Show name on hover
+  - [ ] 2 column layout on desktop
 
 ## TBD
 
@@ -34,41 +34,41 @@
 
 # Past
 
-* [x] Merge PRs
-* [x] Update dependencies
-* [x] Testing todos:
-  * [x] Fix tests on CI
-    * [x] Docker / prisma test setup
-  * [x] Configure e2e tests
-  * [x] Seed DB
-    * [x] Generate user token during test (do not do oauth flow during test...)
-  * Anything else that comes up...
-* [x] Update dependencies
-  * [x] Minor / Patch bump
-  * [x] Major bump
-* [x] Review PRs and issues
-* [x] Create page form styles
-  * [x] Channel card styles
-* [x] Update the List page styles
-* [x] Update DB schema  
-  * Last updated
-  * More metadata
-    * Include Channel Image
-    * Include Channel handle
-    * Number of subscribers
-    * Verified badges
-* [x] More robust YT API Response
-* [x] Lazy load embedded video and thumbnails
-* [x] Cache YT API Response
-  * [x] Get ALL videos of each channel
-  * [x] Get ALL video info of each video
-    * [x] View Count
-    * [x] Length / Duration
-    * [x] Like Count
-* [x] Fix YT Video order (latest by default...)
-* [x] List Page Styles
-  * [x] Fix video titles
-* [x] Single Video Page
+- [x] Merge PRs
+- [x] Update dependencies
+- [x] Testing todos:
+  - [x] Fix tests on CI
+    - [x] Docker / prisma test setup
+  - [x] Configure e2e tests
+  - [x] Seed DB
+    - [x] Generate user token during test (do not do oauth flow during test...)
+  - Anything else that comes up...
+- [x] Update dependencies
+  - [x] Minor / Patch bump
+  - [x] Major bump
+- [x] Review PRs and issues
+- [x] Create page form styles
+  - [x] Channel card styles
+- [x] Update the List page styles
+- [x] Update DB schema
+  - Last updated
+  - More metadata
+    - Include Channel Image
+    - Include Channel handle
+    - Number of subscribers
+    - Verified badges
+- [x] More robust YT API Response
+- [x] Lazy load embedded video and thumbnails
+- [x] Cache YT API Response
+  - [x] Get ALL videos of each channel
+  - [x] Get ALL video info of each video
+    - [x] View Count
+    - [x] Length / Duration
+    - [x] Like Count
+- [x] Fix YT Video order (latest by default...)
+- [x] List Page Styles
+  - [x] Fix video titles
+- [x] Single Video Page
 
 ## 2023-03-10
 
@@ -76,8 +76,8 @@
 - [x] Upgrade Skeleton UI
 - [x] Wireframe create list page
 - [x] Create list page
-  * [x] Set title
-  * [x] Set Descriptio
+  - [x] Set title
+  - [x] Set Descriptio
 
 ## 2023-02-03
 

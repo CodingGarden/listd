@@ -17,9 +17,11 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"plugins": [{
-			"name": "typescript-svelte-plugin"
-		}]
+		"plugins": [
+			{
+				"name": "typescript-svelte-plugin"
+			}
+		]
 	},
 	"include": [
 		"./.svelte-kit/ambient.d.ts",

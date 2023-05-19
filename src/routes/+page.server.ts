@@ -1,21 +1,13 @@
 import prismaClient from '$lib/db.server';
-import type { List } from '@prisma/client';
+import type { CoreValue } from '@prisma/client';
 
 export async function load({ locals }) {
-	let lists: List[] = [];
+	let coreValues: CoreValue[] = [];
 	if (locals.session?.user) {
-		lists = await prismaClient.list.findMany({
-			where: {
-				userId: locals.session.user.id,
-			},
-		});
+		coreValues = await prismaClient.coreValue.findMany();
 	}
+
 	return {
-		lists,
-		account: await prismaClient.account.findFirst({
-			where: {
-				userId: locals.session?.user?.id,
-			},
-		}),
+		coreValues,
 	};
 }

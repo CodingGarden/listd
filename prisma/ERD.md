@@ -1,5 +1,22 @@
 ```mermaid
 erDiagram
+	Role {
+		value User
+		value Administrator
+		value Moderator
+	}
+	Permission {
+		value CreateUser
+		value EditUser
+		value DeleteUser
+		value CreateAccount
+		value EditAccount
+		value DeleteAccount
+		value CreateCoreValue
+		value EditCoreValue
+		value DeleteCoreValue
+		value SubmitCoreValueReport
+	}
 	ColorScheme {
 		value System
 		value Dark
@@ -10,20 +27,20 @@ erDiagram
 		value Unlisted
 		value Private
 	}
-	ListItemType {
-		value YouTubeChannel
-	}
 	User {
-		String id PK  "dbgenerated(gen_random_uuid())"
+		String id PK  "cuid()"
 		DateTime createdAt  "now()"
 		DateTime updatedAt
 		String name  "nullable"
 		String email  "nullable"
 		DateTime emailVerified  "nullable"
 		String image  "nullable"
+		String deploymentLocationId FK  "nullable"
+		Role role "User"
+		Permission permissions
 	}
 	UserSettings {
-		String id PK  "dbgenerated(gen_random_uuid())"
+		String id PK  "cuid()"
 		Boolean onboarded
 		ColorScheme colorScheme "System"
 		String userId FK
@@ -39,7 +56,7 @@ erDiagram
 		String commonName  "nullable"
 	}
 	Account {
-		String id PK  "dbgenerated(gen_random_uuid())"
+		String id PK  "cuid()"
 		String userId FK
 		String type
 		String provider
@@ -53,7 +70,7 @@ erDiagram
 		String sessionState  "nullable"
 	}
 	Session {
-		String id PK  "dbgenerated(gen_random_uuid())"
+		String id PK  "cuid()"
 		String sessionToken
 		String userId FK
 		DateTime expires
@@ -63,57 +80,63 @@ erDiagram
 		String token
 		DateTime expires
 	}
-	List {
-		String id PK  "dbgenerated(gen_random_uuid())"
-		String title
-		String description  "nullable"
-		Visibility visibility
-		String userId FK
-		DateTime createdAt  "now()"
-		DateTime updatedAt
-	}
-	ListItem {
-		Int id PK  "autoincrement()"
-		String name
-		String description  "nullable"
-		String listId FK
-		String listItemMetaId FK
-		DateTime createdAt  "now()"
-		DateTime updatedAt
-	}
-	ListItemMeta {
-		String id PK  "dbgenerated(gen_random_uuid())"
-		String name
-		String originId
-		String imageUrl
-		ListItemType type
-		DateTime createdAt  "now()"
-		DateTime updatedAt
-		String youTubeMetaOriginId FK  "nullable"
-	}
-	YouTubeMeta {
-		String originId
+	CoreValue {
+		String id PK  "cuid()"
 		String name
 		String description
-		Int subscriberCount
-		String avatarUrl
-		String bannerUrl  "nullable"
-		String customUrl
-		Boolean isVerified
 		DateTime createdAt  "now()"
 		DateTime updatedAt
 	}
+	CoreValueReport {
+		String id PK  "cuid()"
+		String userId FK
+		String coreValueId FK
+		DateTime date
+		String description
+	}
+	DeploymentLocation {
+		String id PK  "cuid()"
+		String state
+		String lga
+		String ppa
+	}
+	AuditLog {
+		String id PK  "cuid()"
+		String userId FK
+		String action
+		String object
+		String oldValue  "nullable"
+		String newValue  "nullable"
+		DateTime timestamp  "now()"
+	}
+	SearchIndex {
+		String id PK  "cuid()"
+		String field
+		String value
+		String userId FK
+		DateTime timestamp  "now()"
+	}
+	DataExport {
+		String id PK  "cuid()"
+		String fileType
+		String filename
+		String data
+		String userId FK
+		DateTime timestamp  "now()"
+	}
 	User }|--|{ UserSettings : settings
+	User ||--|| DeploymentLocation : deploymentLocation
+	User }o--|| Role : "enum:role"
+	User }o--|| Permission : "enum:permissions"
 	UserSettings }|--|{ User : user
 	UserSettings }o--|| Locale : locale
 	UserSettings }o--|| ColorScheme : "enum:colorScheme"
-	Account }o--|| User : user
-	Session }o--|| User : user
-	List }o--|| User : creator
-	List }o--|| Visibility : "enum:visibility"
-	ListItem }o--|| ListItemMeta : meta
-	ListItem }o--|| List : list
-	ListItemMeta }o--|| YouTubeMeta : youtubeMeta
-	ListItemMeta }o--|| ListItemType : "enum:type"
+	Account ||--|| User : user
+	Session ||--|| User : user
+	CoreValueReport }o--|| User : user
+	CoreValueReport }o--|| CoreValue : coreValue
+	AuditLog ||--|| User : user
+	SearchIndex ||--|| User : user
+	DataExport ||--|| User : user
 
 ```
