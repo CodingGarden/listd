@@ -1,7 +1,5 @@
 import type { BrowserContext } from '@playwright/test';
-// TODO: use LL after import extensions added everywhere..
-// import { get } from 'svelte/store';
-// import { LL } from '../src/lib/i18n/i18n-svelte';
+import { L } from '../src/lib/i18n/i18n-node';
 import data from '../prisma/seeds/data/test.json' assert { type: 'json' };
 
 export function loginTestUser(context: BrowserContext) {
@@ -16,4 +14,4 @@ export function loginTestUser(context: BrowserContext) {
 	]);
 }
 
-// export const $LL = get(LL);
+export { L };

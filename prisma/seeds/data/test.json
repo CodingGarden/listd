@@ -26,9 +26,76 @@
 		"session_state": null
 	},
 	"session": {
-    "id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
-    "sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
-    "userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+		"id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
+		"sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
+		"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
 		"expires": "2030-06-11T21:08:54.125Z"
-	}
+	},
+	"users": [{
+		"user": {
+			"id": "225a4f47-3400-48d9-940a-8f783df4b269",
+			"name": "Coding Garden",
+			"email": "coding.garden.with.cj@gmail.com",
+			"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+		},
+		"userSettings": {
+			"id": "5c2eb837-bb51-4175-b054-c37d1cb40ad6",
+			"onboarded": false,
+			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+			"localeId": "en-US"
+		},
+		"account": {
+			"id": "5c292cb2-281d-43b6-89b2-f9b61dcd2432",
+			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+			"type": "oidc",
+			"provider": "google",
+			"providerAccountId": "117131308771673354735",
+			"refresh_token": null,
+			"access_token": null,
+			"expires_in": 0,
+			"token_type": "bearer",
+			"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+			"id_token": null,
+			"session_state": null
+		},
+		"session": {
+			"id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
+			"sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
+			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+			"expires": "2030-06-11T21:08:54.125Z"
+		}
+	}, {
+		"user": {
+			"id": "fc57d839-cfba-4076-9dd5-1def7964b037",
+			"name": "Coding Garden",
+			"email": "coding.garden.with.cj2@gmail.com",
+			"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+		},
+		"userSettings": {
+			"id": "83810d2a-8014-46c8-a482-b8d8f91b842c",
+			"onboarded": false,
+			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+			"localeId": "en-US"
+		},
+		"account": {
+			"id": "0c39442f-105a-4e20-9e73-5da3636e4180",
+			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+			"type": "oidc",
+			"provider": "google",
+			"providerAccountId": "117131308771673354735",
+			"refresh_token": null,
+			"access_token": null,
+			"expires_in": 0,
+			"token_type": "bearer",
+			"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+			"id_token": null,
+			"session_state": null
+		},
+		"session": {
+			"id": "d95a2ca5-7b78-4193-a74b-549dd65bd876",
+			"sessionToken": "4454f8d8-6296-4860-8330-9591f17bc67a",
+			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+			"expires": "2030-06-11T21:08:54.125Z"
+		}
+	}]
 }
