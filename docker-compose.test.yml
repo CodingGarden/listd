@@ -2,17 +2,26 @@ version: '3.1'
 
 services:
   db-test:
-    networks:
-      test: {}
     extends:
       file: docker-compose.base.yml
       service: db
   redis-test:
-    networks:
-      test: {}
     extends:
       file: docker-compose.base.yml
       service: redis
-
-networks:
-  test: {}
+  app-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    env_file: .env.test
+    depends_on:
+      db-test:
+        condition: service_healthy
+      redis-test:
+        condition: service_healthy
+    command: >
+      sh -c "dotenv -e .env.test -- npm run migrate:init && \
+        dotenv -e .env.test -- npx prisma db seed && \
+        dotenv -e .env.test -- npx prisma generate && \
+        dotenv -e .env.test -- npm run build && \
+        dotenv -e .env.test -- npx playwright test"

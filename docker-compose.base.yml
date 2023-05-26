@@ -8,18 +8,14 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_NAME}
-    ports:
-      - ${DB_PORT}:5432
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
       interval: 1s
       timeout: 3s
       retries: 30
   redis:
     image: redis:7
     restart: always
-    ports:
-      - ${REDIS_PORT}:6379
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 1s
