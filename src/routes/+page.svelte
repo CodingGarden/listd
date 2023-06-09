@@ -26,7 +26,7 @@
 			>{$LL.buttons.create()}</a>
 		<ul class="list-nav mt-4">
 			{#each data.lists as list}
-				<li>
+				<li class="list">
 					<a href={`/list/${list.id}`}>
 						<span class="flex-auto">
 							<dt>{list.title}</dt>

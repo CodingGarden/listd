@@ -33,6 +33,7 @@
 		"./tests/**/*.svelte",
 		"./prisma/**/*.ts",
 		"./types/**/*.ts",
+		"./scripts/**/*.ts",
 		"*.cjs",
 		".*.cjs",
 		"*.js",

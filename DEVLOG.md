@@ -1,7 +1,28 @@
 # Today
 
+* [x] Containerize tests
 * [ ] More integration tests
+  * [x] Run tests / containers while dev containers are still running
+  * [x] Seed DB with unique users for each type of test
+  * [x] TODO: make a watch specific config
+    * [x] Watch for only test updates
+  * [ ] Tests:
+    * [x] Search for YT channels
+    * [x] Add YT channel to List
+    * [x] Create List
+    * [-] View List
+      * [ ] View individual List
+    * [ ] Edit List
+    * [ ] Navigating Lists
+    * [ ] Update contributing guide...
+      * [ ] Running tests in watch mode...
+      * [ ] Debugging tests in watch mode...
+      * [ ] Exporting data to be seeded for tests
+    * [ ] Coverage Reports
+      * [ ] Generate outside container (volume)
 * [ ] Configure unit tests
+* [ ] Allow "debug" mode for e2e test
+  * [ ] quicker iteration without starting from scratch everytime
 
 # Upcoming
 
@@ -14,7 +35,6 @@
       * [ ] Reveals remove button
     * [ ] Show name on hover
   * [ ] 2 column layout on desktop
-
 ## TBD
 
 - [ ] Deploy???

@@ -1,5 +1,5 @@
 version: '3.1'
-name: listd-test
+name: listd-test-watch
 
 services:
   db-test:
@@ -11,15 +11,16 @@ services:
       file: docker-compose.base.yml
       service: redis
   app-test:
-    build:
-      context: .
-      dockerfile: Dockerfile.test
-    env_file: .env.test
-    depends_on:
-      db-test:
-        condition: service_healthy
-      redis-test:
-        condition: service_healthy
+    extends:
+      file: docker-compose.test.yml
+      service: app-test
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - 4173:4173
+    environment:
+      - PWTEST_WATCH=1
     command: >
       sh -c "dotenv -e .env.test -- npm run migrate:init && \
         dotenv -e .env.test -- npx prisma db seed && \

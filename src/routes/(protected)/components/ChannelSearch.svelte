@@ -44,7 +44,7 @@
 			</div>
 		{/if}
 		{#if results}
-			<div class="h-full" class:hidden={loading}>
+			<div class="results h-full" class:hidden={loading}>
 				{#each results as result}
 					<ChannelCard {locale} channel={result}>
 						<ChannelCardActions channel={result} bind:channels bind:channelIds />
