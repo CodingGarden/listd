@@ -5,7 +5,7 @@ const config: PlaywrightTestConfig = {
 		locale: 'en-US',
 	},
 	webServer: {
-		command: `dotenv npm run preview`,
+		command: `dotenv -e .env.test -- npm run preview`,
 		port: 4173,
 	},
 	testDir: 'tests',

@@ -47,6 +47,7 @@
 	{:then video}
 		{#if video}
 			<iframe
+				data-testid="video-embed"
 				class="aspect-video w-full"
 				src={`https://www.youtube.com/embed/${video?.videoId}`}
 				title="YouTube video player"
@@ -77,7 +78,9 @@
 					<ViewCount locale={data.locale} viewCount={video.viewCount} />
 					<span>{formatRelativeDate(video.publishedAt, data.locale)}</span>
 				</div>
-				<span class="block overflow-hidden whitespace-pre-wrap break-words">
+				<span
+					data-testid="video-description"
+					class="block overflow-hidden whitespace-pre-wrap break-words">
 					{video.description}
 				</span>
 			</div>

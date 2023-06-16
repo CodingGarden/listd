@@ -29,6 +29,10 @@ type RootTranslation = {
 		 */
 		create: string
 		/**
+		 * E​d​i​t
+		 */
+		edit: string
+		/**
 		 * U​p​d​a​t​e
 		 */
 		update: string
@@ -172,6 +176,10 @@ export type TranslationFunctions = {
 		 * Create
 		 */
 		create: () => LocalizedString
+		/**
+		 * Edit
+		 */
+		edit: () => LocalizedString
 		/**
 		 * Update
 		 */

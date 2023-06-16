@@ -16,3 +16,4 @@ auth.json
 .nyc_output
 coverage
 scripts/exportDB.ts
+/coverage*

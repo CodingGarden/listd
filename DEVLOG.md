@@ -10,16 +10,19 @@
     * [x] Search for YT channels
     * [x] Add YT channel to List
     * [x] Create List
-    * [-] View List
-      * [ ] View individual List
-    * [ ] Edit List
-    * [ ] Navigating Lists
+    * [x] View List
+      * [x] View individual List
+    * [x] Coverage Reports
+      * [x] Generate outside container (volume)
+    * [x] Navigating Lists
+    * [x] Edit List
+    * [ ] Make sure $LL is being run in tests...
+      * Svelte stores highlighted red??
+    * [ ] Remove test ids in Prod build
     * [ ] Update contributing guide...
       * [ ] Running tests in watch mode...
       * [ ] Debugging tests in watch mode...
       * [ ] Exporting data to be seeded for tests
-    * [ ] Coverage Reports
-      * [ ] Generate outside container (volume)
 * [ ] Configure unit tests
 * [ ] Allow "debug" mode for e2e test
   * [ ] quicker iteration without starting from scratch everytime
