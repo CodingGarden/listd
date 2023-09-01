@@ -81,6 +81,7 @@
 		"env-cmd": "^10.1.0",
 		"luxon": "^3.3.0",
 		"redis": "^4.6.6",
+		"svelte-inview": "^4.0.0",
 		"zod": "^3.21.4"
 	},
 	"license": "MIT",
