@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Seo from '$/routes/SEO.svelte';
+	import ListForm from '$/routes/(protected)/components/ListForm.svelte';
 	import { browser } from '$app/environment';
 	import { goto } from '$app/navigation';
-	import ListForm from '$/routes/(protected)/components/ListForm.svelte';
 
 	export let data;
 	export let form;

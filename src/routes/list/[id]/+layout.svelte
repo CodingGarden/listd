@@ -1,10 +1,10 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import YouTubeVideoEmbed from '$/lib/YouTubeVideoEmbed.svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { YouTubeVideoAPIResponse } from '$/lib/server/YouTubeAPI';
+	import { page } from '$app/stores';
 
 	export let data;
 
@@ -20,7 +20,11 @@
 	};
 
 	let timeout: NodeJS.Timeout;
-	const updateFilter = (e: KeyboardEvent & { currentTarget: EventTarget & HTMLInputElement }) => {
+	const updateFilter = (
+		e: Event & {
+			currentTarget: EventTarget & HTMLInputElement;
+		}
+	) => {
 		const { value } = e.target as HTMLInputElement;
 		clearTimeout(timeout);
 
@@ -52,7 +56,7 @@
 	</div>
 	{#if data.session?.user?.id === data.list.userId}
 		<div class="mb-4 flex justify-end">
-			<a href={`/edit/${data.list.id}`} class="btn variant-ghost-primary">{$LL.buttons.edit()}</a>
+			<a href={`/edit/${data.list.id}`} class="variant-ghost-primary btn">{$LL.buttons.edit()}</a>
 		</div>
 	{/if}
 {/if}
@@ -63,7 +67,10 @@
 		</span>
 	{:then videos}
 		<div class="my-4">
-			<input on:keyup={updateFilter} class="input" />
+			<label class="label">
+				<span>{$LL.labels.filter()}</span>
+				<input on:input={updateFilter} class="input" />
+			</label>
 		</div>
 		<div
 			data-testid="video-list"

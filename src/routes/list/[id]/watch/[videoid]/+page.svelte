@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
-	import { afterNavigate } from '$app/navigation';
-	import { page } from '$app/stores';
 	import ViewCount from '$/lib/ViewCount.svelte';
 	import { formatNumberCompact, formatRelativeDate } from '$/lib/utils.js';
+	import { afterNavigate } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data;
 
@@ -73,7 +73,7 @@
 					{/if}
 				{/await}
 				<div class="mb-4 flex items-center gap-4">
-					<span class="chip variant-soft-primary text-2xl"
+					<span class="variant-soft-primary chip text-2xl"
 						>{formatNumberCompact(video.likes, data.locale)} 👍</span>
 					<ViewCount locale={data.locale} viewCount={video.viewCount} />
 					<span>{formatRelativeDate(video.publishedAt, data.locale)}</span>

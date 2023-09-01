@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 import type { Session as OGSession, DefaultSession, User as OGUser } from '@auth/core/types';
 import type { UserSettings } from '@prisma/client';
 import { SvelteKitAuthConfig as OGSvelteKitAuthConfig } from '@auth/sveltekit';
@@ -14,17 +15,6 @@ declare module '@auth/sveltekit/node_modules/@auth/core/types' {
 
 	interface User extends OGUser {
 		settings: UserSettings;
-	}
-}
-
-declare module '@sveltejs/kit' {
-	interface Redirect extends Error {
-		status: 300 | 301 | 302 | 303 | 304 | 305 | 306 | 307 | 308;
-		location: string;
-	}
-	interface HttpError extends Error {
-		status: number;
-		body: App.Error;
 	}
 }
 

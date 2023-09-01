@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import { formatNumberCompact, formatDuration, formatRelativeDate } from '$lib/utils';
 	import ViewCount from '$lib/ViewCount.svelte';
+	import { page } from '$app/stores';
 	import type { YouTubeVideoAPIResponse } from './server/YouTubeAPI';
 
 	export let locale: string;

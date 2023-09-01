@@ -1,5 +1,5 @@
-import { building } from '$app/environment';
 import { createClient } from 'redis';
+import { building } from '$app/environment';
 import { config } from '../config.server';
 
 const client = createClient({

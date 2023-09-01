@@ -3,8 +3,6 @@
 	import { setLocale } from '$lib/i18n/i18n-svelte';
 	import { seo } from '$lib/stores/SeoStore';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
-	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
-	import '@skeletonlabs/skeleton/styles/all.css';
 	import '../app.postcss';
 	import Seo from './SEO.svelte';
 

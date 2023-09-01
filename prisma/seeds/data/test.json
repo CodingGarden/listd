@@ -1,175 +1,181 @@
 {
-	"users": [{
-		"user": {
-			"id": "225a4f47-3400-48d9-940a-8f783df4b269",
-			"name": "Coding Garden",
-			"email": "coding.garden.with.cj@gmail.com",
-			"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+	"users": [
+		{
+			"user": {
+				"id": "225a4f47-3400-48d9-940a-8f783df4b269",
+				"name": "Coding Garden",
+				"email": "coding.garden.with.cj@gmail.com",
+				"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+			},
+			"userSettings": {
+				"id": "5c2eb837-bb51-4175-b054-c37d1cb40ad6",
+				"onboarded": false,
+				"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+				"localeId": "en-US"
+			},
+			"account": {
+				"id": "5c292cb2-281d-43b6-89b2-f9b61dcd2432",
+				"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+				"type": "oidc",
+				"provider": "google",
+				"providerAccountId": "117131308771673354735",
+				"refresh_token": null,
+				"access_token": null,
+				"expires_in": 0,
+				"token_type": "bearer",
+				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+				"id_token": null,
+				"session_state": null
+			},
+			"session": {
+				"id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
+				"sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
+				"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
+				"expires": "2030-06-11T21:08:54.125Z"
+			}
 		},
-		"userSettings": {
-			"id": "5c2eb837-bb51-4175-b054-c37d1cb40ad6",
-			"onboarded": false,
-			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
-			"localeId": "en-US"
+		{
+			"user": {
+				"id": "fc57d839-cfba-4076-9dd5-1def7964b037",
+				"name": "Coding Garden",
+				"email": "coding.garden.with.cj2@gmail.com",
+				"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+			},
+			"userSettings": {
+				"id": "83810d2a-8014-46c8-a482-b8d8f91b842c",
+				"onboarded": true,
+				"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+				"localeId": "en-US"
+			},
+			"account": {
+				"id": "0c39442f-105a-4e20-9e73-5da3636e4180",
+				"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+				"type": "oidc",
+				"provider": "google",
+				"providerAccountId": "117131308771673354736",
+				"refresh_token": null,
+				"access_token": null,
+				"expires_in": 0,
+				"token_type": "bearer",
+				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+				"id_token": null,
+				"session_state": null
+			},
+			"session": {
+				"id": "d95a2ca5-7b78-4193-a74b-549dd65bd876",
+				"sessionToken": "4454f8d8-6296-4860-8330-9591f17bc67a",
+				"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
+				"expires": "2030-06-11T21:08:54.125Z"
+			}
 		},
-		"account": {
-			"id": "5c292cb2-281d-43b6-89b2-f9b61dcd2432",
-			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
-			"type": "oidc",
-			"provider": "google",
-			"providerAccountId": "117131308771673354735",
-			"refresh_token": null,
-			"access_token": null,
-			"expires_in": 0,
-			"token_type": "bearer",
-			"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-			"id_token": null,
-			"session_state": null
-		},
-		"session": {
-			"id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
-			"sessionToken": "23f4fc33-b70a-44df-8db1-f1e44c2b24fd",
-			"userId": "225a4f47-3400-48d9-940a-8f783df4b269",
-			"expires": "2030-06-11T21:08:54.125Z"
-		}
-	}, {
-		"user": {
-			"id": "fc57d839-cfba-4076-9dd5-1def7964b037",
-			"name": "Coding Garden",
-			"email": "coding.garden.with.cj2@gmail.com",
-			"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
-		},
-		"userSettings": {
-			"id": "83810d2a-8014-46c8-a482-b8d8f91b842c",
-			"onboarded": true,
-			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
-			"localeId": "en-US"
-		},
-		"account": {
-			"id": "0c39442f-105a-4e20-9e73-5da3636e4180",
-			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
-			"type": "oidc",
-			"provider": "google",
-			"providerAccountId": "117131308771673354736",
-			"refresh_token": null,
-			"access_token": null,
-			"expires_in": 0,
-			"token_type": "bearer",
-			"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-			"id_token": null,
-			"session_state": null
-		},
-		"session": {
-			"id": "d95a2ca5-7b78-4193-a74b-549dd65bd876",
-			"sessionToken": "4454f8d8-6296-4860-8330-9591f17bc67a",
-			"userId": "fc57d839-cfba-4076-9dd5-1def7964b037",
-			"expires": "2030-06-11T21:08:54.125Z"
-		}
-	}, {
-		"user": {
-			"id": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
-			"name": "Coding Garden",
-			"email": "coding.garden.with.cj3@gmail.com",
-			"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
-		},
-		"userSettings": {
-			"id": "abe846f1-7c99-4ce9-bb1d-84cf5594b6fa",
-			"onboarded": true,
-			"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
-			"localeId": "en-US"
-		},
-		"account": {
-			"id": "a6cc8379-8e01-4010-a99b-b9ef7c15e0be",
-			"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
-			"type": "oidc",
-			"provider": "google",
-			"providerAccountId": "117131308771673354737",
-			"refresh_token": null,
-			"access_token": null,
-			"expires_in": 0,
-			"token_type": "bearer",
-			"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
-			"id_token": null,
-			"session_state": null
-		},
-		"session": {
-			"id": "b57661b6-ef95-4bf7-8e8c-ef6cc4cb3983",
-			"sessionToken": "c9f043b6-6b1b-451c-85a7-547f18c08ecd",
-			"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
-			"expires": "2030-06-11T21:08:54.125Z"
-		},
-		"list": [{
-			"id": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
-			"title": "Coding Garden Universe",
-			"description": "All Coding Garden videos.",
-			"visibility": "Unlisted",
-			"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
-			"createdAt": "2023-03-31T21:14:56.427Z",
-			"updatedAt": "2023-06-09T21:17:58.639Z",
-			"items": [
+		{
+			"user": {
+				"id": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
+				"name": "Coding Garden",
+				"email": "coding.garden.with.cj3@gmail.com",
+				"image": "https://lh3.googleusercontent.com/a/AGNmyxaVWgarpgX3nvDQGdsLrvg0u4EWwxVdwcfIV7D8=s96-c"
+			},
+			"userSettings": {
+				"id": "abe846f1-7c99-4ce9-bb1d-84cf5594b6fa",
+				"onboarded": true,
+				"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
+				"localeId": "en-US"
+			},
+			"account": {
+				"id": "a6cc8379-8e01-4010-a99b-b9ef7c15e0be",
+				"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
+				"type": "oidc",
+				"provider": "google",
+				"providerAccountId": "117131308771673354737",
+				"refresh_token": null,
+				"access_token": null,
+				"expires_in": 0,
+				"token_type": "bearer",
+				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
+				"id_token": null,
+				"session_state": null
+			},
+			"session": {
+				"id": "b57661b6-ef95-4bf7-8e8c-ef6cc4cb3983",
+				"sessionToken": "c9f043b6-6b1b-451c-85a7-547f18c08ecd",
+				"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
+				"expires": "2030-06-11T21:08:54.125Z"
+			},
+			"list": [
 				{
-					"id": 56,
-					"name": "Coding Garden",
-					"description": null,
-					"listId": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
-					"listItemMetaId": "67f77b57-5d57-4937-8e15-6ec6c42f43a3",
-					"createdAt": "2023-05-05T21:23:54.982Z",
-					"updatedAt": "2023-05-05T21:23:54.982Z",
-					"meta": {
-						"id": "67f77b57-5d57-4937-8e15-6ec6c42f43a3",
-						"name": "Coding Garden",
-						"originId": "UCLNgu_OupwoeESgtab33CCw",
-						"imageUrl": "https://yt3.ggpht.com/ytc/AL5GRJWfwAQ7ueFbb7CeMogiJSn4dluagZ3KdvY1jLmqcQ=s88-c-k-c0x00ffffff-no-rj",
-						"type": "YouTubeChannel",
-						"createdAt": "2023-03-31T21:14:56.661Z",
-						"updatedAt": "2023-03-31T21:14:56.661Z",
-						"youTubeMetaOriginId": "UCLNgu_OupwoeESgtab33CCw",
-						"youtubeMeta": {
-							"originId": "UCLNgu_OupwoeESgtab33CCw",
+					"id": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
+					"title": "Coding Garden Universe",
+					"description": "All Coding Garden videos.",
+					"visibility": "Unlisted",
+					"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",
+					"createdAt": "2023-03-31T21:14:56.427Z",
+					"updatedAt": "2023-06-09T21:17:58.639Z",
+					"items": [
+						{
+							"id": 56,
 							"name": "Coding Garden",
-							"description": "Hosted by CJ, Coding Garden is an open, interactive and engaging community where any coder, from beginner to veteran, can learn and grow together. Whether it's a tutorial, Q&A session, algorithmic problem solving or full application design and build, there's always something new to learn!\n\nWatch live on twitch: https://www.twitch.tv/codinggarden\n",
-							"subscriberCount": 130000,
-							"avatarUrl": "https://yt3.ggpht.com/ytc/AL5GRJWfwAQ7ueFbb7CeMogiJSn4dluagZ3KdvY1jLmqcQ=s88-c-k-c0x00ffffff-no-rj",
-							"bannerUrl": null,
-							"customUrl": "@codinggarden",
-							"isVerified": false,
-							"createdAt": "2023-03-31T21:14:56.661Z",
-							"updatedAt": "2023-03-31T21:14:56.661Z"
-						}
-					}
-				},
-				{
-					"id": 57,
-					"name": "Coding Garden Archive",
-					"description": null,
-					"listId": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
-					"listItemMetaId": "b187f88e-64da-489e-81e3-33bd379fda43",
-					"createdAt": "2023-05-05T21:23:54.981Z",
-					"updatedAt": "2023-05-05T21:23:54.981Z",
-					"meta": {
-						"id": "b187f88e-64da-489e-81e3-33bd379fda43",
-						"name": "Coding Garden Archive",
-						"originId": "UCIAW44-a_W8dGAhZDar7OmA",
-						"imageUrl": "https://yt3.ggpht.com/KQUkzZqg3sY2sxSBxQTYGNt9szA3cMGdkTXMgbLT1x8GGUjVV60Y9tzyT1q6digRNhjnSpGDNtI=s88-c-k-c0x00ffffff-no-rj",
-						"type": "YouTubeChannel",
-						"createdAt": "2023-03-31T21:14:56.595Z",
-						"updatedAt": "2023-03-31T21:14:56.595Z",
-						"youTubeMetaOriginId": "UCIAW44-a_W8dGAhZDar7OmA",
-						"youtubeMeta": {
-							"originId": "UCIAW44-a_W8dGAhZDar7OmA",
+							"description": null,
+							"listId": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
+							"listItemMetaId": "67f77b57-5d57-4937-8e15-6ec6c42f43a3",
+							"createdAt": "2023-05-05T21:23:54.982Z",
+							"updatedAt": "2023-05-05T21:23:54.982Z",
+							"meta": {
+								"id": "67f77b57-5d57-4937-8e15-6ec6c42f43a3",
+								"name": "Coding Garden",
+								"originId": "UCLNgu_OupwoeESgtab33CCw",
+								"imageUrl": "https://yt3.ggpht.com/ytc/AL5GRJWfwAQ7ueFbb7CeMogiJSn4dluagZ3KdvY1jLmqcQ=s88-c-k-c0x00ffffff-no-rj",
+								"type": "YouTubeChannel",
+								"createdAt": "2023-03-31T21:14:56.661Z",
+								"updatedAt": "2023-03-31T21:14:56.661Z",
+								"youTubeMetaOriginId": "UCLNgu_OupwoeESgtab33CCw",
+								"youtubeMeta": {
+									"originId": "UCLNgu_OupwoeESgtab33CCw",
+									"name": "Coding Garden",
+									"description": "Hosted by CJ, Coding Garden is an open, interactive and engaging community where any coder, from beginner to veteran, can learn and grow together. Whether it's a tutorial, Q&A session, algorithmic problem solving or full application design and build, there's always something new to learn!\n\nWatch live on twitch: https://www.twitch.tv/codinggarden\n",
+									"subscriberCount": 130000,
+									"avatarUrl": "https://yt3.ggpht.com/ytc/AL5GRJWfwAQ7ueFbb7CeMogiJSn4dluagZ3KdvY1jLmqcQ=s88-c-k-c0x00ffffff-no-rj",
+									"bannerUrl": null,
+									"customUrl": "@codinggarden",
+									"isVerified": false,
+									"createdAt": "2023-03-31T21:14:56.661Z",
+									"updatedAt": "2023-03-31T21:14:56.661Z"
+								}
+							}
+						},
+						{
+							"id": 57,
 							"name": "Coding Garden Archive",
-							"description": "This channel archives all Coding Garden streams.",
-							"subscriberCount": 1680,
-							"avatarUrl": "https://yt3.ggpht.com/KQUkzZqg3sY2sxSBxQTYGNt9szA3cMGdkTXMgbLT1x8GGUjVV60Y9tzyT1q6digRNhjnSpGDNtI=s88-c-k-c0x00ffffff-no-rj",
-							"bannerUrl": null,
-							"customUrl": "@codinggardenarchive",
-							"isVerified": false,
-							"createdAt": "2023-03-31T21:14:56.595Z",
-							"updatedAt": "2023-03-31T21:14:56.595Z"
+							"description": null,
+							"listId": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
+							"listItemMetaId": "b187f88e-64da-489e-81e3-33bd379fda43",
+							"createdAt": "2023-05-05T21:23:54.981Z",
+							"updatedAt": "2023-05-05T21:23:54.981Z",
+							"meta": {
+								"id": "b187f88e-64da-489e-81e3-33bd379fda43",
+								"name": "Coding Garden Archive",
+								"originId": "UCIAW44-a_W8dGAhZDar7OmA",
+								"imageUrl": "https://yt3.ggpht.com/KQUkzZqg3sY2sxSBxQTYGNt9szA3cMGdkTXMgbLT1x8GGUjVV60Y9tzyT1q6digRNhjnSpGDNtI=s88-c-k-c0x00ffffff-no-rj",
+								"type": "YouTubeChannel",
+								"createdAt": "2023-03-31T21:14:56.595Z",
+								"updatedAt": "2023-03-31T21:14:56.595Z",
+								"youTubeMetaOriginId": "UCIAW44-a_W8dGAhZDar7OmA",
+								"youtubeMeta": {
+									"originId": "UCIAW44-a_W8dGAhZDar7OmA",
+									"name": "Coding Garden Archive",
+									"description": "This channel archives all Coding Garden streams.",
+									"subscriberCount": 1680,
+									"avatarUrl": "https://yt3.ggpht.com/KQUkzZqg3sY2sxSBxQTYGNt9szA3cMGdkTXMgbLT1x8GGUjVV60Y9tzyT1q6digRNhjnSpGDNtI=s88-c-k-c0x00ffffff-no-rj",
+									"bannerUrl": null,
+									"customUrl": "@codinggardenarchive",
+									"isVerified": false,
+									"createdAt": "2023-03-31T21:14:56.595Z",
+									"updatedAt": "2023-03-31T21:14:56.595Z"
+								}
+							}
 						}
-					}
+					]
 				}
 			]
-		}]
-	}]
+		}
+	]
 }

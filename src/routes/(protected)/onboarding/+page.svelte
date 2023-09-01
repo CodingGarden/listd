@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Seo from '$/routes/SEO.svelte';
-	import { page } from '$app/stores';
 	import { LL } from '$lib/i18n/i18n-svelte';
+	import { page } from '$app/stores';
 </script>
 
 <Seo title="Onboarding | listd" description="Onboarding page for listd" />
@@ -22,7 +22,7 @@
 		</label>
 		<p class="pt-4">{$LL.pages.onboarding.messages.final()}</p>
 		<div class="my-4 flex justify-end">
-			<button class="btn variant-filled-success">{$LL.pages.onboarding.buttons.letsGo()}</button>
+			<button class="variant-filled-success btn">{$LL.pages.onboarding.buttons.letsGo()}</button>
 		</div>
 	</form>
 </div>

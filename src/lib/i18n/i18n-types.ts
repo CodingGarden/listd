@@ -63,6 +63,10 @@ type RootTranslation = {
 		 * @param {unknown} 0
 		 */
 		views: RequiredParams<'0'>
+		/**
+		 * F​i​l​t​e​r
+		 */
+		filter: string
 	}
 	enums: {
 		visibility: {
@@ -210,6 +214,10 @@ export type TranslationFunctions = {
 		 * {0} views
 		 */
 		views: (arg0: unknown) => LocalizedString
+		/**
+		 * Filter
+		 */
+		filter: () => LocalizedString
 	}
 	enums: {
 		visibility: {
