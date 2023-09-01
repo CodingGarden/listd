@@ -94,60 +94,63 @@ async function getAllVideos(
 		}
 		return all;
 	}, [] as string[]);
-	const { data: videoData } = await ytClient.videos.list({
-		part: [
-			'id',
-			'contentDetails',
-			'liveStreamingDetails',
-			'localizations',
-			'snippet',
-			'statistics',
-		],
-		id: ids,
-		maxResults: 50,
-	});
-	videoData.items?.forEach((video) => {
-		if (video && video.id) {
-			const videoResponse = {
-				thumbnails: {
-					high:
-						video.snippet?.thumbnails?.maxres?.url ||
-						video.snippet?.thumbnails?.standard?.url ||
-						video.snippet?.thumbnails?.high?.url ||
-						null,
-					low:
-						video.snippet?.thumbnails?.medium?.url ||
-						video.snippet?.thumbnails?.default?.url ||
-						null,
-				},
-				// TODO: i18n
-				title: video.snippet?.title || 'No Video Title',
-				description: video.snippet?.description || '',
-				videoId: video.id,
-				channelTitle: video.snippet?.channelTitle || 'No Channel Title',
-				channelId,
-				publishedAt: video.snippet?.publishedAt
-					? new Date(video.snippet?.publishedAt).getTime()
-					: Date.now(),
-				viewCount: parseYTNumber(video.statistics?.viewCount),
-				likes: parseYTNumber(video.statistics?.likeCount),
-				duration: video.contentDetails?.duration || 'PT0S',
-				upcoming: video.snippet?.liveBroadcastContent === 'upcoming',
-				livestream: video.liveStreamingDetails
-					? {
-							live: video.snippet?.liveBroadcastContent === 'live',
-							viewers: parseYTNumber(video.liveStreamingDetails.concurrentViewers),
-							liveChatId: video.liveStreamingDetails.activeLiveChatId || '',
-							actualStartAt: parseYTDate(video.liveStreamingDetails.actualStartTime),
-							scheduledStartAt: parseYTDate(video.liveStreamingDetails.scheduledStartTime),
-					  }
-					: null,
-			};
-			videoResponse.thumbnails.high = videoResponse.thumbnails.high?.replace('_live', '') || null;
-			videoResponse.thumbnails.low = videoResponse.thumbnails.low?.replace('_live', '') || null;
-			videos.push(videoResponse);
-		}
-	});
+
+	if (ids.length) {
+		const { data: videoData } = await ytClient.videos.list({
+			part: [
+				'id',
+				'contentDetails',
+				'liveStreamingDetails',
+				'localizations',
+				'snippet',
+				'statistics',
+			],
+			id: ids,
+			maxResults: 50,
+		});
+		videoData.items?.forEach((video) => {
+			if (video && video.id) {
+				const videoResponse = {
+					thumbnails: {
+						high:
+							video.snippet?.thumbnails?.maxres?.url ||
+							video.snippet?.thumbnails?.standard?.url ||
+							video.snippet?.thumbnails?.high?.url ||
+							null,
+						low:
+							video.snippet?.thumbnails?.medium?.url ||
+							video.snippet?.thumbnails?.default?.url ||
+							null,
+					},
+					// TODO: i18n
+					title: video.snippet?.title || 'No Video Title',
+					description: video.snippet?.description || '',
+					videoId: video.id,
+					channelTitle: video.snippet?.channelTitle || 'No Channel Title',
+					channelId,
+					publishedAt: video.snippet?.publishedAt
+						? new Date(video.snippet?.publishedAt).getTime()
+						: Date.now(),
+					viewCount: parseYTNumber(video.statistics?.viewCount),
+					likes: parseYTNumber(video.statistics?.likeCount),
+					duration: video.contentDetails?.duration || 'PT0S',
+					upcoming: video.snippet?.liveBroadcastContent === 'upcoming',
+					livestream: video.liveStreamingDetails
+						? {
+								live: video.snippet?.liveBroadcastContent === 'live',
+								viewers: parseYTNumber(video.liveStreamingDetails.concurrentViewers),
+								liveChatId: video.liveStreamingDetails.activeLiveChatId || '',
+								actualStartAt: parseYTDate(video.liveStreamingDetails.actualStartTime),
+								scheduledStartAt: parseYTDate(video.liveStreamingDetails.scheduledStartTime),
+						  }
+						: null,
+				};
+				videoResponse.thumbnails.high = videoResponse.thumbnails.high?.replace('_live', '') || null;
+				videoResponse.thumbnails.low = videoResponse.thumbnails.low?.replace('_live', '') || null;
+				videos.push(videoResponse);
+			}
+		});
+	}
 	if (data.nextPageToken) {
 		return getAllVideos(channelId, videos, data.nextPageToken);
 	}
