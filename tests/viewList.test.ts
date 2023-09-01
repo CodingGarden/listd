@@ -22,6 +22,7 @@ test('viewing a list shows the list of channels and list of videos', async ({ pa
 	expect(channelCards.length).toBe(2);
 	expect(await channelCards[0].textContent()).toContain('Coding Garden');
 	expect(await channelCards[1].textContent()).toContain('Coding Garden');
+	await page.waitForSelector('[data-testid="video-list"]');
 	const listVideos = await page.getByTestId('video-list').locator('.card').all();
 	expect(listVideos.length).toBeGreaterThan(1);
 });

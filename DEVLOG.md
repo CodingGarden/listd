@@ -1,5 +1,11 @@
 # Today
 
+* [ ] Fix bug or merge PR...
+* [ ] Update dependencies
+* [ ] .... pickup where we left off
+
+# Last Time
+
 * [x] Containerize tests
 * [ ] More integration tests
   * [x] Run tests / containers while dev containers are still running
