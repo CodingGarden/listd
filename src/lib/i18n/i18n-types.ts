@@ -40,6 +40,10 @@ type RootTranslation = {
 		 * L​o​g​i​n​ ​w​i​t​h​ ​Y​o​u​T​u​b​e
 		 */
 		loginYouTube: string
+		/**
+		 * L​o​g​i​n​ ​w​i​t​h​ ​G​i​t​H​u​b
+		 */
+		loginGitHub: string
 	}
 	labels: {
 		/**
@@ -178,6 +182,10 @@ export type TranslationFunctions = {
 		 * Login with YouTube
 		 */
 		loginYouTube: () => LocalizedString
+		/**
+		 * Login with GitHub
+		 */
+		loginGitHub: () => LocalizedString
 	}
 	labels: {
 		/**
