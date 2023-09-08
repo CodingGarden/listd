@@ -1,4 +1,4 @@
-name: Run Checks
+name: Run Tests
 on:
   pull_request:
     branches:
@@ -19,4 +19,4 @@ jobs:
       - run: npm run check
       - run: npm run lint
       - run: npx playwright install
-      - run: ./scripts/create-test-env.sh && npm test
+      - run: sh ./scripts/create-test-env.sh && npm test
