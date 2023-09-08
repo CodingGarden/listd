@@ -14,6 +14,14 @@ jobs:
       GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      VITE_COVERAGE: ${{ vars.VITE_COVERAGE }}
+      NODE_ENV: ${{ vars.NODE_ENV }}
+      REDIS_PORT: ${{ vars.REDIS_PORT }}
+      REDIS_HOST: ${{ vars.REDIS_HOST }}
+      DB_HOST: ${{ vars.DB_HOST }}
+      DB_USER: ${{ vars.DB_USER }}
+      DB_NAME: ${{ vars.DB_NAME }}
+      DB_PORT: ${{ vars.DB_PORT }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
