@@ -60,12 +60,15 @@
 			<ProgressRadial class="ml-2 h-8 w-8" stroke={100} />
 		</span>
 	{:then videos}
-		<div class="my-4">
-			<input on:keyup={updateFilter} class="input" />
-		</div>
+        {@const newVideos = filterVideos(videos, filter)}
+        {#if newVideos.length > 0}
+            <div class="my-4">
+                <input on:keyup={updateFilter} class="input" />
+            </div>
+        {/if}
 		<div
 			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-			{#each filterVideos(videos, filter) as video}
+			{#each newVideos as video}
 				<YouTubeVideoEmbed
 					active={$page.params.videoid === video.videoId}
 					locale={data.locale}
