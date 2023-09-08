@@ -34,24 +34,26 @@
 			placeholder={$LL.pages.create.messages.channelSearch()} />
 	</label>
 </form>
-<div class="my-4">
-	<div>
-		{#if loading}
-			<div class="grid place-content-center">
-				<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
-			</div>
-		{/if}
-		{#if results}
-			<div class="max-h-96 overflow-y-auto" class:hidden={loading}>
-				{#each results as result}
-					<ChannelCard {locale} channel={result}>
-						<ChannelCardActions channel={result} bind:channels bind:channelIds />
-					</ChannelCard>
-				{/each}
-			</div>
-		{:else}
-			<span class="my-4 block text-gray-400"
-				>Search for a channel above to add it to the list.</span>
-		{/if}
-	</div>
-</div>
+
+{#if loading}
+    <div class="flex items-center gap-4">
+        <ProgressRadial class="h-6 w-6" stroke={100} />
+        <span>Searching...</span>
+    </div>
+{/if}
+
+{#if results}
+    <div class="max-h-96 overflow-y-auto" class:hidden={loading}>
+        {#each results as result}
+            <ChannelCard {locale} channel={result}>
+                <ChannelCardActions channel={result} bind:channels bind:channelIds />
+            </ChannelCard>
+        {/each}
+    </div>
+{:else if !loading}
+    <span class="text-gray-400">
+        Search for a channel above to add it to the list.
+    </span>
+{/if}
+
+<!-- TODO: If you try to search for a channel name that doesn't exist, you will receive error 500 -->
