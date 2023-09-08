@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 cat <<< "VITE_COVERAGE=${VITE_COVERAGE}
 NODE_ENV=${NODE_ENV}

@@ -19,4 +19,4 @@ jobs:
       - run: npm run check
       - run: npm run lint
       - run: npx playwright install
-      - run: sh ./scripts/create-test-env.sh && npm test
+      - run: ./scripts/create-test-env.sh && npm test
