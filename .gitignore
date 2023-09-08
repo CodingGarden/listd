@@ -4,6 +4,7 @@ node_modules
 /.svelte-kit
 /package
 .env
+.env.test
 .env.*
 !.env.example
 vite.config.js.timestamp-*
@@ -12,3 +13,7 @@ vite.config.ts.timestamp-*
 /docker-data
 settings.json
 auth.json
+.nyc_output
+coverage
+scripts/exportDB.ts
+/coverage*

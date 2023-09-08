@@ -6,7 +6,7 @@
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
 			"$app": ["./node_modules/@sveltejs/kit/types"],
-			"$app/*": ["./node_modules/@sveltejs/kit/types/ambient.d.ts"]
+			"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"]
 		},
 		"outDir": ".svelte-kit/output",
 		"allowJs": true,
@@ -17,9 +17,12 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"plugins": [{
-			"name": "typescript-svelte-plugin"
-		}]
+		"allowImportingTsExtensions": true,
+		"plugins": [
+			{
+				"name": "typescript-svelte-plugin"
+			}
+		]
 	},
 	"include": [
 		"./.svelte-kit/ambient.d.ts",
@@ -32,6 +35,7 @@
 		"./tests/**/*.svelte",
 		"./prisma/**/*.ts",
 		"./types/**/*.ts",
+		"./scripts/**/*.ts",
 		"*.cjs",
 		".*.cjs",
 		"*.js",

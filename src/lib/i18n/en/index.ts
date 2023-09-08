@@ -9,6 +9,7 @@ const en: BaseTranslation = {
 	message: 'Hello World',
 	buttons: {
 		create: 'Create',
+		edit: 'Edit',
 		update: 'Update',
 		logOut: 'Logout',
 		loginYouTube: 'Login with YouTube',
@@ -18,6 +19,7 @@ const en: BaseTranslation = {
 		description: 'Description',
 		visibility: 'Visibility',
 		views: '{0} views',
+		filter: 'Filter',
 	},
 	enums: {
 		visibility: {
@@ -47,6 +49,9 @@ const en: BaseTranslation = {
 			},
 		},
 		onboarding: {
+			buttons: {
+				letsGo: 'Lets Go!',
+			},
 			labels: {
 				username: 'Username',
 				uploadFile: 'Upload File',

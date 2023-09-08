@@ -1,19 +1,19 @@
 version: '3.1'
 services:
-    app:
-      build:
-        dockerfile: Dockerfile
-        target: production
-      restart: always
-      ports:
-        - 5173:5173
-      environment:
-          - AUTH_SECRET=${AUTH_SECRET}
-          - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
-          - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
-          - DB_HOST=${DB_HOST}
-          - DB_USER=${DB_USER}
-          - DB_PASSWORD=${DB_PASSWORD}
-          - DB_NAME=${DB_NAME}
-          - DB_PORT=${DB_PORT}
-          - DATABASE_URL=${DATABASE_URL}
+  app:
+    build:
+      dockerfile: Dockerfile
+      target: production
+    restart: always
+    ports:
+      - 5173:5173
+    environment:
+      - AUTH_SECRET=${AUTH_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DATABASE_URL=${DATABASE_URL}

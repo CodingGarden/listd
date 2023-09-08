@@ -16,7 +16,7 @@
 			}
 		}}
 		type="button"
-		class="btn variant-filled-primary">Remove</button>
+		class="variant-filled-primary btn">Remove</button>
 {:else}
 	<button
 		on:click={() => {
@@ -24,5 +24,5 @@
 			channels = channels;
 		}}
 		type="button"
-		class="btn variant-ghost-primary">Add</button>
+		class="variant-ghost-primary btn">Add</button>
 {/if}

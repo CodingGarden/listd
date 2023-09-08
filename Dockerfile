@@ -12,8 +12,6 @@ ENV NODE_BUILD=true
 
 RUN npm run build
 
-EXPOSE 3000
-
 CMD node build
 
 FROM node:18-alpine as production

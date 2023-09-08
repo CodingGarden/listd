@@ -8,9 +8,9 @@
 		type YouTubeMeta,
 	} from '@prisma/client';
 	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
-	import { enhance } from '$app/forms';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
+	import { enhance } from '$app/forms';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 	import ChannelSearch from './ChannelSearch.svelte';
 
@@ -52,7 +52,7 @@
 		</aside>
 	{/if}
 	<div class="flex justify-end">
-		<button class="btn variant-filled-secondary">
+		<button class="variant-filled-secondary btn">
 			{#if list}
 				{$LL.buttons.update()}
 			{:else}
@@ -101,7 +101,7 @@
 	</select>
 	<ChannelSearch {results} {locale} bind:channels bind:channelIds />
 	<div class="my-4 flex justify-end">
-		<button class="btn variant-filled-secondary">
+		<button class="variant-filled-secondary btn">
 			{#if list}
 				{$LL.buttons.update()}
 			{:else}

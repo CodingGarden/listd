@@ -1,0 +1,13 @@
+FROM mcr.microsoft.com/playwright:v1.37.1-jammy
+
+WORKDIR /app
+
+COPY package*.json /app/
+
+RUN npm ci
+
+RUN npm install -g dotenv-cli
+
+COPY . .
+
+ENV NODE_BUILD=true

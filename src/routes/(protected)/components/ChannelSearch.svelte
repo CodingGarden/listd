@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import { applyAction, enhance } from '$app/forms';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
+	import { applyAction, enhance } from '$app/forms';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 
 	export let results: YouTubeChannelMetaAPIResponse[] | undefined;
@@ -44,7 +44,7 @@
 			</div>
 		{/if}
 		{#if results}
-			<div class="h-full" class:hidden={loading}>
+			<div class="results h-full" class:hidden={loading}>
 				{#each results as result}
 					<ChannelCard {locale} channel={result}>
 						<ChannelCardActions channel={result} bind:channels bind:channelIds />

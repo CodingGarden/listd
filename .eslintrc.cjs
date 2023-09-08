@@ -65,5 +65,6 @@ module.exports = {
 		],
 		'no-restricted-imports': ['error', { paths: ['$env/static/private'] }],
 		'no-self-assign': 0,
+		'@typescript-eslint/no-throw-literal': 0,
 	},
 };

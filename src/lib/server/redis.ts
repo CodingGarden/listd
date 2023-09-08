@@ -1,4 +1,5 @@
 import { createClient } from 'redis';
+import { building } from '$app/environment';
 import { config } from '../config.server';
 
 const client = createClient({
@@ -9,6 +10,8 @@ const client = createClient({
 // eslint-disable-next-line no-console
 client.on('error', (err) => console.log('Redis Client Error', err));
 
-await client.connect();
+if (!building) {
+	await client.connect();
+}
 
 export default client;
