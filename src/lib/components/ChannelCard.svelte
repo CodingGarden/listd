@@ -53,7 +53,9 @@
 			{/if}
 		</div>
 	</div>
-	<div class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
-		<slot />
-	</div>
+    {#if $$slots.default}
+        <div class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
+            <slot />
+        </div>
+    {/if}
 </div>
