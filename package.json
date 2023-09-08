@@ -19,6 +19,7 @@
 		"lint:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format:fix": "prettier --write .",
 		"migrate:init": "prisma migrate dev --name init",
+		"migrate:deploy": "prisma migrate deploy",
 		"docker-up:test": "docker compose -f docker-compose.test.yml up --force-recreate --build --abort-on-container-exit --exit-code-from app-test",
 		"docker-down:test": "docker compose -f docker-compose.test.yml down",
 		"docker-up:test:watch": "docker compose -f docker-compose.test.watch.yml up --build",

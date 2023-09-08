@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-      - run: cp .env.example .env
+      - run: cp .env.example .env.test
       - run: npx svelte-kit sync
       - run: npm run check
       - run: npm run lint
