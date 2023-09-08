@@ -37,7 +37,7 @@ You can also install Postgres on your local machine [directly](https://www.prism
 copy `.env.example` to `.env`
 
 ```bash
- cp .env.example .env
+cp .env.example .env
 ```
 
 #### `.env` variables for PostgreSQL
@@ -62,7 +62,7 @@ DB_PORT=5432
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ```
 
-- DATABASE_URL: The full database connection URL. This is required and is used by prisma.
+- `DATABASE_URL`: The full database connection URL. This is required and is used by prisma.
 
 #### Set up PostgreSQL by Docker Compose
 
