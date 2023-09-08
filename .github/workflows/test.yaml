@@ -15,6 +15,7 @@ jobs:
           node-version: '18'
       - run: npm ci
       - run: ./scripts/create-test-env.sh
+      - run: cat .env.test
       - run: cp .env.test .env
       - run: npx svelte-kit sync
       - run: npm run check

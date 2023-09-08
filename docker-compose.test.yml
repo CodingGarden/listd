@@ -22,9 +22,7 @@ services:
       redis-test:
         condition: service_healthy
     command: >
-      sh -c "cat .env.test && \
-        dotenv -e .env.test -- echo $DATABASE_URL && \
-        dotenv -e .env.test -- npm run migrate:init && \
+      sh -c "dotenv -e .env.test -- npm run migrate:init && \
         dotenv -e .env.test -- npx prisma db seed && \
         dotenv -e .env.test -- npx prisma generate && \
         dotenv -e .env.test -- npm run build && \
