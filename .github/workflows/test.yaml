@@ -14,9 +14,10 @@ jobs:
         with:
           node-version: '18'
       - run: npm ci
-      - run: cp .env.example .env.test
+      - run: ./scripts/create-test-env.sh
+      - run: cp .env.test .env
       - run: npx svelte-kit sync
       - run: npm run check
       - run: npm run lint
       - run: npx playwright install
-      - run: ./scripts/create-test-env.sh && npm test
+      - run: npm test
