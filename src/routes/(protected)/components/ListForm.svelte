@@ -71,10 +71,7 @@
 			{/each}
 		</select>
 	</label>
-	<span class="label">Channels</span>
-	{#if !channels.length}
-		<span class="block text-gray-400">No channels added.</span>
-	{:else}
+	{#if channels.length > 0}
 		<div class="max-h-96 overflow-y-auto">
 			<div class="grid grid-cols-2">
 				{#each channels as channel (channel.originId)}
