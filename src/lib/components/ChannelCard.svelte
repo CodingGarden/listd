@@ -25,7 +25,7 @@
 
 <div
 	bind:this={element}
-	class="card overflow-hidden p-4"
+	class="card overflow-hidden p-4 {!compact ? 'flex justify-between items-center' : ''}"
 	class:grid={compact}
 	class:content-center={compact}>
 	<div>
