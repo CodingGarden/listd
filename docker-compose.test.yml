@@ -14,7 +14,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.test
-    env_file: .env.test
     volumes:
       - ./coverage:/app/coverage
     depends_on:
@@ -23,8 +22,7 @@ services:
       redis-test:
         condition: service_healthy
     command: >
-      sh -c "dotenv -e .env.test -- echo $DB_HOST && \
-        dotenv -e .env.test -- npm run migrate:init && \
+      sh -c "dotenv -e .env.test -- npm run migrate:init && \
         dotenv -e .env.test -- npx prisma db seed && \
         dotenv -e .env.test -- npx prisma generate && \
         dotenv -e .env.test -- npm run build && \
