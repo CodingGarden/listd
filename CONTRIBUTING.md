@@ -62,7 +62,7 @@ DB_PORT=5432
 DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}
 ```
 
-- DATABASE_URL: The full database connection URL. This is required and is used by prisma.
+- `DATABASE_URL`: The full database connection URL. This is required and is used by prisma.
 
 #### Set up PostgreSQL by Docker Compose
 
