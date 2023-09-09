@@ -66,21 +66,23 @@
 			<ProgressRadial class="ml-2 h-8 w-8" stroke={100} />
 		</span>
 	{:then videos}
-		<div class="my-4">
-			<label class="label">
-				<span>{$LL.labels.filter()}</span>
-				<input on:input={updateFilter} class="input" />
-			</label>
-		</div>
-		<div
-			data-testid="video-list"
-			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-			{#each filterVideos(videos, filter) as video}
-				<YouTubeVideoEmbed
-					active={$page.params.videoid === video.videoId}
-					locale={data.locale}
-					{video} />
-			{/each}
-		</div>
+		{#if data.list.items.length > 0 && videos.length > 0}
+			<div class="my-4">
+				<label class="label">
+					<span>{$LL.labels.filter()}</span>
+					<input on:input={updateFilter} class="input" />
+				</label>
+			</div>
+			<div
+				data-testid="video-list"
+				class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+				{#each filterVideos(videos, filter) as video}
+					<YouTubeVideoEmbed
+						active={$page.params.videoid === video.videoId}
+						locale={data.locale}
+						{video} />
+				{/each}
+			</div>
+		{/if}
 	{/await}
 </div>
