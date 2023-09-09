@@ -51,15 +51,6 @@
 			</div>
 		</aside>
 	{/if}
-	<div class="flex justify-end">
-		<button class="variant-filled-secondary btn">
-			{#if list}
-				{$LL.buttons.update()}
-			{:else}
-				{$LL.buttons.create()}
-			{/if}
-		</button>
-	</div>
 	<label class="label">
 		<span>{$LL.labels.title()}</span>
 		<input value={list?.title || ''} class="input" type="text" name="title" required />
@@ -100,7 +91,7 @@
 		{/each}
 	</select>
 	<ChannelSearch {results} {locale} bind:channels bind:channelIds />
-	<div class="my-4 flex justify-end">
+	<div class="my-4 flex justify-end sticky bottom-0 p-4 card">
 		<button class="variant-filled-secondary btn">
 			{#if list}
 				{$LL.buttons.update()}
