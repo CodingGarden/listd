@@ -56,7 +56,7 @@
 	</div>
 	{#if data.session?.user?.id === data.list.userId}
 		<div class="mb-4 flex justify-end">
-			<a href={`/edit/${data.list.id}`} class="variant-ghost-primary btn">{$LL.buttons.edit()}</a>
+			<a href={`/edit/${data.list.id}`} class="variant-ringed-tertiary btn">{$LL.buttons.edit()}</a>
 		</div>
 	{/if}
 {/if}

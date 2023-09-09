@@ -22,7 +22,7 @@
 				{$LL.pages.root.loggedIn.messages.createList()}
 			{/if}
 		</p>
-		<a href="/create" class="variant-filled-secondary btn" data-sveltekit-preload-data="hover"
+		<a href="/create" class="variant-filled-primary btn" data-sveltekit-preload-data="hover"
 			>{$LL.buttons.create()}</a>
 		<ul class="list-nav mt-4">
 			{#each data.lists as list}

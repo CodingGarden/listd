@@ -52,7 +52,7 @@
 		</aside>
 	{/if}
 	<div class="flex justify-end">
-		<button class="variant-filled-secondary btn">
+		<button class="variant-filled-primary btn">
 			{#if list}
 				{$LL.buttons.update()}
 			{:else}
@@ -101,7 +101,7 @@
 	</select>
 	<ChannelSearch {results} {locale} bind:channels bind:channelIds />
 	<div class="my-4 flex justify-end">
-		<button class="variant-filled-secondary btn">
+		<button class="variant-filled-primary btn">
 			{#if list}
 				{$LL.buttons.update()}
 			{:else}
