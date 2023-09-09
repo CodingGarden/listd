@@ -43,7 +43,7 @@
 {/if}
 
 {#if results}
-	<div class="max-h-96 overflow-y-auto" class:hidden={loading}>
+	<div class="max-h-64 overflow-y-auto" class:hidden={loading}>
 		{#each results as result}
 			<ChannelCard {locale} channel={result}>
 				<ChannelCardActions channel={result} bind:channels bind:channelIds />

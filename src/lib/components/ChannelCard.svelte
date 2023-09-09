@@ -25,7 +25,7 @@
 
 <div
 	bind:this={element}
-	class="card overflow-hidden p-4"
+	class="card overflow-hidden p-4 {!compact ? 'flex justify-between items-end' : ''}"
 	class:grid={compact}
 	class:content-center={compact}>
 	<header>
@@ -53,7 +53,7 @@
 			{/if}
 		</div>
 	</header>
-	<footer class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
+	<footer class="flex {compact ? 'justify-center mt-4' : 'justify-end'}">
 		<slot />
 	</footer>
 </div>
