@@ -11,7 +11,6 @@
 	export let channels: YouTubeChannelMetaAPIResponse[];
 	export let channelIds: Map<string, number>;
 
-	let hasSearched = false;
 	let loading = false;
 </script>
 
@@ -20,7 +19,6 @@
 	action="/create?/search"
 	use:enhance={() => {
 		loading = true;
-		hasSearched = true;
 		return ({ result }) => {
 			loading = false;
 			return applyAction(result);
@@ -37,14 +35,14 @@
 	</label>
 </form>
 <div class="my-4">
-	<div class="overflow-y-auto" class:h-96={hasSearched}>
+	<div>
 		{#if loading}
 			<div class="grid place-content-center">
 				<ProgressRadial class="ml-2 h-6 w-6" stroke={100} />
 			</div>
 		{/if}
 		{#if results}
-			<div class="results h-full" class:hidden={loading}>
+			<div class="max-h-96 overflow-y-auto" class:hidden={loading}>
 				{#each results as result}
 					<ChannelCard {locale} channel={result}>
 						<ChannelCardActions channel={result} bind:channels bind:channelIds />
