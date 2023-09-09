@@ -28,7 +28,7 @@
 	class="card overflow-hidden p-4"
 	class:grid={compact}
 	class:content-center={compact}>
-	<header>
+	<div>
 		<div class="flex gap-2" class:flex-col={compact} class:items-center={compact}>
 			{#if compact}
 				<img
@@ -52,8 +52,8 @@
 				</div>
 			{/if}
 		</div>
-	</header>
-	<footer class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
+	</div>
+	<div class="card-footer mt-4 flex justify-end" class:justify-center={compact}>
 		<slot />
-	</footer>
+	</div>
 </div>
