@@ -191,6 +191,7 @@ export async function searchChannels(q: string) {
 		type: ['channel'],
 		maxResults: 50,
 	});
+	if (!searchResults?.items?.length) return []
 	const ids = (searchResults.items || []).reduce((all, item) => {
 		if (item.id?.channelId) {
 			all.push(item.id?.channelId);
