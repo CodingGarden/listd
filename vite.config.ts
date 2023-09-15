@@ -16,6 +16,17 @@ if (process.env.NODE_ENV?.toLowerCase() === 'test') {
 			nycrcPath: './.nycrc.json',
 		})
 	);
+} else {
+	plugins.push({
+		name: 'remove-testids',
+		enforce: 'pre',
+		transform(code, id) {
+			if (id.endsWith('.svelte')) {
+				return code.replace(/data-testid=".*?"/g, '');
+			}
+			return code;
+		},
+	});
 }
 
 const config: UserConfig = {
