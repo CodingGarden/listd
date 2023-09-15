@@ -1,4 +1,5 @@
 <script lang="ts">
+	import AvatarWithFallback from '$/lib/components/AvatarWithFallback.svelte';
 	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import { onMount } from 'svelte';
 
@@ -38,11 +39,7 @@
 					alt={channel.name} />
 				<div class="text-center font-bold">{channel.name}</div>
 			{:else}
-				<img
-					class="mr-1 inline-block h-12 w-12 rounded-full"
-					referrerpolicy="no-referrer"
-					src={channel.avatarUrl}
-					alt={channel.name} />
+				<AvatarWithFallback avatarUrl={channel.avatarUrl} altText={channel.name} />
 				<div>
 					<div class="font-bold">{channel.name}</div>
 					<div>{channel.customUrl}</div>

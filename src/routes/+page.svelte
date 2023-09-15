@@ -4,6 +4,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import { seo } from '$lib/stores/SeoStore';
 	import { page } from '$app/stores';
+	import ListCard from '$/lib/components/ListCard.svelte';
 
 	export let data;
 
@@ -15,27 +16,22 @@
 	});
 </script>
 
-<div class="hero-container mx-auto flex max-w-sm flex-col items-center justify-center p-4">
+<div class="hero-container flex flex-col items-center justify-center p-4">
 	{#if $page.data.session}
 		{#if !data.lists.length}
 			<p class="my-4 text-center">
 				{$LL.pages.root.loggedIn.messages.createList()}
 			</p>
 		{/if}
-		<a href="/create" class="variant-filled-secondary btn" data-sveltekit-preload-data="hover"
-			>{$LL.buttons.create()}</a>
-		<ul class="list-nav mt-4">
+		<a
+			href="/create"
+			class="variant-filled-secondary btn max-w-xs"
+			data-sveltekit-preload-data="hover">{$LL.buttons.create()}</a>
+		<div class="video-grid mt-4">
 			{#each data.lists as list}
-				<li class="list">
-					<a href={`/list/${list.id}`}>
-						<span class="flex-auto">
-							<dt>{list.title}</dt>
-							<dd>{list.description}</dd>
-						</span>
-					</a>
-				</li>
+				<ListCard {list} />
 			{/each}
-		</ul>
+		</div>
 	{:else}
 		<p class="my-4 text-center">{$LL.pages.root.messages.tagline()}</p>
 		<button

@@ -8,8 +8,8 @@ test.beforeEach(async ({ context }) => {
 
 test('onboarded user can edit their own list', async ({ page }) => {
 	await page.goto('/');
-	await page.waitForSelector('.list-nav .list');
-	await page.locator('.list-nav .list a').first().click();
+	await page.waitForSelector('.video-grid');
+	await page.locator('.video-grid a').first().click();
 	const listId = data.users[UserTypes.hasList]?.list?.[0].id;
 	await page.waitForURL(`**/list/${listId}`);
 	page.getByRole('link', { name: L.en.buttons.edit(), exact: true }).first().click();

@@ -72,9 +72,7 @@
 				<input on:input={updateFilter} class="input" />
 			</label>
 		</div>
-		<div
-			data-testid="video-list"
-			class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+		<div data-testid="video-list" class="video-grid">
 			{#each filterVideos(videos, filter) as video}
 				<YouTubeVideoEmbed
 					active={$page.params.videoid === video.videoId}

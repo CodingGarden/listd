@@ -8,8 +8,8 @@ test.beforeEach(async ({ context }) => {
 
 test('user with lists can see lists on home page', async ({ page }) => {
 	await page.goto('/');
-	await page.waitForSelector('.list-nav .list');
-	const listLink = await page.locator('.list-nav .list a').first();
+	await page.waitForSelector('.video-grid');
+	const listLink = await page.locator('.video-grid a').first();
 	const linkText = await listLink.textContent();
 	await expect(linkText).toContain('Coding Garden');
 });
