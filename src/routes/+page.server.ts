@@ -1,14 +1,28 @@
 import prismaClient from '$lib/db.server';
-import type { List } from '@prisma/client';
+import type { ListWithItems } from '../../types/db';
 
 export async function load({ locals }) {
-	let lists: List[] = [];
+	let lists: ListWithItems[] = [];
 	if (locals.session?.user) {
-		lists = await prismaClient.list.findMany({
+		lists = (await prismaClient.list.findMany({
 			where: {
 				userId: locals.session.user.id,
 			},
-		});
+			orderBy: {
+				createdAt: 'desc',
+			},
+			include: {
+				items: {
+					include: {
+						meta: {
+							include: {
+								youtubeMeta: true,
+							},
+						},
+					},
+				},
+			},
+		})) as unknown as ListWithItems[];
 	}
 	return {
 		lists,
