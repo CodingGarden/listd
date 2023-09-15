@@ -37,7 +37,7 @@ You can also install Postgres on your local machine [directly](https://www.prism
 copy `.env.example` to `.env`
 
 ```bash
- cp .env.example .env
+cp .env.example .env
 ```
 
 #### `.env` variables for PostgreSQL
