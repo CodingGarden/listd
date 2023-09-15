@@ -17,11 +17,11 @@
 
 <div class="hero-container mx-auto flex max-w-sm flex-col items-center justify-center p-4">
 	{#if $page.data.session}
-		<p class="my-4 text-center">
-			{#if !data.lists.length}
+		{#if !data.lists.length}
+			<p class="my-4 text-center">
 				{$LL.pages.root.loggedIn.messages.createList()}
-			{/if}
-		</p>
+			</p>
+		{/if}
 		<a href="/create" class="variant-filled-secondary btn" data-sveltekit-preload-data="hover"
 			>{$LL.buttons.create()}</a>
 		<ul class="list-nav mt-4">
