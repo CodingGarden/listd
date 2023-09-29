@@ -21,7 +21,7 @@
 
 {#if !showFallback}
 	<img
-		class="mr-1 inline-block h-12 w-12 rounded-full"
+		class="mr-1 inline-block h-14 w-14 rounded-full"
 		referrerpolicy="no-referrer"
 		src={currentUrl}
 		on:error={() => {
@@ -29,6 +29,6 @@
 		}}
 		alt={altText} />
 {:else}
-	<span class="mr-1 inline-flex h-12 w-12 items-center justify-center rounded-full bg-secondary-500"
+	<span class="mr-1 inline-flex h-14 w-14 items-center justify-center rounded-full bg-secondary-500"
 		>{fallbackText}</span>
 {/if}

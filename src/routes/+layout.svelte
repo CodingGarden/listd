@@ -4,10 +4,21 @@
 	import { seo } from '$lib/stores/SeoStore';
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import '../app.postcss';
+	import { afterNavigate } from '$app/navigation';
 	import Seo from './SEO.svelte';
 
 	export let data;
 	setLocale(data.locale);
+
+	afterNavigate(() => {
+		// Fix for firefox...
+		// Issue: https://github.com/sveltejs/kit/issues/2733
+		document.querySelector('#page')!.scrollTo({
+			behavior: 'smooth',
+			left: 0,
+			top: 0,
+		});
+	});
 </script>
 
 <Seo title={$seo.title} description={$seo.description} />

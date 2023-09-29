@@ -1,5 +1,26 @@
 # Today
 
+- [x] Home Page List
+  - [x] List actions
+    - [x] View
+    - [x] Edit
+- [x] Fix scroll position on page change
+- [x] Video view page
+  - [x] expandable description box
+  - [x] Render description with markdown
+- [ ] YouTube Embed API
+  - [ ] parse timestamps in description, link changes timestamp in video
+  - [ ] On video end, play next video
+- [ ] List create UX
+  - [ ] Only show channel avatar
+    - [ ] Small remove button
+    - [ ] Tooltip with channel name
+  - [ ] Desktop styles - 2 column
+    - [ ] Channel adder is on the right
+- [ ] infinite scroll / pagination on list page
+
+## Later...
+
 - [ ] .env.test does not exist on CI server...
 - [ ] Remove test ids in Prod build
 - [ ] Update contributing guide...
@@ -37,7 +58,7 @@
 # Upcoming
 
 - [ ] List edit / update page
-- [ ] Update readme with tech stack
+- [x] Update readme with tech stack
 - [ ] List create UX
   - [ ] Only show channel avatar
     - [ ] Click to expand

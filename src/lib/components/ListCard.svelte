@@ -9,20 +9,31 @@
 	const hiddenItems = (list.items?.length || 0) - truncatedItems.length;
 </script>
 
-<a href="/list/{list.id}" class="card p-4">
-	<h3 class="text-xl">{list.title}</h3>
-	{#if list.items}
-		<div class="mt-4">
-			{#each truncatedItems as item}
-				<AvatarWithFallback
-					avatarUrl={item?.meta?.youtubeMeta?.avatarUrl}
-					altText={item?.meta?.youtubeMeta?.name} />
-			{/each}
-			{#if hiddenItems > 0}
-				<span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-500"
-					>+{hiddenItems}</span>
-			{/if}
-		</div>
+<div class="card flex flex-col justify-between p-4">
+	<div>
+		<a class="text-xl hover:text-primary-500 hover:underline" href="/list/{list.id}"
+			>{list.title}</a>
+		{#if list.items}
+			<div class="mt-4">
+				{#each truncatedItems as item}
+					<AvatarWithFallback
+						avatarUrl={item?.meta?.youtubeMeta?.avatarUrl}
+						altText={item?.meta?.youtubeMeta?.name} />
+				{/each}
+				{#if hiddenItems > 0}
+					<span
+						class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary-500"
+						>+{hiddenItems}</span>
+				{/if}
+			</div>
+		{/if}
 		<p class="mt-4">{list.description}</p>
-	{/if}
-</a>
+	</div>
+	<div class="mt-4 flex justify-end gap-1">
+		<!--  TODO: find icon library -->
+		<a type="button" class="variant-filled-tertiary btn-icon btn-icon-sm" href="/list/{list.id}"
+			>View</a>
+		<a type="button" class="variant-filled-tertiary btn-icon btn-icon-sm" href="/edit/{list.id}"
+			>Edit</a>
+	</div>
+</div>
