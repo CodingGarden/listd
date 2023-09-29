@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { LL } from '$lib/i18n/i18n-svelte';
-	import YouTubeVideoEmbed from '$/lib/YouTubeVideoEmbed.svelte';
+	import YouTubeThumbnailEmbed from '$/lib/components/YouTubeThumbnailEmbed.svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { YouTubeVideoAPIResponse } from '$/lib/server/YouTubeAPI';
@@ -74,7 +74,7 @@
 		</div>
 		<div data-testid="video-list" class="video-grid">
 			{#each filterVideos(videos, filter) as video}
-				<YouTubeVideoEmbed
+				<YouTubeThumbnailEmbed
 					active={$page.params.videoid === video.videoId}
 					locale={data.locale}
 					{video} />

@@ -2,8 +2,8 @@
 
 - [x] Review PRs
 - [x] update dependencies
-- [ ] YouTube Embed API
-  - [ ] parse timestamps in description, link changes timestamp in video
+- [x] YouTube Embed API
+  - [x] parse timestamps in description, link changes timestamp in video
   - [ ] On video end, play next video
 - [ ] Icon Library
 - [ ] List create UX
@@ -13,6 +13,10 @@
   - [ ] Desktop styles - 2 column
     - [ ] Channel adder is on the right
 - [ ] infinite scroll / pagination on list page
+- [ ] List Filters
+  * [ ] Most Views
+  * [ ] Oldest
+  * [ ] etc.
 
 ## Later...
 
