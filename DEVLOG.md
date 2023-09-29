@@ -1,16 +1,11 @@
 # Today
 
-- [x] Home Page List
-  - [x] List actions
-    - [x] View
-    - [x] Edit
-- [x] Fix scroll position on page change
-- [x] Video view page
-  - [x] expandable description box
-  - [x] Render description with markdown
+- [x] Review PRs
+- [x] update dependencies
 - [ ] YouTube Embed API
   - [ ] parse timestamps in description, link changes timestamp in video
   - [ ] On video end, play next video
+- [ ] Icon Library
 - [ ] List create UX
   - [ ] Only show channel avatar
     - [ ] Small remove button
@@ -30,6 +25,14 @@
 
 # Last Time
 
+- [x] Home Page List
+  - [x] List actions
+    - [x] View
+    - [x] Edit
+- [x] Fix scroll position on page change
+- [x] Video view page
+  - [x] expandable description box
+  - [x] Render description with markdown
 - [x] Containerize tests
 - [ ] More integration tests
   - [x] Run tests / containers while dev containers are still running
