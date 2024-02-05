@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { formatNumberCompact, formatDuration, formatRelativeDate } from '$lib/utils';
-	import ViewCount from '$lib/ViewCount.svelte';
 	import { page } from '$app/stores';
-	import type { YouTubeVideoAPIResponse } from './server/YouTubeAPI';
+	import ViewCount from '$lib/components/ViewCount.svelte';
+	import type { YouTubeVideoAPIResponse } from '$lib/server/YouTubeAPI';
 
 	export let locale: string;
 	export let active: boolean;
