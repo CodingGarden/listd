@@ -6,14 +6,14 @@ export const load = async ({ locals, route }) => {
 		!locals.session.user.settings.onboarded &&
 		route.id !== '/(protected)/onboarding'
 	) {
-		throw redirect(302, '/onboarding');
+		redirect(302, '/onboarding');
 	}
 	if (
 		locals.session?.user &&
 		locals.session.user.settings.onboarded &&
 		route.id === '/(protected)/onboarding'
 	) {
-		throw redirect(302, '/');
+		redirect(302, '/');
 	}
 	return {
 		session: locals.session,

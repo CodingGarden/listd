@@ -4,8 +4,7 @@ import type { UserSettings } from '@prisma/client';
 import { SvelteKitAuthConfig as OGSvelteKitAuthConfig } from '@auth/sveltekit';
 import type { CustomAdapter } from '$lib/prisma/client';
 
-// TODO: revert this when they fix this...
-declare module '@auth/sveltekit/node_modules/@auth/core/types' {
+declare module '@auth/core/types' {
 	interface Session extends OGSession {
 		user?: {
 			id: string;

@@ -142,7 +142,7 @@ async function getAllVideos(
 								liveChatId: video.liveStreamingDetails.activeLiveChatId || '',
 								actualStartAt: parseYTDate(video.liveStreamingDetails.actualStartTime),
 								scheduledStartAt: parseYTDate(video.liveStreamingDetails.scheduledStartTime),
-						  }
+							}
 						: null,
 				};
 				videoResponse.thumbnails.high = videoResponse.thumbnails.high?.replace('_live', '') || null;

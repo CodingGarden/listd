@@ -6,7 +6,8 @@
 			"$lib": ["./src/lib"],
 			"$lib/*": ["./src/lib/*"],
 			"$app": ["./node_modules/@sveltejs/kit/types"],
-			"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"]
+			"$app/*": ["./node_modules/@sveltejs/kit/types/index.d.ts"],
+			"anchorme": ["./node_modules/anchorme/dist/node/index.d.ts"]
 		},
 		"outDir": ".svelte-kit/output",
 		"allowJs": true,
@@ -22,7 +23,7 @@
 			{
 				"name": "typescript-svelte-plugin"
 			}
-		]
+		],
 	},
 	"include": [
 		"./.svelte-kit/ambient.d.ts",
