@@ -22,6 +22,11 @@ export interface CustomAdapter extends OGAdapter {
 export default function CustomPrismaAdapter(client: PrismaClient): CustomAdapter {
 	return {
 		...PrismaAdapter(client),
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		createUser({ id, ...data }) {
+			return client.user.create({ data });
+		},
 		async getUser(id: string) {
 			return client.user.findUnique({
 				where: { id },

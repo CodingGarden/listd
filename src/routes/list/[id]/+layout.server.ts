@@ -4,6 +4,7 @@ import { get } from 'svelte/store';
 import * as YouTubeAPI from '$lib/server/YouTubeAPI';
 import { getList } from '$/lib/server/queries';
 
+// eslint-disable-next-line consistent-return
 export async function load({ params, locals }) {
 	try {
 		// TODO: handle visibility
@@ -22,5 +23,5 @@ export async function load({ params, locals }) {
 	}
 	setLocale(locals.locale);
 	const $LL = get(LL);
-	throw error(404, $LL.errors.notFound());
+	error(404, $LL.errors.notFound());
 }

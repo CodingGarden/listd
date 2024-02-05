@@ -26,11 +26,15 @@ const handleAuth = (async (...args) => {
 			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 			// @ts-ignore
 			Google({
+				id: 'google',
+				name: 'Google',
 				clientId: config.GOOGLE_CLIENT_ID,
 				clientSecret: config.GOOGLE_CLIENT_SECRET,
 			}),
 		],
 		callbacks: {
+			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+			// @ts-ignore
 			async session({ session, user }) {
 				session.user = {
 					id: user.id,
@@ -45,20 +49,20 @@ const handleAuth = (async (...args) => {
 		},
 		events: {
 			async createUser(message) {
-				const locale = await prismaClient.locale.findFirst({
-					where: {
-						id: event.locals.locale,
-					},
-				});
-
-				const settings = await prismaClient.userSettings.create({
-					data: {
-						localeId: locale?.id ?? 'en-US',
-						userId: message.user.id,
-					},
-				});
-
-				message.user.settings = settings;
+				if (!message.user.settings) {
+					const locale = await prismaClient.locale.findFirst({
+						where: {
+							id: event.locals.locale,
+						},
+					});
+					const settings = await prismaClient.userSettings.create({
+						data: {
+							localeId: locale?.id ?? 'en-US',
+							userId: message.user.id!,
+						},
+					});
+					message.user.settings = settings;
+				}
 			},
 		},
 	})(...args);
@@ -67,7 +71,7 @@ const handleAuth = (async (...args) => {
 const protectedHandle = (async ({ event, resolve }) => {
 	await event.locals.getSession();
 	if (!event.locals.session && event.route.id?.includes('(protected)')) {
-		throw redirect(302, '/');
+		redirect(302, '/');
 	}
 	return resolve(event);
 }) satisfies Handle;

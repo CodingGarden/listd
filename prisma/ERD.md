@@ -46,7 +46,7 @@ erDiagram
 		String providerAccountId
 		String refreshToken  "nullable"
 		String accessToken  "nullable"
-		Int expiresIn  "nullable"
+		Int expiresAt  "nullable"
 		String tokenType  "nullable"
 		String scope  "nullable"
 		String idToken  "nullable"
