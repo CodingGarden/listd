@@ -7,9 +7,9 @@
 ## Features
 
 - [x] Page Transitions with @pablopang
+- [x] Add Icon Library
+  - [x] Put Icons on all Action Buttons
 - [ ] Landing Page / Features
-- [ ] Add Icon Library
-  - [ ] Put Icons on all Action Buttons
 - [ ] List Create / Edit Page
   - [ ] Prevent navigation if unsaved changes
   - [ ] Disable update / save button if no changes 

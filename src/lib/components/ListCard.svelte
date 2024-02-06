@@ -7,7 +7,8 @@
 
 	export let list: ListWithItems;
 
-	const truncatedItems = list.items?.slice(0, 3) || [];
+	const truncatedItems =
+		list.items?.length === 4 ? list.items?.slice() : list.items?.slice(0, 3) || [];
 
 	const hiddenItems = (list.items?.length || 0) - truncatedItems.length;
 	const { transition } = setupViewTransition();
@@ -38,7 +39,7 @@
 				{/each}
 				{#if hiddenItems > 0}
 					<span
-						class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary-500"
+						class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary-500 text-white"
 						>+{hiddenItems}</span>
 				{/if}
 			</div>
