@@ -33,7 +33,8 @@
 					<AvatarWithFallback
 						channelId={item?.meta?.youtubeMeta?.originId}
 						avatarUrl={item?.meta?.youtubeMeta?.avatarUrl}
-						altText={item?.meta?.youtubeMeta?.name} />
+						altText={item?.meta?.youtubeMeta?.name}
+						listId={list.id} />
 				{/each}
 				{#if hiddenItems > 0}
 					<span
