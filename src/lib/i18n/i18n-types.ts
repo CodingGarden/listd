@@ -29,6 +29,10 @@ type RootTranslation = {
 		 */
 		create: string
 		/**
+		 * V​i​e​w
+		 */
+		view: string
+		/**
 		 * E​d​i​t
 		 */
 		edit: string
@@ -44,6 +48,14 @@ type RootTranslation = {
 		 * L​o​g​i​n​ ​w​i​t​h​ ​Y​o​u​T​u​b​e
 		 */
 		loginYouTube: string
+		/**
+		 * R​e​m​o​v​e
+		 */
+		remove: string
+		/**
+		 * A​d​d
+		 */
+		add: string
 	}
 	labels: {
 		/**
@@ -181,6 +193,10 @@ export type TranslationFunctions = {
 		 */
 		create: () => LocalizedString
 		/**
+		 * View
+		 */
+		view: () => LocalizedString
+		/**
 		 * Edit
 		 */
 		edit: () => LocalizedString
@@ -196,6 +212,14 @@ export type TranslationFunctions = {
 		 * Login with YouTube
 		 */
 		loginYouTube: () => LocalizedString
+		/**
+		 * Remove
+		 */
+		remove: () => LocalizedString
+		/**
+		 * Add
+		 */
+		add: () => LocalizedString
 	}
 	labels: {
 		/**

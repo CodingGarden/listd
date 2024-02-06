@@ -11,6 +11,7 @@
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
 	import { enhance } from '$app/forms';
+	import { PlusSquare, Save } from 'lucide-svelte';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 	import ChannelSearch from './ChannelSearch.svelte';
 
@@ -52,11 +53,14 @@
 		</aside>
 	{/if}
 	<div class="flex justify-end">
-		<button class="variant-filled-secondary btn">
+		<button
+			class="btn flex gap-2"
+			class:variant-filled-warning={!list}
+			class:variant-filled-secondary={list}>
 			{#if list}
-				{$LL.buttons.update()}
+				<Save /> {$LL.buttons.update()}
 			{:else}
-				{$LL.buttons.create()}
+				<PlusSquare /> {$LL.buttons.create()}
 			{/if}
 		</button>
 	</div>
@@ -101,11 +105,14 @@
 	</select>
 	<ChannelSearch {results} {locale} bind:channels bind:channelIds />
 	<div class="my-4 flex justify-end">
-		<button class="variant-filled-secondary btn">
+		<button
+			class="btn flex gap-2"
+			class:variant-filled-warning={!list}
+			class:variant-filled-secondary={list}>
 			{#if list}
-				{$LL.buttons.update()}
+				<Save /> {$LL.buttons.update()}
 			{:else}
-				{$LL.buttons.create()}
+				<PlusSquare /> {$LL.buttons.create()}
 			{/if}
 		</button>
 	</div>

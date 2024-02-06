@@ -6,6 +6,7 @@
 
 ## Features
 
+- [x] Page Transitions with @pablopang
 - [ ] Landing Page / Features
 - [ ] Add Icon Library
   - [ ] Put Icons on all Action Buttons
@@ -72,3 +73,7 @@
 - [ ] Terms of Service
 - [ ] GDPR
 - [ ] Privacy Policy
+
+## Bugs
+
+- [ ] Firefox tab navigation

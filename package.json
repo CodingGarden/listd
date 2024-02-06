@@ -91,6 +91,7 @@
 		"@types/youtube-player": "^5.5.11",
 		"anchorme": "^3.0.5",
 		"env-cmd": "^10.1.0",
+		"lucide-svelte": "^0.323.0",
 		"luxon": "^3.4.4",
 		"redis": "^4.6.13",
 		"youtube-player": "^5.6.0",

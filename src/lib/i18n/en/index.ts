@@ -9,10 +9,13 @@ const en: BaseTranslation = {
 	message: 'Hello World',
 	buttons: {
 		create: 'Create',
+		view: 'View',
 		edit: 'Edit',
 		update: 'Update',
 		logOut: 'Logout',
 		loginYouTube: 'Login with YouTube',
+		remove: 'Remove',
+		add: 'Add',
 	},
 	labels: {
 		title: 'Title',

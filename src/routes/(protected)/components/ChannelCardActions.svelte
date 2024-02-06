@@ -1,5 +1,7 @@
 <script lang="ts">
 	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
+	import { MinusSquare, PlusSquare } from 'lucide-svelte';
+	import { LL } from '$lib/i18n/i18n-svelte';
 
 	export let channelIds: Map<string, number>;
 	export let channel: YouTubeChannelMetaAPIResponse;
@@ -16,7 +18,7 @@
 			}
 		}}
 		type="button"
-		class="variant-filled-primary btn">Remove</button>
+		class="variant-ghost-error btn flex gap-1"><MinusSquare /> {$LL.buttons.remove()}</button>
 {:else}
 	<button
 		on:click={() => {
@@ -24,5 +26,8 @@
 			channels = channels;
 		}}
 		type="button"
-		class="variant-ghost-primary btn">Add</button>
+		class="variant-ghost-warning btn flex gap-1">
+		<PlusSquare />
+		{$LL.buttons.add()}
+	</button>
 {/if}

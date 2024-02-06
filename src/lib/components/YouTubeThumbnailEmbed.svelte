@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import ViewCount from '$lib/components/ViewCount.svelte';
 	import type { YouTubeVideoAPIResponse } from '$lib/server/YouTubeAPI';
+	import { ThumbsUp } from 'lucide-svelte';
 
 	export let locale: string;
 	export let active: boolean;
@@ -20,10 +21,12 @@
 			src={video.thumbnails.low}
 			alt={video.title} />
 		<!-- TODO: use icon library -->
-		<p class="absolute bottom-1 left-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5 text-xs">
-			{formatNumberCompact(video.likes, locale)} 👍
+		<p
+			class="absolute bottom-1 left-1 flex items-end gap-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5 text-xs text-white">
+			<span class="leading-none">{formatNumberCompact(video.likes, locale)}</span>
+			<ThumbsUp class="h-4 w-4" />
 		</p>
-		<p class="absolute bottom-1 right-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5">
+		<p class="absolute bottom-1 right-1 rounded-md bg-black bg-opacity-60 px-1.5 py-0.5 text-white">
 			{formatDuration(video.duration)}
 		</p>
 	</div>

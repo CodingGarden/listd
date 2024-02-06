@@ -9,6 +9,7 @@
 	import parseDescription from '$/lib/parseDescription.js';
 	import YouTubeVideoEmbed from '$/lib/components/YouTubeVideoEmbed.svelte';
 	import VideoPlayerStore from '$/lib/stores/VideoPlayerStore.js';
+	import { ThumbsUp } from 'lucide-svelte';
 
 	export let data;
 
@@ -116,8 +117,8 @@
 					{/if}
 				{/await}
 				<div bind:this={videoStats} class="mb-4 flex items-center gap-4">
-					<span class="variant-soft-primary chip text-2xl"
-						>{formatNumberCompact(video.likes, data.locale)} 👍</span>
+					<span class="variant-soft-primary chip flex gap-2 text-2xl"
+						>{formatNumberCompact(video.likes, data.locale)} <ThumbsUp /></span>
 					<ViewCount locale={data.locale} viewCount={video.viewCount} />
 					<span>{formatRelativeDate(video.publishedAt, data.locale)}</span>
 				</div>

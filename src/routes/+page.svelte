@@ -5,6 +5,7 @@
 	import { seo } from '$lib/stores/SeoStore';
 	import { page } from '$app/stores';
 	import ListCard from '$/lib/components/ListCard.svelte';
+	import { PlusSquare } from 'lucide-svelte';
 
 	export let data;
 
@@ -25,8 +26,8 @@
 		{/if}
 		<a
 			href="/create"
-			class="variant-filled-secondary btn max-w-xs"
-			data-sveltekit-preload-data="hover">{$LL.buttons.create()}</a>
+			class="variant-filled-warning btn flex max-w-xs place-items-center gap-1"
+			data-sveltekit-preload-data="hover"><PlusSquare /> {$LL.buttons.create()}</a>
 		<div class="video-grid mt-4">
 			{#each data.lists as list}
 				<ListCard {list} />
