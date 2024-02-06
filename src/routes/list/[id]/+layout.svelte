@@ -5,6 +5,7 @@
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
 	import type { YouTubeVideoAPIResponse } from '$/lib/server/YouTubeAPI';
 	import { page } from '$app/stores';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 
 	export let data;
 
@@ -39,11 +40,15 @@
 			filter = value;
 		}, 500);
 	};
+
+	const { transition } = setupViewTransition();
 </script>
 
 <slot />
 {#if !$page.params.videoid}
-	<h2 data-testid="list-title" class="font-bold">{data.list?.title}</h2>
+	<h2 use:transition={'title'} data-testid="list-title" class="inline font-bold">
+		{data.list?.title}
+	</h2>
 	<p>{data.list?.description}</p>
 	<div
 		data-testid="channel-card-list"

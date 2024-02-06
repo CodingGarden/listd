@@ -5,10 +5,13 @@
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
 	import '../app.postcss';
 	import { afterNavigate } from '$app/navigation';
+	import { setupViewTransition } from 'sveltekit-view-transition';
 	import Seo from './SEO.svelte';
 
 	export let data;
 	setLocale(data.locale);
+
+	setupViewTransition();
 
 	afterNavigate(() => {
 		// Fix for firefox...

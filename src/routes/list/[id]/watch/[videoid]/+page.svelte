@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
-	import ViewCount from '$/lib/components/ViewCount.svelte';
-	import { formatNumberCompact, formatRelativeDate } from '$/lib/utils.js';
+	import anchorme from 'anchorme';
+
 	import { afterNavigate, beforeNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
-	import anchorme from 'anchorme';
+	import ViewCount from '$/lib/components/ViewCount.svelte';
+	import { formatNumberCompact, formatRelativeDate } from '$/lib/utils.js';
 	import parseDescription from '$/lib/parseDescription.js';
 	import YouTubeVideoEmbed from '$/lib/components/YouTubeVideoEmbed.svelte';
 	import VideoPlayerStore from '$/lib/stores/VideoPlayerStore.js';

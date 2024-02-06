@@ -39,7 +39,10 @@
 					alt={channel.name} />
 				<div class="text-center font-bold">{channel.name}</div>
 			{:else}
-				<AvatarWithFallback avatarUrl={channel.avatarUrl} altText={channel.name} />
+				<AvatarWithFallback
+					channelId={channel.originId}
+					avatarUrl={channel.avatarUrl}
+					altText={channel.name} />
 				<div>
 					<div class="font-bold">{channel.name}</div>
 					<div>{channel.customUrl}</div>
