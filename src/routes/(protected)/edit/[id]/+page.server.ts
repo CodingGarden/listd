@@ -11,8 +11,8 @@ import { createListSchema } from '$/lib/schemas';
 export async function load({ params, locals }) {
 	const { list, channelIds } = await getList(params.id, locals.session?.user?.id);
 	const $LL = get(LL);
+	setLocale(locals.locale);
 	if (!list) {
-		setLocale(locals.locale);
 		throw httpError(404, $LL.errors.notFound());
 	}
 	const schema = createListSchema($LL);
