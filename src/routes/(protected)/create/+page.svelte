@@ -17,6 +17,7 @@
 
 <Seo title="Create a List" description="Create a List" />
 <ListForm
+	formData={data.form}
 	list={undefined}
 	action="/create?/create"
 	locale={data.locale}

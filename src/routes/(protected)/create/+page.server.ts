@@ -2,12 +2,16 @@ import { ListItemType, Visibility } from '@prisma/client';
 import { fail } from '@sveltejs/kit';
 import { LL, setLocale } from '$lib/i18n/i18n-svelte';
 import { get } from 'svelte/store';
-import { z, ZodError } from 'zod';
 import * as YouTubeAPI from '$lib/server/YouTubeAPI';
 import prismaClient from '$lib/db.server';
+import { createListSchema } from '$/lib/schemas';
+import { superValidate } from 'sveltekit-superforms/server';
 
 export async function load() {
+	const schema = createListSchema(get(LL));
+	const form = await superValidate(schema);
 	return {
+		form,
 		visibility: Visibility,
 		visibilities: Object.values(Visibility) as Visibility[],
 	};
@@ -15,22 +19,13 @@ export async function load() {
 
 export const actions = {
 	create: async (event) => {
-		const $LL = get(LL);
 		setLocale(event.locals.locale);
-		const ListCreateRequestSchema = z.object({
-			title: z.string().trim().min(1, $LL.errors.titleRequired()),
-			description: z.string().trim().min(1, $LL.errors.descriptionRequired()).optional(),
-			visibility: z.nativeEnum(Visibility),
-			channelIds: z.array(z.string().trim().min(1)),
-		});
-		const formData = await event.request.formData();
-		const channels = formData.getAll('channelIds');
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const formDataObject = Object.fromEntries(formData) as any;
-		formDataObject.channelIds = channels;
+		const form = await superValidate(event.request, createListSchema(get(LL)));
+		if (!form.valid) {
+			return fail(400, { form });
+		}
 		try {
-			const { title, description, visibility, channelIds } =
-				await ListCreateRequestSchema.parseAsync(formDataObject);
+			const { title, description, visibility, channelIds } = form.data;
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const { user } = event.locals.session!;
 			const insertedList = await prismaClient.list.create({
@@ -81,16 +76,13 @@ export const actions = {
 			);
 
 			return {
+				form,
 				success: true,
 				listId: insertedList.id,
 			};
 		} catch (e) {
 			const error = e as Error;
-			let { message } = error;
-			if (error instanceof ZodError) {
-				const errorMessages = error.issues.map((issue) => issue.message);
-				message = errorMessages.join('\n');
-			}
+			const { message } = error;
 			return fail(400, { error: message });
 		}
 	},

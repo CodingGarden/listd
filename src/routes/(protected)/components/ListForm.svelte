@@ -7,13 +7,17 @@
 		type ListItemMeta,
 		type YouTubeMeta,
 	} from '@prisma/client';
+	import { superForm } from 'sveltekit-superforms/client';
 	import type { YouTubeChannelMetaAPIResponse } from '$/lib/server/YouTubeAPI';
 	import { LL } from '$lib/i18n/i18n-svelte';
 	import ChannelCard from '$/lib/components/ChannelCard.svelte';
-	import { enhance } from '$app/forms';
 	import { PlusSquare, Save } from 'lucide-svelte';
+	import type { ListSchema } from '$/lib/schemas';
+	import type { SuperValidated } from 'sveltekit-superforms';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 	import ChannelSearch from './ChannelSearch.svelte';
+
+	export let formData: SuperValidated<ListSchema>;
 
 	type ListWithItems = List & {
 		items: (ListItem & {
@@ -22,6 +26,8 @@
 			};
 		})[];
 	};
+
+	const { form, errors, constraints, tainted, enhance } = superForm(formData);
 
 	export let list: undefined | ListWithItems;
 	export let action: string;
@@ -41,6 +47,16 @@
 
 	$: channelIdList = [...channelIds.keys()];
 
+	$: form.update(
+		($form) => {
+			$form.channelIds = channelIdList;
+			return $form;
+		},
+		{
+			taint: channelIdList.length !== 0,
+		}
+	);
+
 	const visibilities = Object.keys(Visibility) as Visibility[];
 </script>
 
@@ -55,6 +71,7 @@
 	<div class="flex justify-end">
 		<button
 			class="btn flex gap-2"
+			disabled={!$tainted}
 			class:variant-filled-warning={!list}
 			class:variant-filled-secondary={list}>
 			{#if list}
@@ -66,19 +83,41 @@
 	</div>
 	<label class="label">
 		<span>{$LL.labels.title()}</span>
-		<input value={list?.title || ''} class="input" type="text" name="title" required />
+		<input
+			bind:value={$form.title}
+			class="input"
+			class:input-error={$errors.title}
+			type="text"
+			name="title"
+			aria-invalid={$errors.title ? 'true' : undefined}
+			{...$constraints.title} />
 	</label>
+	{#if $errors.title}
+		<div class="alert variant-filled-error">
+			<div class="alert-message">
+				<p>{$errors.title}</p>
+			</div>
+		</div>
+	{/if}
 	<label class="label">
 		<span>{$LL.labels.description()}</span>
-		<textarea value={list?.description || ''} class="textarea" name="description" />
+		<textarea
+			bind:value={$form.description}
+			class="textarea"
+			name="description"
+			aria-invalid={$errors.description ? 'true' : undefined}
+			{...$constraints.description} />
 	</label>
+	{#if $errors.description}
+		<div class="alert variant-filled-error">
+			<div class="alert-message">
+				<p>{$errors.description}</p>
+			</div>
+		</div>
+	{/if}
 	<label class="label">
 		<span>{$LL.labels.visibility()}</span>
-		<select
-			class="select"
-			name="visibility"
-			value={list?.visibility || Visibility.Unlisted}
-			required>
+		<select class="select" name="visibility" bind:value={$form.visibility} required>
 			{#each visibilities as visibility}
 				<option value={visibility}>{$LL.enums.visibility[visibility]()}</option>
 			{/each}
@@ -103,10 +142,21 @@
 			<option value={channelId}>{channelId}</option>
 		{/each}
 	</select>
+	{#if $errors.channelIds}
+		<div class="alert variant-filled-error">
+			<div class="alert-message">
+				<p>
+					<!-- eslint-disable-next-line no-underscore-dangle -->
+					{$errors.channelIds?._errors?.join(' ')}
+				</p>
+			</div>
+		</div>
+	{/if}
 	<ChannelSearch {results} {locale} bind:channels bind:channelIds />
 	<div class="my-4 flex justify-end">
 		<button
 			class="btn flex gap-2"
+			disabled={!$tainted}
 			class:variant-filled-warning={!list}
 			class:variant-filled-secondary={list}>
 			{#if list}

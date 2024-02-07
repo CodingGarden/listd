@@ -109,6 +109,10 @@ type RootTranslation = {
 		 * N​o​t​ ​f​o​u​n​d​.
 		 */
 		notFound: string
+		/**
+		 * A​ ​l​i​s​t​ ​m​u​s​t​ ​h​a​v​e​ ​a​t​ ​l​e​a​s​t​ ​1​ ​c​h​a​n​n​e​l​.
+		 */
+		listMinLength: string
 	}
 	messages: {
 		/**
@@ -272,6 +276,10 @@ export type TranslationFunctions = {
 		 * Not found.
 		 */
 		notFound: () => LocalizedString
+		/**
+		 * A list must have at least 1 channel.
+		 */
+		listMinLength: () => LocalizedString
 	}
 	messages: {
 		/**

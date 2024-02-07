@@ -9,16 +9,17 @@
 - [x] Page Transitions with @pablopang
 - [x] Add Icon Library
   - [x] Put Icons on all Action Buttons
+- [x] List Create / Edit Page
+  - [x] detect changes in form
+  - [x] Prevent navigation if unsaved changes
+  - [x] Disable update / save button if no changes 
+- [ ] List permissions / auth
+  - [ ] Private lists can only be viewed by the
 - [ ] Landing Page / Features
-- [ ] List Create / Edit Page
-  - [ ] Prevent navigation if unsaved changes
-  - [ ] Disable update / save button if no changes 
 - [ ] Message Queue
   - [ ] Seperate Service that receives requests for Cacheing
     - [ ] Calls YT API, updates cache
   - [ ] SvelteKit app -> put messages into the queue requesting caching
-- [ ] List permissions / auth
-  - [ ] Private lists can only be viewed by the creator
 - [ ] List Page
   - [ ] Access list via slug
   - [ ] Share list / copy URL to clipboard 

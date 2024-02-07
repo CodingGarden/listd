@@ -17,6 +17,7 @@
 
 <Seo title="Edit a List" description="Edit a List" />
 <ListForm
+	formData={data.form}
 	action={`/edit/${data.list.id}?/update`}
 	list={data.list}
 	locale={data.locale}
