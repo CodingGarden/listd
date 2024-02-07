@@ -14,6 +14,7 @@
 	import { PlusSquare, Save } from 'lucide-svelte';
 	import type { ListSchema } from '$/lib/schemas';
 	import type { SuperValidated } from 'sveltekit-superforms';
+	import slugify from 'slugify';
 	import ChannelCardActions from './ChannelCardActions.svelte';
 	import ChannelSearch from './ChannelSearch.svelte';
 
@@ -34,6 +35,8 @@
 	export let error: string | undefined;
 	export let locale: string;
 	export let results: YouTubeChannelMetaAPIResponse[] | undefined;
+
+	let customSlug = false;
 
 	let channels: YouTubeChannelMetaAPIResponse[] =
 		list?.items.map((item) => item.meta.youtubeMeta!) || [];
@@ -58,6 +61,29 @@
 	);
 
 	const visibilities = Object.keys(Visibility) as Visibility[];
+
+	const onSlugChange = (event: KeyboardEvent) => {
+		if (event.code.match(/Tab|Shift/)) {
+			return;
+		}
+		customSlug = !!$form.slug.trim();
+		form.update(($form) => {
+			$form.slug = $form.slug.toLowerCase();
+			return $form;
+		});
+	};
+
+	const updateSlug = () => {
+		if (!customSlug) {
+			form.update(($form) => {
+				$form.slug = slugify($form.title, {
+					strict: true,
+					lower: true,
+				});
+				return $form;
+			});
+		}
+	};
 </script>
 
 <form class="mx-auto mt-4 flex max-w-lg flex-col gap-4" {action} method="post" use:enhance>
@@ -81,10 +107,14 @@
 			{/if}
 		</button>
 	</div>
+	{#if $form.id}
+		<input name="id" class="hidden" value={$form.id} />
+	{/if}
 	<label class="label">
 		<span>{$LL.labels.title()}</span>
 		<input
 			bind:value={$form.title}
+			on:input={updateSlug}
 			class="input"
 			class:input-error={$errors.title}
 			type="text"
@@ -96,6 +126,25 @@
 		<div class="alert variant-filled-error">
 			<div class="alert-message">
 				<p>{$errors.title}</p>
+			</div>
+		</div>
+	{/if}
+	<label class="label">
+		<span>{$LL.labels.slug()}</span>
+		<input
+			bind:value={$form.slug}
+			on:keyup={onSlugChange}
+			class="input"
+			class:input-error={$errors.slug}
+			type="text"
+			name="slug"
+			aria-invalid={$errors.slug ? 'true' : undefined}
+			{...$constraints.slug} />
+	</label>
+	{#if $errors.slug}
+		<div class="alert variant-filled-error">
+			<div class="alert-message">
+				<p>{$errors.slug}</p>
 			</div>
 		</div>
 	{/if}

@@ -66,6 +66,7 @@ model Account {
   scope             String?
   id_token          String? @map("idToken") @db.Text
   session_state     String? @map("sessionState")
+  username          String? @db.Text
   user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
@@ -95,6 +96,7 @@ enum Visibility {
 
 model List {
   id          String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  slug        String
   title       String
   description String?
   visibility  Visibility
@@ -103,6 +105,8 @@ model List {
   items       ListItem[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+
+  @@unique([slug, userId])
 }
 
 enum ListItemType {

@@ -6,6 +6,7 @@
 	import { page } from '$app/stores';
 	import ListCard from '$/lib/components/ListCard.svelte';
 	import { PlusSquare } from 'lucide-svelte';
+	import { userStore } from '$/lib/stores/UserStore';
 
 	export let data;
 
@@ -14,6 +15,10 @@
 	seo.set({
 		title: 'listd',
 		description: 'listd',
+	});
+
+	$: userStore.set({
+		user: data.user,
 	});
 </script>
 

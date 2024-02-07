@@ -7,15 +7,37 @@ type OGAdapter = Omit<
 	'getUser' | 'getUserByEmail' | 'getUserByAccount' | 'getSessionAndUser'
 >;
 
+type AnnotatedUser = User & { settings: UserSettings | null; username: string | null };
+
+async function getAnnotatedUser(
+	client: PrismaClient,
+	user: User | null
+): Promise<AnnotatedUser | null> {
+	if (!user) return null;
+	const account = await client.account.findFirst({
+		where: {
+			userId: user.id,
+			provider: 'google',
+		},
+	});
+
+	const userWithUsername = user as AnnotatedUser;
+	if (account) {
+		userWithUsername.username = account.username;
+	}
+
+	return userWithUsername;
+}
+
 export interface CustomAdapter extends OGAdapter {
-	getUser(id: string): Promise<(User & { settings: UserSettings | null }) | null>;
-	getUserByEmail(email: string): Promise<(User & { settings: UserSettings | null }) | null>;
+	getUser(id: string): Promise<AnnotatedUser | null>;
+	getUserByEmail(email: string): Promise<AnnotatedUser | null>;
 	getUserByAccount(
 		providerAccountId: Pick<AdapterAccount, 'provider' | 'providerAccountId'>
-	): Promise<(User & { settings: UserSettings | null }) | null>;
+	): Promise<AnnotatedUser | null>;
 	getSessionAndUser(sessionToken: string): Promise<{
 		session: AdapterSession;
-		user: User & { settings: UserSettings | null };
+		user: AnnotatedUser;
 	} | null>;
 }
 
@@ -28,23 +50,26 @@ export default function CustomPrismaAdapter(client: PrismaClient): CustomAdapter
 			return client.user.create({ data });
 		},
 		async getUser(id: string) {
-			return client.user.findUnique({
+			const user = await client.user.findUnique({
 				where: { id },
 				include: { settings: true },
 			});
+
+			return getAnnotatedUser(client, user);
 		},
 		async getUserByEmail(email: string) {
-			return client.user.findUnique({
+			const user = await client.user.findUnique({
 				where: { email },
 				include: { settings: true },
 			});
+			return getAnnotatedUser(client, user);
 		},
 		async getUserByAccount(
 			providerAccountId: Pick<AdapterAccount, 'provider' | 'providerAccountId'>
 		) {
 			const account = await client.account.findUnique({
 				where: { provider_providerAccountId: providerAccountId },
-				select: {
+				include: {
 					user: {
 						include: {
 							settings: true,
@@ -52,7 +77,11 @@ export default function CustomPrismaAdapter(client: PrismaClient): CustomAdapter
 					},
 				},
 			});
-			return account?.user ?? null;
+			const userWithUsername = account?.user as AnnotatedUser;
+			if (account && userWithUsername) {
+				userWithUsername.username = account.username;
+			}
+			return userWithUsername ?? null;
 		},
 		async getSessionAndUser(sessionToken: string) {
 			const userAndSession = await client.session.findUnique({
@@ -69,7 +98,9 @@ export default function CustomPrismaAdapter(client: PrismaClient): CustomAdapter
 			if (!userAndSession) return null;
 
 			const { user, ...session } = userAndSession;
-			return { user, session };
+			const annotatedUser = await getAnnotatedUser(client, user);
+			if (!annotatedUser) return null;
+			return { user: annotatedUser, session };
 		},
 	};
 }

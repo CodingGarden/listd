@@ -25,7 +25,8 @@
 				"token_type": "bearer",
 				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 				"id_token": null,
-				"session_state": null
+				"session_state": null,
+				"username": "@CodingGarden"
 			},
 			"session": {
 				"id": "9b03816b-275c-4fbf-b77e-104ab41d87ca",
@@ -59,7 +60,8 @@
 				"token_type": "bearer",
 				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 				"id_token": null,
-				"session_state": null
+				"session_state": null,
+				"username": "@CodingGarden"
 			},
 			"session": {
 				"id": "d95a2ca5-7b78-4193-a74b-549dd65bd876",
@@ -93,7 +95,8 @@
 				"token_type": "bearer",
 				"scope": "openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",
 				"id_token": null,
-				"session_state": null
+				"session_state": null,
+				"username": "@CodingGarden"
 			},
 			"session": {
 				"id": "b57661b6-ef95-4bf7-8e8c-ef6cc4cb3983",
@@ -105,6 +108,7 @@
 				{
 					"id": "644974bd-2fe2-461a-b1bd-4eb8c85032e2",
 					"title": "Coding Garden Universe",
+					"slug": "coding-garden-universe",
 					"description": "All Coding Garden videos.",
 					"visibility": "Unlisted",
 					"userId": "2cf9ff84-57fd-470b-9c92-f3265d70d88f",

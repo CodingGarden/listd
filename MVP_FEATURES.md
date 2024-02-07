@@ -15,9 +15,8 @@
   - [x] Disable update / save button if no changes 
 - [x] List permissions / auth
   - [x] Private lists can only be viewed by the creator
-- [ ] Landing Page / Features
 - [ ] List Page
-  - [ ] Access list via slug
+  - [x] Access list via slug
   - [ ] Share list / copy URL to clipboard 
   - [ ] Previous / Next Buttons
   - [ ] Infinite scroll / pagination / lazy loading
@@ -39,6 +38,7 @@
     * [ ] Show 1 video from each channel at a time...
   - [ ] Channel cache refresh button
   - [ ] Show last updated time / cache time for each channel
+- [ ] Landing Page / Features
 - [ ] Limits
   - [ ] Max number of lists per user
   - [ ] Max number of channels per list

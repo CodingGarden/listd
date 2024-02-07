@@ -62,7 +62,7 @@
 	</div>
 	{#if data.session?.user?.id === data.list.userId}
 		<div class="mb-4 flex justify-end">
-			<a href={`/edit/${data.list.id}`} class="variant-ghost-secondary btn flex gap-1"
+			<a href="/list/{data.list.id}/edit" class="variant-ghost-secondary btn flex gap-1"
 				><SquarePen /> {$LL.buttons.edit()}</a>
 		</div>
 	{/if}

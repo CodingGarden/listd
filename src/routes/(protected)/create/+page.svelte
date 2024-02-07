@@ -8,7 +8,7 @@
 	export let form;
 
 	$: if (form?.success) {
-		const url = `/list/${form.listId}`;
+		const url = `/${form.username}/${form.slug}`;
 		if (browser) {
 			goto(url);
 		}

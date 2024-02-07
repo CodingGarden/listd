@@ -63,6 +63,10 @@ type RootTranslation = {
 		 */
 		title: string
 		/**
+		 * S​l​u​g
+		 */
+		slug: string
+		/**
 		 * D​e​s​c​r​i​p​t​i​o​n
 		 */
 		description: string
@@ -101,6 +105,14 @@ type RootTranslation = {
 		 * T​i​t​l​e​ ​c​a​n​n​o​t​ ​b​e​ ​e​m​p​t​y​.
 		 */
 		titleRequired: string
+		/**
+		 * S​l​u​g​ ​c​a​n​n​o​t​ ​b​e​ ​e​m​p​t​y​.
+		 */
+		slugRequired: string
+		/**
+		 * S​l​u​g​ ​c​a​n​n​o​t​ ​c​o​n​t​a​i​n​ ​s​p​e​c​i​a​l​ ​c​h​a​r​a​c​t​e​r​s
+		 */
+		slugSpecialCharacters: string
 		/**
 		 * D​e​s​c​r​i​p​t​i​o​n​ ​c​a​n​n​o​t​ ​b​e​ ​e​m​p​t​y​.
 		 */
@@ -231,6 +243,10 @@ export type TranslationFunctions = {
 		 */
 		title: () => LocalizedString
 		/**
+		 * Slug
+		 */
+		slug: () => LocalizedString
+		/**
 		 * Description
 		 */
 		description: () => LocalizedString
@@ -268,6 +284,14 @@ export type TranslationFunctions = {
 		 * Title cannot be empty.
 		 */
 		titleRequired: () => LocalizedString
+		/**
+		 * Slug cannot be empty.
+		 */
+		slugRequired: () => LocalizedString
+		/**
+		 * Slug cannot contain special characters
+		 */
+		slugSpecialCharacters: () => LocalizedString
 		/**
 		 * Description cannot be empty.
 		 */

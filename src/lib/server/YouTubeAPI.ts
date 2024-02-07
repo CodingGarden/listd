@@ -62,6 +62,20 @@ export function createYouTubeMetaAPIResponse(originId: string, channel: youtube_
 	};
 }
 
+export async function getUserChannel(access_token: string) {
+	const { data } = await ytClient.channels.list({
+		access_token,
+		part: channelParts,
+		mine: true,
+		maxResults: 1,
+	});
+	const ytChannel = data.items?.pop();
+	if (ytChannel) {
+		return ytChannel;
+	}
+	return null;
+}
+
 export async function getChannel(id: string) {
 	const { data } = await ytClient.channels.list({
 		part: channelParts,

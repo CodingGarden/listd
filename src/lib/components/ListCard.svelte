@@ -3,6 +3,7 @@
 	import { setupViewTransition } from 'sveltekit-view-transition';
 	import { LayoutList, SquarePen } from 'lucide-svelte';
 	import { LL } from '$lib/i18n/i18n-svelte';
+	import { userStore } from '$/lib/stores/UserStore';
 	import type { ListWithItems } from '../../../types/db';
 
 	export let list: ListWithItems;
@@ -27,7 +28,7 @@
 				},
 			}}
 			class="text-xl hover:text-primary-500 hover:underline"
-			href="/list/{list.id}">{list.title}</a>
+			href="/{$userStore.user?.username}/{list.slug}">{list.title}</a>
 		{#if list.items}
 			<div class="mt-4">
 				{#each truncatedItems as item}
@@ -52,14 +53,14 @@
 			type="button"
 			title={$LL.buttons.view()}
 			class="variant-filled-primary btn-icon btn-icon-sm"
-			href="/list/{list.id}">
+			href="/{$userStore.user?.username}/{list.slug}">
 			<LayoutList class="h-4 w-4" />
 		</a>
 		<a
 			type="button"
 			title={$LL.buttons.edit()}
 			class="variant-filled-secondary btn-icon btn-icon-sm"
-			href="/edit/{list.id}">
+			href="/{$userStore.user?.username}/{list.slug}/edit">
 			<SquarePen class="h-4 w-4" />
 		</a>
 	</div>

@@ -25,6 +25,7 @@ export async function load({ locals }) {
 		})) as unknown as ListWithItems[];
 	}
 	return {
+		user: locals.session?.user,
 		lists,
 		account: await prismaClient.account.findFirst({
 			where: {

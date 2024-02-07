@@ -51,6 +51,7 @@ erDiagram
 		String scope  "nullable"
 		String idToken  "nullable"
 		String sessionState  "nullable"
+		String username  "nullable"
 	}
 	Session {
 		String id PK  "dbgenerated(gen_random_uuid())"
@@ -65,6 +66,7 @@ erDiagram
 	}
 	List {
 		String id PK  "dbgenerated(gen_random_uuid())"
+		String slug
 		String title
 		String description  "nullable"
 		Visibility visibility

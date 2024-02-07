@@ -25,16 +25,17 @@ export const actions = {
 			return fail(400, { form });
 		}
 		try {
-			const { title, description, visibility, channelIds } = form.data;
+			const { title, slug, description, visibility, channelIds } = form.data;
 			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 			const { user } = event.locals.session!;
 			const insertedList = await prismaClient.list.create({
 				data: {
+					slug,
 					title,
 					description,
 					visibility,
 					// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-					userId: user!.id,
+					userId: user!.id!,
 				},
 			});
 
@@ -78,7 +79,8 @@ export const actions = {
 			return {
 				form,
 				success: true,
-				listId: insertedList.id,
+				slug: insertedList.slug,
+				username: event.locals.session?.user?.username,
 			};
 		} catch (e) {
 			const error = e as Error;

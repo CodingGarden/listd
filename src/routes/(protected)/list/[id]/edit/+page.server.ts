@@ -9,7 +9,10 @@ import { superValidate } from 'sveltekit-superforms/server';
 import { createListSchema } from '$/lib/schemas';
 
 export async function load({ params, locals }) {
-	const { list, channelIds } = await getList(params.id, locals.session?.user?.id);
+	const { list, channelIds } = await getList({
+		id: params.id,
+		userId: locals.session?.user?.id,
+	});
 	const $LL = get(LL);
 	setLocale(locals.locale);
 	if (!list) {
@@ -18,7 +21,9 @@ export async function load({ params, locals }) {
 	const schema = createListSchema($LL);
 	const form = await superValidate(
 		{
+			id: list.id,
 			title: list.title,
+			slug: list.slug,
 			description: list.description || '',
 			visibility: list.visibility,
 			channelIds,
@@ -34,7 +39,6 @@ export async function load({ params, locals }) {
 }
 
 export const actions = {
-	// TODO: change to update
 	update: async (event) => {
 		setLocale(event.locals.locale);
 		const form = await superValidate(event.request, createListSchema(get(LL)));
@@ -42,9 +46,12 @@ export const actions = {
 			return fail(400, { form });
 		}
 		try {
-			const { title, description, visibility, channelIds } = form.data;
+			const { id: listId, title, slug, description, visibility, channelIds } = form.data;
 
-			const { id: listId } = event.params;
+			if (!listId) {
+				throw new Error('Missing list id');
+			}
+
 			const result = await prismaClient.list.updateMany({
 				where: {
 					id: listId,
@@ -52,6 +59,7 @@ export const actions = {
 				},
 				data: {
 					title,
+					slug,
 					description,
 					visibility,
 				},
@@ -107,7 +115,8 @@ export const actions = {
 			return {
 				form,
 				success: true,
-				listId,
+				slug,
+				username: event.locals.session?.user?.username,
 			};
 		} catch (e) {
 			const error = e as Error;

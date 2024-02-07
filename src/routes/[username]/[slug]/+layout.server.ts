@@ -7,7 +7,11 @@ import { getList } from '$/lib/server/queries';
 // eslint-disable-next-line consistent-return
 export async function load({ params, locals }) {
 	try {
-		const { list, channelIds } = await getList(params.id, locals.session?.user?.id);
+		const { list, channelIds } = await getList({
+			username: params.username,
+			slug: params.slug,
+			userId: locals.session?.user?.id,
+		});
 
 		if (list) {
 			return {

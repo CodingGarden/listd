@@ -11,7 +11,7 @@
 </script>
 
 <a
-	href={`/list/${$page.params.id}/watch/${video.videoId}`}
+	href="/{$page.params.username}/{$page.params.slug}/watch/{video.videoId}"
 	class:variant-filled-primary={active}
 	class="card card-hover block cursor-pointer rounded-lg">
 	<div class="relative p-1">
