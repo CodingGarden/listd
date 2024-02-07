@@ -7,9 +7,9 @@
 
 	let loading = false;
 
-	const signOutClick = () => {
+	const signOutClick = async () => {
 		loading = true;
-		signOut();
+		await signOut();
 	};
 </script>
 

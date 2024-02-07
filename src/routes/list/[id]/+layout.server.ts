@@ -7,8 +7,7 @@ import { getList } from '$/lib/server/queries';
 // eslint-disable-next-line consistent-return
 export async function load({ params, locals }) {
 	try {
-		// TODO: handle visibility
-		const { list, channelIds } = await getList(params.id);
+		const { list, channelIds } = await getList(params.id, locals.session?.user?.id);
 
 		if (list) {
 			return {

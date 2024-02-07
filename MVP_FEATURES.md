@@ -13,13 +13,9 @@
   - [x] detect changes in form
   - [x] Prevent navigation if unsaved changes
   - [x] Disable update / save button if no changes 
-- [ ] List permissions / auth
-  - [ ] Private lists can only be viewed by the
+- [x] List permissions / auth
+  - [x] Private lists can only be viewed by the creator
 - [ ] Landing Page / Features
-- [ ] Message Queue
-  - [ ] Seperate Service that receives requests for Cacheing
-    - [ ] Calls YT API, updates cache
-  - [ ] SvelteKit app -> put messages into the queue requesting caching
 - [ ] List Page
   - [ ] Access list via slug
   - [ ] Share list / copy URL to clipboard 
@@ -55,6 +51,10 @@
   - [ ] Volume
   - [ ] Video Speed
   - [ ] Autoplay
+- [ ] Message Queue
+  - [ ] Seperate Service that receives requests for Cacheing
+    - [ ] Calls YT API, updates cache
+  - [ ] SvelteKit app -> put messages into the queue requesting caching
 
 ## Architecture
 
@@ -78,3 +78,4 @@
 ## Bugs
 
 - [ ] Firefox tab navigation
+- [ ] Redirect to homepage on logout

@@ -1,4 +1,5 @@
 import prismaClient from '$lib/db.server';
+import { Visibility } from '@prisma/client';
 import { z } from 'zod';
 
 export async function getList(id: string, userId: string | undefined = undefined) {
@@ -12,7 +13,15 @@ export async function getList(id: string, userId: string | undefined = undefined
 	const list = await prismaClient.list.findFirst({
 		where: {
 			id,
-			userId,
+			OR: [
+				{ visibility: Visibility.Public },
+				{ visibility: Visibility.Unlisted },
+				userId
+					? {
+							AND: [{ userId }, { visibility: Visibility.Private }],
+						}
+					: {},
+			],
 		},
 		include: {
 			items: {
